@@ -2,28 +2,22 @@
 layout: default
 ---
 
-<div class="category-header" style="background-color: #f0f0f0; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-  <h1 style="color: #333; margin: 0;">{{ page.title }}</h1>
-  <p style="color: #666; margin-top: 10px;">{{ content }}</p>
+<div style="border-left: 8px solid var(--nav-green); padding-left: 15px; margin-bottom: 25px;">
+    <h2 style="margin: 0; color: var(--primary-green);">{{ page.title }}</h2>
 </div>
 
-<div class="plant-list">
-  <ul style="list-style: none; padding: 0;">
-    {% assign posts = site.posts | where: "categories", page.category_value %}
-    {% for post in posts %}
-      <li style="margin-bottom: 10px; padding: 10px; border-bottom: 1px solid #eee;">
-        <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #007bff; font-weight: bold;">
-          {{ post.title }}
-        </a>
-      </li>
-    {% else %}
-      <li style="color: #999;">現在、このカテゴリーに該当する植物記事を準備中です。</li>
-    {% endfor %}
-  </ul>
+<div class="description" style="background: var(--accent-light); padding: 15px; border-radius: 8px; margin-bottom: 30px;">
+    {{ content }}
 </div>
 
-<div style="margin-top: 30px;">
-  <a href="{{ '/' | relative_url }}" style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; text-decoration: none; border-radius: 5px;">
-    トップページに戻る
-  </a>
+<h3 style="border-bottom: 2px solid #ddd; padding-bottom: 10px;">登録されている植物</h3>
+
+<div class="flower-grid">
+    <div style="padding: 40px; text-align: center; color: #999;">
+        <p>🌱 現在、このジャンルの植物データを整理・登録中です。<br>順次公開されますので、楽しみにお待ちください。</p>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <a href="{{ '/' | relative_url }}" class="btn-home">トップページ（検索）に戻る</a>
 </div>
