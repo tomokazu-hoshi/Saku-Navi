@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | Saku-Navi</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+    <header style="padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 20px;">
+        <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #333; font-weight: bold; font-size: 1.2em;">Saku-Navi</a>
+    </header>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer style="margin-top: 50px; padding: 20px 0; border-top: 1px solid #eee; text-align: center; font-size: 0.8em; color: #888;">
+        &copy; 2026 Saku-Navi Project - 星 友和
+    </footer>
+
+</body>
+</html>
