@@ -1,17 +1,17 @@
-title: "Saku-Navi（サクナビ）"
-description: "植物と花の辞書サイト"
-baseurl: "/Saku-Navi" # これを入れることで、他のプロジェクトと混ざらなくなります
-url: "https://tomokazu-hoshi.github.io"
+title: "【園芸全書】咲くナビ（Saku-Navi）"
+description: "初心者でも迷わず理想の植物が見つかる、国内最大級の逆引き園芸図鑑。"
+baseurl: "/Saku-Navi" # 他のプロジェクトへ飛ぶのを防ぐための修正
 
-# 言語設定
+# 言語とエンコード
 lang: ja_JP
 encoding: "utf-8"
 
-# フォルダの除外設定
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - temp.md
+# フォルダ構成の設定
+collections:
+  category:
+    output: true
 
-# パーマリンク設定の基本構造
-permalink: /:categories/:title/
+# Markdown設定
+kramdown:
+  input: GFM
+  hard_wrap: true
