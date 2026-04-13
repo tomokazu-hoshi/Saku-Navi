@@ -3,22 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | Saku-Navi</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <title>{{ page.title }}</title>
+    <style>
+        :root {
+            --primary-green: #2d5a27;   /* 信頼感のある深い緑 */
+            --accent-light: #e8f5e9;    /* 優しい背景の薄緑 */
+            --nav-green: #4caf50;       /* 明るいナビゲーション */
+            --text-main: #333333;
+            --white: #ffffff;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.8;
+            color: var(--text-main);
+            background-color: #f4f7f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--white);
+            border-bottom: 5px solid var(--primary-green);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            letter-spacing: 0.05em;
+        }
+        nav {
+            background: var(--nav-green);
+            color: var(--white);
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+        .main-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        footer {
+            background: #e0eadd;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .btn-home {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+        .btn-home:hover { opacity: 0.8; }
+    </style>
 </head>
 <body>
 
-    <header style="padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 20px;">
-        <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #333; font-weight: bold; font-size: 1.2em;">Saku-Navi</a>
-    </header>
+<header>
+    <h1>{{ site.title }}</h1>
+</header>
 
-    <main>
+<nav>
+    〜 あなたの庭に、最高の「咲く」を。 〜
+</nav>
+
+<div class="container">
+    <article class="main-card">
         {{ content }}
-    </main>
+    </article>
+</div>
 
-    <footer style="margin-top: 50px; padding: 20px 0; border-top: 1px solid #eee; text-align: center; font-size: 0.8em; color: #888;">
-        &copy; 2026 Saku-Navi Project - 星 友和
-    </footer>
+<footer>
+    <p>&copy; 2026 {{ site.title }}<br>
+    国内最大級の逆引き園芸・植物図鑑データベース</p>
+</footer>
 
 </body>
 </html>
