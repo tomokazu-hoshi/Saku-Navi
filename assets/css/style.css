@@ -1,61 +1,46 @@
-/* Saku-Navi 基本デザイン */
+/* 星様のご指示により、以前の確定デザインをそのまま再現 */
 body {
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    line-height: 1.6;
+    background-color: #f5f5f5;
     color: #333;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #e0e0e0; /* 以前と同じグレーのヘッダー */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fcfcfc;
 }
 
-h1, h2 {
-    color: #444;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-}
-
-/* カテゴリーのグリッド表示 */
 .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .category-grid a {
-    display: block;
-    padding: 15px 10px;
-    background-color: #f0f0f0; /* 星様好みのグレー */
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* 角丸 */
+    padding: 15px;
+    width: calc(50% - 20px);
+    text-align: center;
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s;
 }
 
-.category-grid a:hover {
-    background-color: #e0e0e0;
-}
-
-/* カテゴリー詳細ページ（グレーのヘッダー） */
 .category-header {
-    background-color: #f0f0f0;
-    padding: 30px 20px;
+    background-color: #e0e0e0; /* カテゴリーページも同様のグレー */
+    padding: 20px;
     border-radius: 10px;
-    border-left: 5px solid #999;
-    margin-bottom: 30px;
-}
-
-/* 戻るボタン */
-.back-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #666;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+    margin-bottom: 20px;
 }
