@@ -1,12 +1,12 @@
 title: "【園芸全書】咲くナビ（Saku-Navi）"
 description: "初心者でも迷わず理想の植物が見つかる、国内最大級の逆引き園芸図鑑。"
-baseurl: "/Saku-Navi" # 他のプロジェクトへ飛ぶのを防ぐための修正
+baseurl: "/Saku-Navi"
 
 # 言語とエンコード
 lang: ja_JP
 encoding: "utf-8"
 
-# フォルダ構成の設定
+# フォルダ構成の設定（重要：ここが404防止の鍵です）
 collections:
   category:
     output: true
