@@ -11,7 +11,7 @@
             --nav-green: #4caf50;       /* 明るいナビゲーション */
             --text-main: #333333;
             --white: #ffffff;
-            --overlay-bg: rgba(45, 90, 39, 0.95); /* メニュー背景（primary-greenベース） */
+            --overlay-bg: rgba(45, 90, 39, 0.98); 
         }
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -42,7 +42,6 @@
             background-color: var(--primary-green);
             transition: 0.3s;
         }
-        /* メニュー開閉時の色変更 */
         .active-menu span { background-color: var(--white); }
 
         /* --- フルスクリーンオーバーレイ --- */
@@ -62,28 +61,36 @@
         }
         .overlay-content {
             position: relative;
-            top: 10%;
+            top: 5%;
             width: 100%;
             text-align: center;
             margin-top: 30px;
-            padding-bottom: 50px;
+            padding-bottom: 100px;
+            overflow-y: auto;
+        }
+        .overlay-inner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         .overlay a {
-            padding: 8px;
+            padding: 5px;
             text-decoration: none;
-            font-size: 1.4rem;
-            color: #ccc;
+            font-size: 1.1rem;
+            color: #ddd;
             display: block;
             transition: 0.3s;
         }
         .overlay a:hover { color: var(--white); }
         .overlay h3 {
-            color: var(--white);
+            color: #a5d6a7;
             border-bottom: 1px solid rgba(255,255,255,0.2);
-            display: inline-block;
-            margin-top: 30px;
             padding-bottom: 5px;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            margin-top: 20px;
         }
 
         /* --- 既存スタイル保持 --- */
@@ -153,41 +160,46 @@
 
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
-        <div>
-            <h3>1. 五十音索引</h3>
-            <a href="/category/a/">あ行</a>
-            <a href="/category/ka/">か行</a>
-            <a href="/category/sa/">さ行</a>
-            <a href="/category/ta/">た行</a>
+        <h2 style="color:white; margin-bottom:30px;">カテゴリーから探す</h2>
+        <div class="overlay-inner">
+            <div>
+                <h3>五十音（syllabary）</h3>
+                <a href="/category/syllabary/a/">あ行</a>
+                <a href="/category/syllabary/ka/">か行</a>
+                <a href="/category/syllabary/sa/">さ行</a>
+            </div>
+            <div>
+                <h3>季節（seasons）</h3>
+                <a href="/category/seasons/spring/">春の花</a>
+                <a href="/category/seasons/summer/">夏の花</a>
+                <a href="/category/seasons/autumn/">秋の花</a>
+                <a href="/category/seasons/winter/">冬の花</a>
+            </div>
+            <div>
+                <h3>色（colors）</h3>
+                <a href="/category/colors/white/">白・シルバー</a>
+                <a href="/category/colors/red/">赤・ピンク</a>
+                <a href="/category/colors/blue/">青・紫</a>
+                <a href="/category/colors/yellow/">黄・橙</a>
+            </div>
+            <div>
+                <h3>分類（types）</h3>
+                <a href="/category/types/shukkon/">宿根・多年草</a>
+                <a href="/category/types/kaki/">花木・庭木</a>
+                <a href="/category/types/food/">野菜・果樹</a>
+            </div>
+            <div>
+                <h3>目的（purposes）</h3>
+                <a href="/category/purposes/beginner/">初心者向け</a>
+                <a href="/category/purposes/low-maintenance/">ローメンテ</a>
+            </div>
+            <div>
+                <h3>環境（environments）</h3>
+                <a href="/category/environments/shade/">日陰・半日陰</a>
+                <a href="/category/environments/sun/">日向</a>
+            </div>
         </div>
-        <div>
-            <h3>2. 季節・時期</h3>
-            <a href="/category/spring/">春（3-5月）</a>
-            <a href="/category/summer/">夏（6-8月）</a>
-            <a href="/category/autumn/">秋（9-11月）</a>
-            <a href="/category/winter/">冬（12-2月）</a>
-        </div>
-        <div>
-            <h3>3. 花の色</h3>
-            <a href="/category/white/">白・シルバー</a>
-            <a href="/category/red/">赤・ピンク</a>
-            <a href="/category/blue/">青・紫</a>
-            <a href="/category/yellow/">黄・オレンジ</a>
-        </div>
-        <div>
-            <h3>4. 植物分類</h3>
-            <a href="/category/shukkon/">宿根草・多年草</a>
-            <a href="/category/kaki/">花木・庭木</a>
-            <a href="/category/shida/">シダ・多肉植物</a>
-            <a href="/category/food/">食用（野菜・果樹）</a>
-        </div>
-        <div>
-            <h3>5. 目的・用途</h3>
-            <a href="/category/beginner/">初心者向け</a>
-            <a href="/category/low-maintenance/">ローメンテナンス</a>
-            <a href="/category/gift/">プレゼント・贈り物</a>
-        </div>
-        <a href="/" style="margin-top:40px; font-weight:bold; color:var(--white);">TOPページへ</a>
+        <a href="/" style="margin-top:50px; font-weight:bold; color:white; border:1px solid white; display:inline-block; padding:10px 30px; border-radius:30px;">TOPへ戻る</a>
     </div>
 </div>
 
