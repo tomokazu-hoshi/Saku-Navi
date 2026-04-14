@@ -11,6 +11,7 @@
             --nav-green: #4caf50;       /* 明るいナビゲーション */
             --text-main: #333333;
             --white: #ffffff;
+            --overlay-bg: rgba(45, 90, 39, 0.95); /* メニュー背景（primary-greenベース） */
         }
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -20,6 +21,72 @@
             margin: 0;
             padding: 0;
         }
+
+        /* --- ハンバーガーメニューアイコン --- */
+        .menu-trigger {
+            position: fixed;
+            top: 25px;
+            left: 20px;
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .menu-trigger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-green);
+            transition: 0.3s;
+        }
+        /* メニュー開閉時の色変更 */
+        .active-menu span { background-color: var(--white); }
+
+        /* --- フルスクリーンオーバーレイ --- */
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: var(--overlay-bg);
+            overflow-x: hidden;
+            transition: 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .overlay-content {
+            position: relative;
+            top: 10%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 50px;
+        }
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 1.4rem;
+            color: #ccc;
+            display: block;
+            transition: 0.3s;
+        }
+        .overlay a:hover { color: var(--white); }
+        .overlay h3 {
+            color: var(--white);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            display: inline-block;
+            margin-top: 30px;
+            padding-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        /* --- 既存スタイル保持 --- */
         header {
             background-color: var(--white);
             border-bottom: 5px solid var(--primary-green);
@@ -78,6 +145,52 @@
 </head>
 <body>
 
+<div class="menu-trigger" id="menuBtn" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="fullMenu" class="overlay">
+    <div class="overlay-content">
+        <div>
+            <h3>1. 五十音索引</h3>
+            <a href="/category/a/">あ行</a>
+            <a href="/category/ka/">か行</a>
+            <a href="/category/sa/">さ行</a>
+            <a href="/category/ta/">た行</a>
+        </div>
+        <div>
+            <h3>2. 季節・時期</h3>
+            <a href="/category/spring/">春（3-5月）</a>
+            <a href="/category/summer/">夏（6-8月）</a>
+            <a href="/category/autumn/">秋（9-11月）</a>
+            <a href="/category/winter/">冬（12-2月）</a>
+        </div>
+        <div>
+            <h3>3. 花の色</h3>
+            <a href="/category/white/">白・シルバー</a>
+            <a href="/category/red/">赤・ピンク</a>
+            <a href="/category/blue/">青・紫</a>
+            <a href="/category/yellow/">黄・オレンジ</a>
+        </div>
+        <div>
+            <h3>4. 植物分類</h3>
+            <a href="/category/shukkon/">宿根草・多年草</a>
+            <a href="/category/kaki/">花木・庭木</a>
+            <a href="/category/shida/">シダ・多肉植物</a>
+            <a href="/category/food/">食用（野菜・果樹）</a>
+        </div>
+        <div>
+            <h3>5. 目的・用途</h3>
+            <a href="/category/beginner/">初心者向け</a>
+            <a href="/category/low-maintenance/">ローメンテナンス</a>
+            <a href="/category/gift/">プレゼント・贈り物</a>
+        </div>
+        <a href="/" style="margin-top:40px; font-weight:bold; color:var(--white);">TOPページへ</a>
+    </div>
+</div>
+
 <header>
     <h1>{{ site.title }}</h1>
 </header>
@@ -96,6 +209,20 @@
     <p>&copy; 2026 {{ site.title }}<br>
     国内最大級の逆引き園芸・植物図鑑データベース</p>
 </footer>
+
+<script>
+    function toggleNav() {
+        const menu = document.getElementById("fullMenu");
+        const btn = document.getElementById("menuBtn");
+        if (menu.style.width === "100%") {
+            menu.style.width = "0%";
+            btn.classList.remove("active-menu");
+        } else {
+            menu.style.width = "100%";
+            btn.classList.add("active-menu");
+        }
+    }
+</script>
 
 </body>
 </html>
