@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# サイトマップの場所をGoogleに教える
+Sitemap: https://tomokazu-hoshi.github.io/Saku-Navi/sitemap.xml
