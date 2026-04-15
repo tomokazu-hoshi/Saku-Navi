@@ -3,6 +3,7 @@ layout: null
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}/</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
@@ -10,10 +11,9 @@ layout: null
     <priority>1.0</priority>
   </url>
 
-  {% assign category_paths = "/category/syllabary/あ/,/category/syllabary/か/,/category/syllabary/さ/,/category/syllabary/た/,/category/syllabary/な/,/category/syllabary/は/,/category/syllabary/ま/,/category/syllabary/や/,/category/syllabary/ら/,/category/syllabary/わ/,/category/months/1月/,/category/months/2月/,/category/months/3月/,/category/months/4月/,/category/months/5月/,/category/months/6月/,/category/months/7月/,/category/months/8月/,/category/months/9月/,/category/months/10月/,/category/months/11月/,/category/months/12月/,/category/seasons/春/,/category/seasons/夏/,/category/seasons/秋/,/category/seasons/冬/,/category/seasons/四季咲き/,/category/colors/赤/,/category/colors/ピンク/,/category/colors/オレンジ/,/category/colors/黄/,/category/colors/白/,/category/colors/青/,/category/colors/紫/,/category/colors/緑/,/category/colors/茶/,/category/colors/黒/,/category/colors/シルバー/,/category/colors/複色/,/category/types/一年草-春まき/,/category/types/多年草/,/category/types/宿根草/,/category/types/球根/,/category/types/花木-落葉/,/category/types/花木-常緑/,/category/types/ハーブ/,/category/types/観葉植物/,/category/types/多肉植物/,/category/types/サボテン/,/category/types/シダ植物/,/category/types/コケ植物/,/category/types/水生植物/,/category/types/つる性植物/,/category/environments/日向/,/category/environments/半日陰/,/category/environments/日陰/,/category/environments/耐寒性/,/category/environments/耐暑性/,/category/environments/耐乾性/,/category/environments/耐湿性/,/category/purposes/初心者向け/,/category/purposes/ローメンテナンス/,/category/purposes/グランドカバー/,/category/purposes/生け垣/,/category/purposes/鉢植え/,/category/purposes/ベランダ菜園/,/category/purposes/切り花/,/category/purposes/ドライフラワー/,/category/purposes/芳香/,/category/purposes/エディブルフラワー/,/category/purposes/蜜源植物/,/category/purposes/プレゼント・贈り物/,/category/families/バラ科/,/category/families/キク科/,/category/families/ラン科/,/category/families/シソ科/,/category/methods/地植え/,/category/methods/鉢植え/" | split: "," %}
-  {% for path in category_paths %}
+  {% for item in site.category %}
   <url>
-    <loc>{{ site.url }}{{ site.baseurl }}{{ path }}</loc>
+    <loc>{{ site.url }}{{ site.baseurl }}{{ item.url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -28,4 +28,5 @@ layout: null
     <priority>0.6</priority>
   </url>
   {% endfor %}
+
 </urlset>
