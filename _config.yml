@@ -1,17 +1,34 @@
-title: "【園芸全書】咲くナビ（Saku-Navi）"
-description: "初心者でも迷わず理想の植物が見つかる、国内最大級の逆引き園芸図鑑。"
+# サイトの基本情報
+title: 【園芸全書】咲くナビ（Saku-Navi）
+description: >-
+  初心者でも迷わず理想の植物が見つかる、国内最大級の逆引き園芸図鑑。
+email: your-email@example.com
+
+# URL設定（サイトマップやRSSフィードに必須）
+url: "https://tomokazu-hoshi.github.io"
 baseurl: "/Saku-Navi"
 
-# 言語とエンコード
-lang: ja_JP
-encoding: "utf-8"
-
-# フォルダ構成の設定（重要：ここが404防止の鍵です）
+# コレクション設定（categoryフォルダ内のファイルを自動処理するための設定）
 collections:
   category:
     output: true
 
-# Markdown設定
-kramdown:
-  input: GFM
-  hard_wrap: true
+# プラグイン設定（サイトマップの自動生成などを有効化）
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# SNS設定（必要に応じて書き換えてください）
+twitter_username: jekyllrb
+github_username: jekyll
+
+# ビルド時に除外するファイル
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - README.md
