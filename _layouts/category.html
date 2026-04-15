@@ -9,14 +9,10 @@ layout: default
 
     <div style="background: #f0f4f0; padding: 15px; border-left: 5px solid #2d5a27; margin-bottom: 30px;">
         <strong>「{{ page.category_label }}」</strong>に関連する植物の一覧です。<br>
-        新しい記事が追加されると、ここに自動的に反映されます。
+        記事を追加・更新すると、ここに自動的に反映されます。
     </div>
 
     <ul class="plant-list" style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;">
-        {% comment %}
-          このブロックで、記事のタグに「このページのターゲットタグ」が含まれているか判定して表示します
-        {% endcomment %}
-        
         {% assign target_tags = page.target_tags | split: "," %}
         {% assign post_count = 0 %}
 
@@ -39,7 +35,7 @@ layout: default
         {% endfor %}
 
         {% if post_count == 0 %}
-            <p style="color: #888;">現在、このカテゴリーに該当する記事を準備中です。お楽しみに！</p>
+            <p style="color: #888;">現在、この記事を準備中です。追加をお待ちください。</p>
         {% endif %}
     </ul>
 
