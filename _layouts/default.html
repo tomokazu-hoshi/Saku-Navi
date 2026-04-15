@@ -22,7 +22,7 @@
             padding: 0;
         }
 
-        /* --- ハンバーガーメニューアイコン（最前面へ固定） --- */
+        /* --- ハンバーガーメニューアイコン --- */
         .menu-trigger {
             position: fixed;
             top: 25px;
@@ -30,8 +30,8 @@
             width: 35px;
             height: 25px;
             cursor: pointer;
-            z-index: 9999; /* Z-indexを最大級に */
-            display: flex !important;
+            z-index: 9999;
+            display: flex;
             flex-direction: column;
             justify-content: space-around;
         }
@@ -95,7 +95,6 @@
             margin-top: 20px;
         }
 
-        /* --- 既存スタイル保持 --- */
         header {
             background-color: var(--white);
             border-bottom: 5px solid var(--primary-green);
@@ -138,18 +137,6 @@
             color: #555;
             font-size: 0.9rem;
         }
-        .btn-home {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 25px;
-            background-color: var(--primary-green);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            transition: opacity 0.3s;
-        }
-        .btn-home:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -166,40 +153,40 @@
         <div class="overlay-inner">
             <div>
                 <h3>五十音から探す</h3>
-                <a href="{{ site.baseurl }}/category/a/">あ行</a>
-                <a href="{{ site.baseurl }}/category/ka/">か行</a>
-                <a href="{{ site.baseurl }}/category/sa/">さ行</a>
+                <a href="{{ site.baseurl }}/category/syllabary/a/">あ行</a>
+                <a href="{{ site.baseurl }}/category/syllabary/ka/">か行</a>
+                <a href="{{ site.baseurl }}/category/syllabary/sa/">さ行</a>
             </div>
             <div>
                 <h3>季節から探す</h3>
-                <a href="{{ site.baseurl }}/category/spring/">春の花</a>
-                <a href="{{ site.baseurl }}/category/summer/">夏の花</a>
-                <a href="{{ site.baseurl }}/category/autumn/">秋の花</a>
-                <a href="{{ site.baseurl }}/category/winter/">冬の花</a>
+                <a href="{{ site.baseurl }}/category/seasons/spring/">春の花</a>
+                <a href="{{ site.baseurl }}/category/seasons/summer/">夏の花</a>
+                <a href="{{ site.baseurl }}/category/seasons/autumn/">秋の花</a>
+                <a href="{{ site.baseurl }}/category/seasons/winter/">冬の花</a>
             </div>
             <div>
                 <h3>花の色から探す</h3>
-                <a href="{{ site.baseurl }}/category/white/">白・シルバー</a>
-                <a href="{{ site.baseurl }}/category/red/">赤・ピンク</a>
-                <a href="{{ site.baseurl }}/category/blue/">青・紫</a>
-                <a href="{{ site.baseurl }}/category/yellow/">黄・オレンジ</a>
+                <a href="{{ site.baseurl }}/category/colors/white/">白・シルバー</a>
+                <a href="{{ site.baseurl }}/category/colors/red/">赤・ピンク</a>
+                <a href="{{ site.baseurl }}/category/colors/blue/">青・紫</a>
+                <a href="{{ site.baseurl }}/category/colors/yellow/">黄・オレンジ</a>
             </div>
             <div>
                 <h3>植物の分類</h3>
-                <a href="{{ site.baseurl }}/category/shukkon/">宿根草・多年草</a>
-                <a href="{{ site.baseurl }}/category/kaki/">花木・庭木</a>
-                <a href="{{ site.baseurl }}/category/food/">食用（野菜・果樹）</a>
+                <a href="{{ site.baseurl }}/category/types/shukkon/">宿根草・多年草</a>
+                <a href="{{ site.baseurl }}/category/types/kaki/">花木・庭木</a>
+                <a href="{{ site.baseurl }}/category/types/food/">食用（野菜・果樹）</a>
             </div>
             <div>
                 <h3>目的・用途</h3>
-                <a href="{{ site.baseurl }}/category/beginner/">初心者向け</a>
-                <a href="{{ site.baseurl }}/category/low-maintenance/">ローメンテナンス</a>
-                <a href="{{ site.baseurl }}/category/gift/">プレゼント・贈り物</a>
+                <a href="{{ site.baseurl }}/category/purposes/beginner/">初心者向け</a>
+                <a href="{{ site.baseurl }}/category/purposes/low-maintenance/">ローメンテナンス</a>
+                <a href="{{ site.baseurl }}/category/purposes/gift/">プレゼント・贈り物</a>
             </div>
             <div>
                 <h3>育てる環境</h3>
-                <a href="{{ site.baseurl }}/category/shade/">日陰・半日陰</a>
-                <a href="{{ site.baseurl }}/category/sun/">日向・耐暑性</a>
+                <a href="{{ site.baseurl }}/category/environments/shade/">日陰・半日陰</a>
+                <a href="{{ site.baseurl }}/category/environments/sun/">日向・耐暑性</a>
             </div>
         </div>
         <a href="{{ site.baseurl }}/" style="margin-top:50px; font-weight:bold; color:white; border:1px solid white; display:inline-block; padding:10px 30px; border-radius:30px;">TOPへ戻る</a>
