@@ -1,0 +1,66 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検索結果｜ワンライフ・ナビ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary-color: #f39c12; --secondary-color: #2c3e50; --bg-color: #fffcf5; }
+        body { font-family: sans-serif; line-height: 1.8; max-width: 800px; margin: auto; padding: 20px; background: var(--bg-color); }
+        h1 { color: var(--secondary-color); border-bottom: 3px solid var(--primary-color); padding-bottom: 10px; }
+        .result-item { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .result-item a { text-decoration: none; color: var(--secondary-color); font-weight: bold; display: block; font-size: 1.1rem; }
+        .result-item a:hover { color: var(--primary-color); }
+        .back-link { display: inline-block; margin-top: 30px; color: var(--primary-color); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1 id="result-title">検索結果</h1>
+    <div id="result-list">読み込み中...</div>
+
+    <a href="{{ site.baseurl }}/index-zukan.html" class="back-link"><i class="fas fa-arrow-left"></i> 図鑑トップへ戻る</a>
+
+    <script>
+        // URLの?tag=あ などの文字を読み取る
+        const params = new URLSearchParams(window.location.search);
+        const tag = params.get('tag');
+        if (tag) {
+            document.getElementById('result-title').innerText = `「${tag}」の一覧`;
+        }
+
+        // Jekyllが持っている記事データをJavaScriptの形式に変換
+        const posts = [
+            {% for post in site.posts %}
+            {
+                "title": "{{ post.title }}",
+                "url": "{{ site.baseurl }}{{ post.url }}",
+                "tags": {{ post.category_tags | jsonify }}
+            }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+        ];
+
+        const list = document.getElementById('result-list');
+        // 選んだタグが含まれる記事だけを抜き出す
+        const filtered = posts.filter(p => p.tags && p.tags.includes(tag));
+        
+        list.innerHTML = ""; // 読み込み中を消す
+
+        if (filtered.length === 0) {
+            list.innerHTML = "<p>該当する犬種がまだ登録されていません。</p>";
+        } else {
+            filtered.forEach(p => {
+                list.innerHTML += `
+                    <div class="result-item">
+                        <a href="${p.url}">${p.title}</a>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
