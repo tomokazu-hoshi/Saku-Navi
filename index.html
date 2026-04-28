@@ -9,7 +9,7 @@ title: "【園芸全書】咲くナビ（Saku-Navi）トップページ"
 
 <div class="category-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; padding: 10px;">
   
-  <a href="{{ '/category/syllabary/あ/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">五十音から探す</a>
+  <a href="{{ '/index-a-column.html' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">五十音から探す</a>
   
   <a href="{{ '/category/months/1月/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">月別から探す</a>
   
@@ -23,12 +23,26 @@ title: "【園芸全書】咲くナビ（Saku-Navi）トップページ"
   
   <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">目的・用途</a>
   
-  <a href="{{ '/category/families/バラ科/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">科名から探す</a>
+  <a href="{{ '/category/families/バラ科/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">科名から探す</a> 
   
   <a href="{{ '/category/meanings/感謝/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">花言葉から探す</a>
   
   <a href="{{ '/category/methods/地植え/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">栽培方法</a>
 
+</div>
+
+<hr style="margin: 50px 0; border: none; border-top: 1px solid #eee;">
+
+<h2 style="text-align: center; color: #4A7c59;">すべての植物（あいうえお順）</h2>
+<div style="max-width: 900px; margin: 0 auto; padding: 0 10px;">
+  <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px;">
+    {% assign sorted_all = site.posts | sort: 'title' %}
+    {% for post in sorted_all %}
+      <li style="border-bottom: 1px solid #eee; padding: 5px;">
+        <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #333; font-size: 0.9rem;">{{ post.title | replace: "｜【園芸全書】咲くナビ", "" }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
 
 <div style="margin-top: 50px; text-align: center; color: #777;">
