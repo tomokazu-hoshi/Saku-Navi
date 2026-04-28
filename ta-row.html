@@ -1,0 +1,36 @@
+---
+layout: default
+title: "た行の植物一覧｜【園芸全書】咲くナビ"
+---
+
+<style>
+    html { scroll-behavior: smooth; }
+    .sticky-nav { position: sticky; top: 0; background: white; padding: 10px 0; z-index: 100; border-bottom: 2px solid #4A7c59; display: flex; justify-content: space-around; }
+    .btn-sub { background: #f0f4f0; color: #4A7c59; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-weight: bold; border: 1px solid #4A7c59; font-size: 0.9rem; }
+    .section-title { background: #4A7c59; color: white; padding: 10px; margin-top: 50px; border-radius: 5px; }
+    .plant-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; }
+    .plant-list li a { text-decoration: none; color: #333; display: block; padding: 10px; background: #fff; border: 1px solid #eee; border-radius: 5px; font-size: 0.9rem; }
+</style>
+
+<nav class="sticky-nav">
+    <a href="#char-ta" class="btn-sub">た</a>
+    <a href="#char-chi" class="btn-sub">ち</a>
+    <a href="#char-tsu" class="btn-sub">つ</a>
+    <a href="#char-te" class="btn-sub">て</a>
+    <a href="#char-to" class="btn-sub">と</a>
+</nav>
+
+<div style="padding: 20px;">
+    <h1>「た行」の植物</h1>
+    {% assign sorted_posts = site.posts | sort: 'title' %}
+    {% assign chars = "た,ち,つ,て,と" | split: "," %}
+    {% for char in chars %}
+    <h2 id="char-{% if char == 'た' %}ta{% elsif char == 'ち' %}chi{% elsif char == 'つ' %}tsu{% elsif char == 'て' %}te{% else %}to{% endif %}" class="section-title">「{{ char }}」</h2>
+    <ul class="plant-list">
+        {% for post in sorted_posts %}{% if post.category_tags contains char %}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title | replace: "｜【園芸全書】咲くナビ", "" }}</a></li>
+        {% endif %}{% endfor %}
+    </ul>
+    {% endfor %}
+</div>
+<div style="text-align: center; margin: 50px 0;"><a href="{{ '/index-a-column.html' | relative_url }}" style="color: #4A7c59;">五十音メニューへ戻る</a></div>
