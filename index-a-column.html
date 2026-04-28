@@ -1,124 +1,53 @@
 ---
 layout: default
-title: "あ行の植物図鑑 一覧｜【園芸全書】咲くナビ"
+title: "五十音から探す｜【園芸全書】咲くナビ"
 ---
 
 <style>
-    :root {
-        --primary-color: #4A7c59;
-        --accent-color: #8fcb9b;
-        --bg-color: #f9fbf9;
-        --text-color: #333;
-        --border-color: #ddd;
-    }
-    .container-list {
-        max-width: 900px;
-        margin: 0 auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    .intro {
-        background: #f0f4f0;
-        padding: 15px;
-        border-left: 5px solid var(--primary-color);
-        margin-bottom: 30px;
-    }
-    .kana-nav {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-    }
-    .kana-nav a {
-        text-decoration: none;
-        background: var(--primary-color);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background 0.3s;
-    }
-    .kana-nav a:hover {
-        background: var(--accent-color);
-    }
-    .section-title {
-        background: var(--primary-color);
-        color: white;
-        padding: 8px 15px;
-        border-radius: 4px;
-        margin-top: 40px;
-        font-size: 1.25rem;
-    }
-    .plant-list {
-        list-style: none;
-        padding: 0;
+    .kana-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
-        margin-top: 15px;
+        grid-template-columns: repeat(3, 1fr); /* 3列 */
+        gap: 15px;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 0 10px;
     }
-    .plant-list li {
-        border-bottom: 1px solid var(--border-color);
-        padding: 5px 0;
-    }
-    .plant-list a {
-        text-decoration: none;
-        color: var(--text-color);
-        display: block;
-        padding: 5px;
-        border-radius: 3px;
-        transition: background 0.2s;
-    }
-    .plant-list a:hover {
-        background: #eef7ee;
-        color: var(--primary-color);
-        font-weight: bold;
-    }
-    .footer-nav {
-        margin-top: 50px;
+    .btn-kana-row {
+        background-color: #4A7c59;
+        color: white;
         text-align: center;
-        border-top: 1px solid var(--border-color);
-        padding-top: 20px;
+        padding: 25px 0;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
     }
-    @media (max-width: 600px) {
-        .plant-list {
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        }
+    .btn-kana-row:active {
+        transform: scale(0.95);
+        background-color: #8fcb9b;
     }
 </style>
 
-<div class="container-list">
-    <div class="intro">
-        「あ・い・う・え・お」から始まる植物の育て方、特徴、花言葉を網羅しています。<br>
-        新しい記事を追加すると、自動的にこのリストに反映されます。
-    </div>
+<div style="text-align: center; margin-top: 30px;">
+    <h2>行から植物を探す</h2>
+    <p>調べたい植物の最初の「行」を選んでください。</p>
+</div>
 
-    <nav class="kana-nav">
-        <a href="#section-a">あ</a>
-        <a href="#section-i">い</a>
-        <a href="#section-u">う</a>
-        <a href="#section-e">え</a>
-        <a href="#section-o">お</a>
-    </nav>
+<div class="kana-grid">
+    <a href="{{ '/a-row.html' | relative_url }}" class="btn-kana-row">あ行</a>
+    <a href="{{ '/ka-row.html' | relative_url }}" class="btn-kana-row">か行</a>
+    <a href="{{ '/sa-row.html' | relative_url }}" class="btn-kana-row">さ行</a>
+    <a href="{{ '/ta-row.html' | relative_url }}" class="btn-kana-row">た行</a>
+    <a href="{{ '/na-row.html' | relative_url }}" class="btn-kana-row">な行</a>
+    <a href="{{ '/ha-row.html' | relative_url }}" class="btn-kana-row">は行</a>
+    <a href="{{ '/ma-row.html' | relative_url }}" class="btn-kana-row">ま行</a>
+    <a href="{{ '/ya-row.html' | relative_url }}" class="btn-kana-row">や行</a>
+    <a href="{{ '/ra-row.html' | relative_url }}" class="btn-kana-row">ら行</a>
+    <a href="{{ '/wa-row.html' | relative_url }}" class="btn-kana-row">わ行</a>
+</div>
 
-    {% assign sorted_posts = site.posts | sort: 'title' %}
-
-    {% assign kana = "あ,い,う,え,お" | split: "," %}
-    {% for char in kana %}
-      <h2 id="section-{% if char == 'あ' %}a{% elsif char == 'い' %}i{% elsif char == 'う' %}u{% elsif char == 'え' %}e{% else %}o{% endif %}" class="section-title">「{{ char }}」から始まる植物</h2>
-      <ul class="plant-list">
-        {% for post in sorted_posts %}
-          {% if post.category_tags contains char %}
-            <li><a href="{{ post.url | relative_url }}">{{ post.title | replace: "｜【園芸全書】咲くナビ", "" }}</a></li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endfor %}
-
-    <div class="footer-nav">
-        <a href="{{ '/' | relative_url }}">図鑑トップに戻る</a>
-    </div>
+<div style="text-align: center; margin-top: 50px;">
+    <a href="{{ '/' | relative_url }}" style="color: #4A7c59;">トップページへ戻る</a>
 </div>
