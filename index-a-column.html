@@ -6,7 +6,7 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
 <style>
     .kana-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3列 */
+        grid-template-columns: repeat(2, 1fr); /* 2列（2×5）に変更 */
         gap: 15px;
         max-width: 600px;
         margin: 40px auto;
@@ -16,13 +16,16 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
         background-color: #4A7c59;
         color: white;
         text-align: center;
-        padding: 25px 0;
+        padding: 20px 0; /* 少し高さを調整 */
         border-radius: 10px;
         text-decoration: none;
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .btn-kana-row:active {
         transform: scale(0.95);
@@ -30,9 +33,9 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
     }
 </style>
 
-<div style="text-align: center; margin-top: 30px;">
-    <h2>行から植物を探す</h2>
-    <p>調べたい植物の最初の「行」を選んでください。</p>
+<div style="text-align: center; margin-top: 30px; padding: 0 15px;">
+    <h2 style="color: #4A7c59;">行から植物を探す</h2>
+    <p style="font-size: 0.9rem; color: #666;">調べたい植物の最初の「行」を選んでください。</p>
 </div>
 
 <div class="kana-grid">
@@ -48,6 +51,6 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
     <a href="{{ '/wa-row.html' | relative_url }}" class="btn-kana-row">わ行</a>
 </div>
 
-<div style="text-align: center; margin-top: 50px;">
-    <a href="{{ '/' | relative_url }}" style="color: #4A7c59;">トップページへ戻る</a>
+<div style="text-align: center; margin-top: 50px; padding-bottom: 30px;">
+    <a href="{{ '/' | relative_url }}" style="color: #4A7c59; text-decoration: none; font-weight: bold;">← トップページへ戻る</a>
 </div>
