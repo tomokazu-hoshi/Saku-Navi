@@ -140,18 +140,18 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* --- トップページ用：カテゴリーボタンのデザイン改善 --- */
+        /* --- トップページ用：カテゴリーボタンのデザイン --- */
         .hero-message { text-align: center; padding: 10px; margin-bottom: 20px; color: #666; font-size: 0.9rem; }
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2列 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             padding: 10px 0;
         }
         .btn-home {
             background: var(--primary-green);
             color: var(--white) !important;
-            height: 85px; /* メニューより少し高めに設定 */
+            height: 85px;
             text-decoration: none;
             display: flex;
             flex-direction: column;
@@ -189,16 +189,17 @@
     <div class="overlay-content">
         <div class="menu-title">カテゴリー検索</div>
         <div class="menu-grid">
-            <a href="{{ site.baseurl }}/index-a-column.html" class="menu-btn">五十音<span>Index</span></a>
-            <a href="{{ site.baseurl }}/category/months/1月/" class="menu-btn">月別・季節<span>Season</span></a>
-            <a href="{{ site.baseurl }}/category/colors/赤/" class="menu-btn">花の色<span>Color</span></a>
-            <a href="{{ site.baseurl }}/category/types/一年草-春まき/" class="menu-btn">植物の分類<span>Type</span></a>
-            <a href="{{ site.baseurl }}/category/environments/日向/" class="menu-btn">育てる環境<span>Env</span></a>
-            <a href="{{ site.baseurl }}/category/purposes/初心者向け/" class="menu-btn">目的・用途<span>Purpose</span></a>
-            <a href="{{ site.baseurl }}/category/families/バラ科/" class="menu-btn">植物の科名<span>Family</span></a>
-            <a href="{{ site.baseurl }}/category/meanings/感謝/" class="menu-btn">花言葉<span>Meaning</span></a>
-            <a href="{{ site.baseurl }}/category/methods/地植え/" class="menu-btn">栽培方法<span>Method</span></a>
-            <a href="{{ site.baseurl }}/" class="menu-btn" style="background: rgba(255,255,255,0.3);">トップページ<span>Home</span></a>
+            <a href="{{ '/index-a-column.html' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
+            <a href="{{ '/category/months/1月/' | relative_url }}" class="menu-btn">月別から探す<span>Months</span></a>
+            <a href="{{ '/category/seasons/春/' | relative_url }}" class="menu-btn">季節から探す<span>Season</span></a>
+            <a href="{{ '/category/colors/赤/' | relative_url }}" class="menu-btn">花の色<span>Color</span></a>
+            <a href="{{ '/category/types/一年草-春まき/' | relative_url }}" class="menu-btn">植物の分類<span>Type</span></a>
+            <a href="{{ '/category/environments/日向/' | relative_url }}" class="menu-btn">育てる環境<span>Env</span></a>
+            <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="menu-btn">目的・用途<span>Purpose</span></a>
+            <a href="{{ '/category/families/バラ科/' | relative_url }}" class="menu-btn">科名から探す<span>Family</span></a>
+            <a href="{{ '/category/meanings/感謝/' | relative_url }}" class="menu-btn">花言葉<span>Meaning</span></a>
+            <a href="{{ '/category/methods/地植え/' | relative_url }}" class="menu-btn">栽培方法<span>Method</span></a>
+            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background: rgba(255,255,255,0.3);">トップページ<span>Home</span></a>
         </div>
     </div>
 </div>
