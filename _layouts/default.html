@@ -49,7 +49,7 @@
         .active-menu span:nth-of-type(2) { opacity: 0; }
         .active-menu span:nth-of-type(3) { transform: translateY(-8px) rotate(45deg); }
 
-        /* --- 1画面に収める全画面メニュー（スクロール不要版） --- */
+        /* --- 全画面メニュー --- */
         .overlay {
             height: 100%;
             width: 0;
@@ -58,7 +58,7 @@
             top: 0;
             left: 0;
             background-color: var(--overlay-bg);
-            overflow: hidden; /* スクロールを禁止 */
+            overflow: hidden;
             transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
@@ -78,8 +78,6 @@
             display: inline-block;
             padding-bottom: 10px;
         }
-
-        /* 2×5のコンパクトグリッド */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -90,7 +88,7 @@
             background: rgba(255, 255, 255, 0.15);
             color: white !important;
             text-decoration: none;
-            height: 75px; /* 高さを固定して1画面に収める */
+            height: 75px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -101,17 +99,10 @@
             font-size: 0.9rem;
             transition: 0.2s;
         }
-        .menu-btn span {
-            font-size: 0.65rem;
-            font-weight: normal;
-            opacity: 0.8;
-            margin-top: 3px;
-        }
-        .menu-btn:active {
-            background: var(--nav-green);
-            transform: scale(0.95);
-        }
+        .menu-btn span { font-size: 0.65rem; font-weight: normal; opacity: 0.8; margin-top: 3px; }
+        .menu-btn:active { background: var(--nav-green); transform: scale(0.95); }
 
+        /* --- ヘッダー・ナビ --- */
         header {
             background-color: var(--white);
             border-bottom: 5px solid var(--primary-green);
@@ -135,24 +126,54 @@
             top: 0;
             z-index: 100;
         }
+
+        /* --- メインコンテンツ領域 --- */
         .container {
             max-width: 900px;
-            margin: 30px auto;
+            margin: 20px auto;
             padding: 0 15px;
         }
         .main-card {
             background: var(--white);
             border-radius: 12px;
-            padding: 30px;
+            padding: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
+
+        /* --- トップページ用：カテゴリーボタンのデザイン改善 --- */
+        .hero-message { text-align: center; padding: 10px; margin-bottom: 20px; color: #666; font-size: 0.9rem; }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2列 */
+            gap: 12px;
+            padding: 10px 0;
+        }
+        .btn-home {
+            background: var(--primary-green);
+            color: var(--white) !important;
+            height: 85px; /* メニューより少し高めに設定 */
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .btn-home span { font-size: 0.7rem; font-weight: normal; opacity: 0.8; margin-top: 5px; }
+        .btn-home:active { transform: scale(0.96); background: var(--nav-green); }
+        .footer-message { margin-top: 40px; text-align: center; color: #999; font-size: 0.8rem; }
+
         footer {
             background: #e0eadd;
             text-align: center;
-            padding: 50px 20px;
-            margin-top: 60px;
+            padding: 40px 20px;
+            margin-top: 50px;
             color: #555;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -167,7 +188,6 @@
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
         <div class="menu-title">カテゴリー検索</div>
-        
         <div class="menu-grid">
             <a href="{{ site.baseurl }}/index-a-column.html" class="menu-btn">五十音<span>Index</span></a>
             <a href="{{ site.baseurl }}/category/months/1月/" class="menu-btn">月別・季節<span>Season</span></a>
@@ -187,9 +207,7 @@
     <h1>{{ site.title }}</h1>
 </header>
 
-<nav>
-    〜 あなたの庭に、最高の「咲く」を 〜
-</nav>
+<nav>〜 あなたの庭に、最高の「咲く」を 〜</nav>
 
 <div class="container">
     <article class="main-card">
@@ -214,12 +232,8 @@
             btn.classList.add("active-menu");
         }
     }
-
-    // リンクをクリックしたらメニューを閉じる
     document.querySelectorAll('.menu-btn').forEach(link => {
-        link.addEventListener('click', () => {
-            toggleNav();
-        });
+        link.addEventListener('click', () => { toggleNav(); });
     });
 </script>
 
