@@ -13,230 +13,75 @@
             --white: #ffffff;
             --overlay-bg: rgba(45, 90, 39, 0.98); 
         }
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            line-height: 1.8;
-            color: var(--text-main);
-            background-color: #f4f7f4;
-            margin: 0;
-            padding: 0;
-        }
+        body { font-family: sans-serif; line-height: 1.8; color: var(--text-main); background-color: #f4f7f4; margin: 0; }
 
-        /* --- ハンバーガーメニューアイコン --- */
-        .menu-trigger {
-            position: fixed;
-            top: 25px;
-            left: 20px;
-            width: 35px;
-            height: 25px;
-            cursor: pointer;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-        .menu-trigger span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary-green);
-            transition: 0.3s;
-        }
-        .active-menu span { 
-            background-color: var(--white) !important; 
-        }
+        /* --- メニューアイコン --- */
+        .menu-trigger { position: fixed; top: 25px; left: 20px; width: 35px; height: 25px; cursor: pointer; z-index: 9999; display: flex; flex-direction: column; justify-content: space-around; }
+        .menu-trigger span { display: block; width: 100%; height: 3px; background-color: var(--primary-green); transition: 0.3s; }
+        .active-menu span { background-color: var(--white) !important; }
         .active-menu span:nth-of-type(1) { transform: translateY(8px) rotate(-45deg); }
         .active-menu span:nth-of-type(2) { opacity: 0; }
         .active-menu span:nth-of-type(3) { transform: translateY(-8px) rotate(45deg); }
 
         /* --- 全画面メニュー --- */
-        .overlay {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 9998;
-            top: 0;
-            left: 0;
-            background-color: var(--overlay-bg);
-            overflow: hidden;
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .overlay-content {
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .menu-title {
-            color: white;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            width: 100%;
-        }
-        .menu-btn {
-            background: rgba(255, 255, 255, 0.15);
-            color: white !important;
-            text-decoration: none;
-            height: 75px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.2);
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
-        .menu-btn span { font-size: 0.65rem; font-weight: normal; opacity: 0.8; margin-top: 3px; }
-        .menu-btn:active { background: var(--nav-green); transform: scale(0.95); }
+        .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow: hidden; transition: 0.4s; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .overlay-content { width: 90%; max-width: 400px; text-align: center; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+        .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
+        .menu-btn span { font-size: 0.65rem; opacity: 0.8; margin-top: 3px; }
 
-        /* --- ヘッダー・ナビ --- */
-        header {
-            background-color: var(--white);
-            border-bottom: 5px solid var(--primary-green);
-            padding: 30px 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: var(--primary-green);
-            font-size: 1.8rem;
-            letter-spacing: 0.05em;
-        }
-        nav {
-            background: var(--nav-green);
-            color: var(--white);
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        /* --- ヘッダー --- */
+        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 20px; text-align: center; }
+        header h1 { margin: 0; color: var(--primary-green); font-size: 1.8rem; }
+        nav { background: var(--nav-green); color: var(--white); padding: 12px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 100; }
 
-        /* --- メインコンテンツ領域 --- */
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-        .main-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        /* --- トップページ用：カテゴリーボタンのデザイン --- */
-        .hero-message { text-align: center; padding: 10px; margin-bottom: 20px; color: #666; font-size: 0.9rem; }
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 10px 0;
-        }
-        .btn-home {
-            background: var(--primary-green);
-            color: var(--white) !important;
-            height: 85px;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-        .btn-home span { font-size: 0.7rem; font-weight: normal; opacity: 0.8; margin-top: 5px; }
-        .btn-home:active { transform: scale(0.96); background: var(--nav-green); }
-        .footer-message { margin-top: 40px; text-align: center; color: #999; font-size: 0.8rem; }
-
-        footer {
-            background: #e0eadd;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-            color: #555;
-            font-size: 0.85rem;
-        }
+        /* --- レイアウト --- */
+        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        .main-card { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 10px 0; }
+        .btn-home { background: var(--primary-green); color: var(--white) !important; height: 85px; text-decoration: none; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 15px; font-weight: bold; font-size: 1rem; }
+        .btn-home span { font-size: 0.7rem; opacity: 0.8; margin-top: 5px; }
+        footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 50px; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
 <div class="menu-trigger" id="menuBtn" onclick="toggleNav()">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
 </div>
 
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
-        <div class="menu-title">カテゴリー検索</div>
         <div class="menu-grid">
             <a href="{{ '/index-a-column.html' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
-            <a href="{{ '/category/months/1月/' | relative_url }}" class="menu-btn">月別から探す<span>Months</span></a>
-            <a href="{{ '/category/seasons/春/' | relative_url }}" class="menu-btn">季節から探す<span>Season</span></a>
+            <a href="{{ '/category/months/1月/' | relative_url }}" class="menu-btn">月別<span>Months</span></a>
+            <a href="{{ '/category/seasons/春/' | relative_url }}" class="menu-btn">季節<span>Season</span></a>
             <a href="{{ '/category/colors/赤/' | relative_url }}" class="menu-btn">花の色<span>Color</span></a>
-            <a href="{{ '/category/types/一年草-春まき/' | relative_url }}" class="menu-btn">植物の分類<span>Type</span></a>
-            <a href="{{ '/category/environments/日向/' | relative_url }}" class="menu-btn">育てる環境<span>Env</span></a>
-            <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="menu-btn">目的・用途<span>Purpose</span></a>
-            <a href="{{ '/category/families/バラ科/' | relative_url }}" class="menu-btn">科名から探す<span>Family</span></a>
+            <a href="{{ '/category/types/一年草-春まき/' | relative_url }}" class="menu-btn">分類<span>Type</span></a>
+            <a href="{{ '/category/environments/日向/' | relative_url }}" class="menu-btn">環境<span>Env</span></a>
+            <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="menu-btn">目的<span>Purpose</span></a>
+            <a href="{{ '/category/families/バラ科/' | relative_url }}" class="menu-btn">科名<span>Family</span></a>
             <a href="{{ '/category/meanings/感謝/' | relative_url }}" class="menu-btn">花言葉<span>Meaning</span></a>
-            <a href="{{ '/category/methods/地植え/' | relative_url }}" class="menu-btn">栽培方法<span>Method</span></a>
-            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background: rgba(255,255,255,0.3);">トップページ<span>Home</span></a>
+            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
 
-<header>
-    <h1>{{ site.title }}</h1>
-</header>
-
+<header><h1>{{ site.title }}</h1></header>
 <nav>〜 あなたの庭に、最高の「咲く」を 〜</nav>
-
-<div class="container">
-    <article class="main-card">
-        {{ content }}
-    </article>
-</div>
-
-<footer>
-    <p>&copy; 2026 {{ site.title }}<br>
-    国内最大級の逆引き園芸・植物図鑑データベース</p>
-</footer>
+<div class="container"><article class="main-card">{{ content }}</article></div>
+<footer><p>&copy; 2026 {{ site.title }}</p></footer>
 
 <script>
     function toggleNav() {
         const menu = document.getElementById("fullMenu");
         const btn = document.getElementById("menuBtn");
         if (menu.style.width === "100%") {
-            menu.style.width = "0%";
-            btn.classList.remove("active-menu");
+            menu.style.width = "0%"; btn.classList.remove("active-menu");
         } else {
-            menu.style.width = "100%";
-            btn.classList.add("active-menu");
+            menu.style.width = "100%"; btn.classList.add("active-menu");
         }
     }
-    document.querySelectorAll('.menu-btn').forEach(link => {
-        link.addEventListener('click', () => { toggleNav(); });
-    });
 </script>
-
 </body>
 </html>
