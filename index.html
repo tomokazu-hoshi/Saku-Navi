@@ -3,48 +3,34 @@ layout: default
 title: "【園芸全書】咲くナビ（Saku-Navi）トップページ"
 ---
 
-<div style="text-align: center; padding: 20px; margin-bottom: 30px;">
+<div class="hero-message">
   <p>〜 初心者でも迷わず理想の植物が見つかる、国内最大級の逆引き園芸図鑑。 〜</p>
 </div>
 
-<div class="category-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; padding: 10px;">
+<div class="category-grid">
   
-  <a href="{{ '/index-a-column.html' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">五十音から探す</a>
+  <a href="{{ '/index-a-column.html' | relative_url }}" class="btn-home">五十音から探す<span>Index</span></a>
   
-  <a href="{{ '/category/months/1月/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">月別から探す</a>
+  <a href="{{ '/category/months/1月/' | relative_url }}" class="btn-home">月別から探す<span>Months</span></a>
   
-  <a href="{{ '/category/seasons/春/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">季節から探す</a>
+  <a href="{{ '/category/seasons/春/' | relative_url }}" class="btn-home">季節から探す<span>Season</span></a>
   
-  <a href="{{ '/category/colors/赤/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">色から探す</a>
+  <a href="{{ '/category/colors/赤/' | relative_url }}" class="btn-home">色から探す<span>Color</span></a>
   
-  <a href="{{ '/category/types/一年草-春まき/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">植物の分類</a>
+  <a href="{{ '/category/types/一年草-春まき/' | relative_url }}" class="btn-home">植物の分類<span>Type</span></a>
   
-  <a href="{{ '/category/environments/日向/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">育てる環境</a>
+  <a href="{{ '/category/environments/日向/' | relative_url }}" class="btn-home">育てる環境<span>Env</span></a>
   
-  <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">目的・用途</a>
+  <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="btn-home">目的・用途<span>Purpose</span></a>
   
-  <a href="{{ '/category/families/バラ科/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">科名から探す</a> 
+  <a href="{{ '/category/families/バラ科/' | relative_url }}" class="btn-home">科名から探す<span>Family</span></a> 
   
-  <a href="{{ '/category/meanings/感謝/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">花言葉から探す</a>
+  <a href="{{ '/category/meanings/感謝/' | relative_url }}" class="btn-home">花言葉から探す<span>Meaning</span></a>
   
-  <a href="{{ '/category/methods/地植え/' | relative_url }}" class="btn-home" style="margin:0; text-align:center;">栽培方法</a>
+  <a href="{{ '/category/methods/地植え/' | relative_url }}" class="btn-home">栽培方法<span>Method</span></a>
 
 </div>
 
-<hr style="margin: 50px 0; border: none; border-top: 1px solid #eee;">
-
-<h2 style="text-align: center; color: #4A7c59;">すべての植物（あいうえお順）</h2>
-<div style="max-width: 900px; margin: 0 auto; padding: 0 10px;">
-  <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px;">
-    {% assign sorted_all = site.posts | sort: 'title' %}
-    {% for post in sorted_all %}
-      <li style="border-bottom: 1px solid #eee; padding: 5px;">
-        <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #333; font-size: 0.9rem;">{{ post.title | replace: "｜【園芸全書】咲くナビ", "" }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
-
-<div style="margin-top: 50px; text-align: center; color: #777;">
+<div class="footer-message">
   <p>理想の植物を、あなたのライフスタイルに合わせて見つけてください。</p>
 </div>
