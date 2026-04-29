@@ -1,0 +1,10 @@
+---
+layout: default
+title: "月別から探す｜咲くナビ"
+---
+<h2 style="text-align: center; color: #4A7c59;">開花月を選ぶ</h2>
+<div class="category-grid">
+  {% for i in (1..12) %}
+  <a href="{{ site.baseurl }}/category/months/{{ i }}月/" class="btn-home">{{ i }}月</a>
+  {% endfor %}
+</div>
