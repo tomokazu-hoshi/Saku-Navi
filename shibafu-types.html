@@ -1,33 +1,114 @@
-<article style="max-width: 800px; margin: auto; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; line-height: 1.8; color: #333; padding: 20px; font-size: 18px;">
-  <h2 style="border-left: 6px solid #2e7d32; padding: 10px 15px; background: #f1f8e9; font-size: 24px; margin-bottom: 25px;">芝生の種類図鑑｜失敗しない選び方と特徴を徹底比較</h2>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芝生の種類図鑑｜失敗しない選び方と特徴を徹底比較</title>
+<style>
+  /* 共通：ヘッダー＆メニュー */
+  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #fcfcfc; }
+  header { background-color: #4A7c59; color: white; padding: 15px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  .menu-trigger { font-size: 24px; cursor: pointer; margin-right: 15px; background: none; border: none; color: white; }
+  .site-title { font-size: 1.2rem; font-weight: bold; text-decoration: none; color: white; }
+  #menu-cb { display: none; }
+  .side-menu { position: fixed; top: 0; left: -250px; width: 250px; height: 100%; background-color: #fff; color: #333; transition: 0.3s; z-index: 1001; padding-top: 60px; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
+  #menu-cb:checked ~ .side-menu { left: 0; }
+  .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+  #menu-cb:checked ~ .menu-overlay { display: block; }
+  .side-menu ul { list-style: none; padding: 0; margin: 0; }
+  .side-menu li a { display: block; padding: 15px 20px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; }
+  
+  /* 共通：縦型アフィリエイトボタン */
+  .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+  .shop-links a { display: block; padding: 16px; border-radius: 8px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 16px; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
+  .btn-amazon { background-color: #f0a500; }
+  .btn-rakuten { background-color: #bf0000; }
+  .btn-yahoo { background-color: #ff0033; }
+</style>
+</head>
+<body>
+
+<!-- ハンバーガーメニュー機構 -->
+<input type="checkbox" id="menu-cb">
+<header>
+  <label for="menu-cb" class="menu-trigger">☰</label>
+  <a href="https://tomokazu-hoshi.github.io/Saku-Navi/" class="site-title">咲くナビ</a>
+</header>
+<label for="menu-cb" class="menu-overlay"></label>
+<nav class="side-menu">
+  <ul>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/">トップページ</a></li>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/index-a-column.html">五十音から探す</a></li>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/category/purposes/グランドカバー/">グランドカバー一覧</a></li>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-guide.html">芝生ガイドTOP</a></li>
+  </ul>
+</nav>
+
+<!-- 記事本文（文字サイズ18px） -->
+<article style="max-width: 800px; margin: auto; padding: 20px; line-height: 1.8; font-size: 18px; color: #333;">
+  <h1 style="font-size: 24px; color: #2e7d32; border-bottom: 3px solid #2e7d32; padding-bottom: 10px;">芝生の種類図鑑｜失敗しない選び方と特徴を徹底比較</h1>
   
   <p>理想のお庭を作る第一歩は、環境に合った「芝の種類」を選ぶことです。芝生は大きく分けて、日本の気候に合う<strong>「日本芝（暖地型）」</strong>と、冬も緑を保つ<strong>「西洋芝（寒地型）」</strong>の2つに分類されます。</p>
 
-  <h3 style="font-size: 22px; color: #2e7d32; border-bottom: 1px solid #e8f5e9; padding-bottom: 5px;">1. 日本芝（夏緑型・暖地型）</h3>
-  
+  <h2 style="font-size: 22px; background: #f1f8e9; padding: 12px; border-left: 5px solid #2e7d32;">1. 日本芝（夏緑型・暖地型）</h2>
+  <p>日本の高温多湿な夏に非常に強く、本州以南で最も一般的に利用されます。冬（11月〜3月頃）は休眠して茶色くなりますが、手入れが比較的楽なのが最大のメリットです。</p>
+
   <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e8f5e9; border-radius: 12px; background: #fff;">
-    <h4 style="color: #2e7d32; margin-top: 0;">● コウライシバ（高麗芝）</h4>
+    <h3 style="color: #2e7d32; margin-top: 0; font-size: 20px;">● コウライシバ（高麗芝）</h3>
     <p>日本の住宅で最も普及している「定番」です。密度が高く、美しい景観が作れます。</p>
     <ul style="padding-left: 20px; font-size: 0.95em;">
       <li><strong>メリット：</strong> 日本の気候に完璧に適合し、病気に強い。</li>
-      <li><strong>デメリット：</strong> 定期的な芝刈りが必要。</li>
+      <li><strong>デメリット：</strong> 夏場は週1回程度の定期的な芝刈りが必要。</li>
     </ul>
   </div>
 
-  <div style="background: #fff8e1; border-left: 5px solid #ff9800; padding: 20px; margin-top: 30px; border-radius: 0 10px 10px 0;">
-    <strong>💡 咲くナビ・アドバイス：TM9とは？</strong>
-    <p style="margin-bottom: 15px; font-size: 0.95em;">トヨタ自動車が開発した「TM9」は、高麗芝の改良種です。成長が極めて遅いため、年間の芝刈り回数を通常の半分以下に減らせる「夢の省管理芝」として大人気です。ホームセンターでは品薄なため、生産農家から直送されるネット通販での購入が確実です。</p>
+  <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e8f5e9; border-radius: 12px; background: #fff;">
+    <h3 style="color: #2e7d32; margin-top: 0; font-size: 20px;">● ノシバ（野芝）</h3>
+    <p>日本自生種で非常にタフ。葉が太く硬いため、公園や法面にも使われます。</p>
+    <ul style="padding-left: 20px; font-size: 0.95em;">
+      <li><strong>メリット：</strong> 踏圧（踏まれる力）に最強。手入れが最も楽。</li>
+      <li><strong>デメリット：</strong> 葉が粗いため、絨毯のような繊細さには欠ける。</li>
+    </ul>
+  </div>
+
+  <div style="background: #fff8e1; border: 1px solid #ff9800; padding: 20px; margin-top: 30px; border-radius: 10px;">
+    <h3 style="color: #e65100; margin-top: 0; font-size: 20px;">💡 咲くナビ・アドバイス：TM9とは？</h3>
+    <p style="margin-bottom: 15px;">トヨタ自動車が開発した「TM9」は、高麗芝の改良種です。成長が極めて遅いため、年間の芝刈り回数を通常の半分以下に減らせる「夢の省管理芝」として大人気です。ホームセンターでは品薄なため、ネット通販での購入が確実です。</p>
     
-    <!-- アフィリエイトボタン枠 -->
     <div style="text-align: center; background: #fff; padding: 15px; border-radius: 8px;">
-      <p style="font-weight: bold; margin-top: 0; font-size: 0.9em; color: #555;">＼ 最新の価格・在庫をチェック ／</p>
-      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        <a href="#" style="background: #f0a500; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">Amazon</a>
-        <a href="#" style="background: #bf0000; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">楽天市場</a>
-        <a href="#" style="background: #ff0033; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">Yahoo!</a>
+      <p style="font-weight: bold; margin-top: 0; font-size: 0.9em; color: #555;">＼ 芝刈りをラクにしたいならTM9の苗 ／</p>
+      <div class="shop-links">
+        <a href="#" class="btn-amazon">Amazonで価格を見る</a>
+        <a href="#" class="btn-rakuten">楽天市場で価格を見る</a>
+        <a href="#" class="btn-yahoo">Yahoo!ショッピングで価格を見る</a>
       </div>
     </div>
   </div>
 
-  <!-- 関連記事タイル（省略せず前回のものをそのまま使います） -->
+  <h2 style="font-size: 22px; background: #e1f5fe; padding: 12px; border-left: 5px solid #0277bd; margin-top: 40px;">2. 西洋芝（冬緑型・寒地型）</h2>
+  <p>北海道や東北などの寒冷地向けです。「一年中緑を楽しみたい」場合に選ばれますが、関東以南での夏越しは非常に難易度が高いです。</p>
+  <ul style="padding-left: 20px; font-size: 0.95em; background: #fff; border: 1px solid #e1f5fe; padding: 20px; border-radius: 12px;">
+    <li style="margin-bottom: 10px;"><strong>ケンタッキーブルーグラス：</strong> 西洋芝の代表格。寒さに強く、鮮やかな濃い緑色が魅力。</li>
+    <li><strong>ベントグラス：</strong> ゴルフ場のグリーン用。非常に繊細で、毎日の手入れと低刈りが必須。</li>
+  </ul>
+
+  <!-- 関連記事タイル -->
+  <section style="margin-top: 60px; border-top: 2px solid #eee; padding-top: 30px;">
+    <h2 style="text-align: center; color: #4A7c59; font-size: 22px; margin-bottom: 25px;">芝生のお手入れとトラブル解決</h2>
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-maintenance.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <span style="font-size: 30px;">📅</span><br>
+        <strong style="color: #4A7c59; font-size: 20px;">手入れカレンダー</strong><br>
+        <span style="font-size: 14px; color: #666;">美しい緑を保つ年間スケジュール</span>
+      </a>
+      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-trouble.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <span style="font-size: 30px;">🩺</span><br>
+        <strong style="color: #4A7c59; font-size: 20px;">トラブル解決ガイド</strong><br>
+        <span style="font-size: 14px; color: #666;">枯れ・病気・害虫の対処法</span>
+      </a>
+    </div>
+  </section>
 </article>
+
+</body>
+</html>
