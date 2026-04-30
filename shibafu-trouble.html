@@ -1,39 +1,111 @@
-<article style="max-width: 800px; margin: auto; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; line-height: 1.8; color: #333; padding: 20px; font-size: 18px;">
-  <h2 style="border-left: 6px solid #d32f2f; padding: 10px 15px; background: #ffebee; font-size: 24px; margin-bottom: 25px;">芝生のトラブル解決ガイド｜茶色い枯れ・病害虫の診断と復活法</h2>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芝生のトラブル解決ガイド｜茶色い枯れ・病害虫の診断と復活法</title>
+<style>
+  /* 共通：ヘッダー＆メニュー */
+  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #fcfcfc; }
+  header { background-color: #4A7c59; color: white; padding: 15px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  .menu-trigger { font-size: 24px; cursor: pointer; margin-right: 15px; background: none; border: none; color: white; }
+  .site-title { font-size: 1.2rem; font-weight: bold; text-decoration: none; color: white; }
+  #menu-cb { display: none; }
+  .side-menu { position: fixed; top: 0; left: -250px; width: 250px; height: 100%; background-color: #fff; color: #333; transition: 0.3s; z-index: 1001; padding-top: 60px; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
+  #menu-cb:checked ~ .side-menu { left: 0; }
+  .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+  #menu-cb:checked ~ .menu-overlay { display: block; }
+  .side-menu ul { list-style: none; padding: 0; margin: 0; }
+  .side-menu li a { display: block; padding: 15px 20px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; }
+  
+  /* 共通：縦型アフィリエイトボタン */
+  .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+  .shop-links a { display: block; padding: 16px; border-radius: 8px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 16px; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
+  .btn-amazon { background-color: #f0a500; }
+  .btn-rakuten { background-color: #bf0000; }
+  .btn-yahoo { background-color: #ff0033; }
+</style>
+</head>
+<body>
 
-  <h3 style="font-size: 22px; color: #c62828;">【症状1】円状に茶色く枯れてきた</h3>
-  <div style="margin-bottom: 25px; padding: 15px; border: 1px solid #ffcdd2; border-radius: 10px;">
+<!-- ハンバーガーメニュー機構 -->
+<input type="checkbox" id="menu-cb">
+<header>
+  <label for="menu-cb" class="menu-trigger">☰</label>
+  <a href="https://tomokazu-hoshi.github.io/Saku-Navi/" class="site-title">咲くナビ</a>
+</header>
+<label for="menu-cb" class="menu-overlay"></label>
+<nav class="side-menu">
+  <ul>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/">トップページ</a></li>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/index-a-column.html">五十音から探す</a></li>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/category/purposes/グランドカバー/">グランドカバー一覧</a></li>
+    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-guide.html">芝生ガイドTOP</a></li>
+  </ul>
+</nav>
+
+<!-- 記事本文（文字サイズ18px） -->
+<article style="max-width: 800px; margin: auto; padding: 20px; line-height: 1.8; font-size: 18px; color: #333;">
+  <h1 style="font-size: 24px; color: #d32f2f; border-bottom: 3px solid #d32f2f; padding-bottom: 10px;">芝生のトラブル解決ガイド｜茶色い枯れ・病害虫の診断と復活法</h1>
+  
+  <p>芝生が急に変色しても焦らないでください。症状から原因を特定し、正しく対処すれば、芝生は再び緑を取り戻すことができます。</p>
+
+  <h2 style="font-size: 22px; color: #c62828; border-left: 5px solid #c62828; padding-left: 10px;">【症状1】円状に茶色く枯れてきた</h2>
+  <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #ffcdd2; border-radius: 10px; background: #fff;">
     <p><strong>原因：ラージパッチ（病気）</strong><br>
-    春や秋の長雨の時期に発生しやすいカビ（菌）が原因。直径数十センチの円状に枯れます。<br>
-    <strong>対策：</strong> バリダマイシン等の殺菌剤を散布し、水はけを改善します。</p>
+    春や秋の長雨の時期に発生しやすいカビ（菌）が原因です。放置すると直径数十センチの円状の枯れがどんどん広がります。<br>
+    <strong>対策：</strong> 初期段階で「バリダマイシン」などの専用殺菌剤を散布し、水はけを改善することが根本解決に繋がります。</p>
     
-    <!-- アフィリエイトボタン枠 -->
-    <div style="text-align: center; background: #fff; padding: 15px; border-radius: 8px; margin-top: 15px;">
-      <p style="font-weight: bold; margin-top: 0; font-size: 0.9em; color: #555;">＼ ラージパッチに効く殺菌剤 ／</p>
-      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        <a href="#" style="background: #f0a500; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">Amazon</a>
-        <a href="#" style="background: #bf0000; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">楽天市場</a>
-        <a href="#" style="background: #ff0033; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">Yahoo!</a>
+    <div style="background: #ffebee; padding: 15px; border-radius: 10px; margin-top: 20px;">
+      <p style="text-align: center; font-weight: bold; margin-top: 0;">＼ ラージパッチに効く特効薬 ／</p>
+      <div class="shop-links">
+        <a href="#" class="btn-amazon">Amazonで殺菌剤を探す</a>
+        <a href="#" class="btn-rakuten">楽天市場で殺菌剤を探す</a>
+        <a href="#" class="btn-yahoo">Yahoo!ショッピングで殺菌剤を探す</a>
       </div>
     </div>
   </div>
 
-  <h3 style="font-size: 22px; color: #e65100;">【症状2】葉が食べられ、剥げている</h3>
-  <div style="margin-bottom: 25px; padding: 15px; border: 1px solid #fff9c4; border-radius: 10px;">
+  <h2 style="font-size: 22px; color: #e65100; border-left: 5px solid #e65100; padding-left: 10px; margin-top: 40px;">【症状2】葉が食べられ、剥げている</h2>
+  <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #ffe0b2; border-radius: 10px; background: #fff;">
     <p><strong>原因：シバツトガ・ヨトウムシ（害虫）</strong><br>
-    蛾の幼虫が夜間に芝を食べています。<br>
-    <strong>対策：</strong> スミチオン乳剤などの殺虫剤を散布し、害虫を駆除します。</p>
+    蛾の幼虫が夜間に芝の葉を食べています。芝生に不自然な穴が開いたり、鳥がついばみに集まっていたら要注意です。<br>
+    <strong>対策：</strong> 「スミチオン乳剤」などの芝生用殺虫剤を夕方に散布し、潜んでいる害虫を駆除します。</p>
 
-    <!-- アフィリエイトボタン枠 -->
-    <div style="text-align: center; background: #fff; padding: 15px; border-radius: 8px; margin-top: 15px;">
-      <p style="font-weight: bold; margin-top: 0; font-size: 0.9em; color: #555;">＼ 芝生の害虫を退治する ／</p>
-      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        <a href="#" style="background: #f0a500; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">Amazon</a>
-        <a href="#" style="background: #bf0000; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">楽天市場</a>
-        <a href="#" style="background: #ff0033; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; flex: 1; min-width: 80px;">Yahoo!</a>
+    <div style="background: #fff3e0; padding: 15px; border-radius: 10px; margin-top: 20px;">
+      <p style="text-align: center; font-weight: bold; margin-top: 0;">＼ 芝生の害虫を根こそぎ退治 ／</p>
+      <div class="shop-links">
+        <a href="#" class="btn-amazon">Amazonで殺虫剤を探す</a>
+        <a href="#" class="btn-rakuten">楽天市場で殺虫剤を探す</a>
+        <a href="#" class="btn-yahoo">Yahoo!ショッピングで殺虫剤を探す</a>
       </div>
     </div>
   </div>
 
-  <!-- 関連記事タイル（省略せず前回のものをそのまま使います） -->
+  <h2 style="font-size: 22px; color: #455a64; border-left: 5px solid #455a64; padding-left: 10px; margin-top: 40px;">【症状3】全体的に元気がなく、地面が固い</h2>
+  <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #cfd8dc; border-radius: 10px; background: #fff;">
+    <p><strong>原因：土の踏み固まりによる酸素不足</strong><br>
+    人がよく歩く場所は土がカチカチに固まり、根が呼吸できなくなります。芝生が痩せ、雑草が増える原因になります。<br>
+    <strong>対策：</strong> ローンスパイク等の道具で土に穴を開ける「エアレーション」を行ってください。</p>
+  </div>
+
+  <!-- 関連記事タイル -->
+  <section style="margin-top: 60px; border-top: 2px solid #eee; padding-top: 30px;">
+    <h2 style="text-align: center; color: #4A7c59; font-size: 22px; margin-bottom: 25px;">芝生の種類と育て方を知る</h2>
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-types.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <span style="font-size: 30px;">🌿</span><br>
+        <strong style="color: #4A7c59; font-size: 20px;">芝生の種類図鑑</strong><br>
+        <span style="font-size: 14px; color: #666;">あなたにぴったりの芝を見つける</span>
+      </a>
+      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-maintenance.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <span style="font-size: 30px;">📅</span><br>
+        <strong style="color: #4A7c59; font-size: 20px;">手入れカレンダー</strong><br>
+        <span style="font-size: 14px; color: #666;">美しい緑を保つ年間スケジュール</span>
+      </a>
+    </div>
+  </section>
 </article>
+
+</body>
+</html>
