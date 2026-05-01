@@ -1,96 +1,76 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ハーブの森プロジェクト｜料理・虫除け・香りの庭づくり徹底解説</title>
+---
+layout: default
+title: "ハーブの森プロジェクト｜料理・虫除け・香りで楽しむ庭作り｜咲くナビ"
+---
+
 <style>
-  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #fcfcfc; line-height: 1.8; font-size: 18px; color: #333; }
-  article { max-width: 800px; margin: auto; padding: 20px; }
-  h1 { font-size: 26px; color: #4A7c59; border-bottom: 3px solid #4A7c59; padding-bottom: 10px; margin-bottom: 30px; }
-  h2 { font-size: 22px; background: #f1f8e9; padding: 12px; border-left: 6px solid #4A7c59; margin-top: 45px; margin-bottom: 20px; }
-  h3 { font-size: 20px; color: #2d5a27; border-bottom: 1px solid #e0eadd; padding-bottom: 5px; margin-top: 30px; }
-  p { margin-bottom: 1.5em; }
-  .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-  .shop-links a { display: block; padding: 18px; border-radius: 10px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-  .btn-amazon { background-color: #f0a500; }
-  .btn-rakuten { background-color: #bf0000; }
-  .btn-yahoo { background-color: #ff0033; }
-  .caution { background: #fff5f5; border: 2px solid #d32f2f; padding: 20px; border-radius: 12px; margin: 25px 0; }
-  .point-box { background: #e8f5e9; padding: 20px; border-radius: 12px; margin: 25px 0; border: 1px dashed #4A7c59; }
-  .flex-list { list-style: none; padding: 0; }
-  .flex-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
-  .flex-list li::before { content: "✔"; position: absolute; left: 0; color: #4A7c59; font-weight: bold; }
-</style>
-</head>
-<body>
-
-<article>
-  <h1>ハーブの森プロジェクト｜実用性と香りの庭づくり</h1>
-  <p>自宅でハーブを育てる最大の魅力は、新鮮な香りをいつでも「収穫してすぐに使える」ことです。料理を格上げするキッチンガーデン、化学薬品に頼らない天然の虫除け、心安らぐハーブティー。本ガイドでは、初心者が失敗せずに「使える庭」を作るためのノウハウを凝縮しました。</p>
-
-  <div class="point-box">
-    <strong>🌿 この記事のポイント</strong>
-    <ul class="flex-list" style="margin-top: 10px; margin-bottom: 0;">
-      <li>目的別（料理・虫除け・観賞）のおすすめ品種がわかる</li>
-      <li>「植えてはいけない」品種とリスク回避法を伝授</li>
-      <li>ハーブ本来の香りを引き出す「土壌管理」の秘密</li>
-    </ul>
-  </div>
-
-  <h2>1. 目的別・初心者がまず育てるべき厳選ハーブ</h2>
+  .guide-intro { text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 25px; line-height: 1.8; }
+  .section-h2 { color: #558b2f; border-bottom: 2px solid #e0eadd; padding-bottom: 8px; margin-top: 40px; }
+  .herb-card { background: #f1f8e9; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 5px solid #8bc34a; }
+  .herb-tag { display: inline-block; background: #558b2f; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
   
-  <h3>【料理に彩りを】キッチンハーブの代表格</h3>
-  <p><strong>・ローズマリー：</strong> 肉料理の臭み消しやポテト料理に欠かせません。乾燥に強く、常緑なので一年中収穫可能です。「立ち性」は庭のシンボルツリーに、「這性」はグランドカバーに向いています。</p>
-  <p><strong>・スイートバジル：</strong> イタリアンの王様。プランターで簡単に育ち、夏のパスタやピザに大活躍します。摘心（てっしん）を繰り返すことで、驚くほど収穫量が増えます。</p>
+  /* 収益化ボタン */
+  .affiliate-box { display: flex; flex-direction: column; gap: 10px; margin: 25px 0; }
+  .shop-link { display: block; padding: 15px; border-radius: 10px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 0.95rem; }
+  .btn-amazon { background: #f0a500; }
+  .btn-rakuten { background: #bf0000; }
+  .btn-yahoo { background: #ff0033; }
 
-  <h3>【天然のガードマン】虫除けに効果的なハーブ</h3>
-  <p><strong>・カレンソウ（蚊連草）：</strong> ゼラニウムを交配した品種で、蚊が嫌うシトロネラールを含みます。窓際や玄関に置くだけで天然のバリアに。</p>
-  <p><strong>・ラベンダー：</strong> 「香りの女王」と呼ばれ、リラックス効果だけでなく、衣類の防虫（ポプリ）としても古くから愛されています。特にイングリッシュ系は香りが濃厚です。</p>
+  /* 関連記事セクション */
+  .special-section { margin-top: 40px; padding: 0 5px; }
+  .feature-banner { display: block; margin-bottom: 15px; padding: 20px; border-radius: 15px; text-decoration: none; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  .feature-banner h4 { margin: 0; font-size: 1.1rem; }
+  .feature-banner p { margin: 5px 0 0; font-size: 0.8rem; opacity: 0.9; }
+  .bg-shibafu { background: linear-gradient(135deg, #2e7d32, #4caf50); }
+  .bg-herb { background: linear-gradient(135deg, #558b2f, #8bc34a); }
+  .bg-shade { background: linear-gradient(135deg, #0277bd, #03a9f4); }
+  .bg-zabora { background: linear-gradient(135deg, #5d4037, #8d6e63); }
+</style>
 
-  <div class="caution">
-    <h3 style="color: #d32f2f; margin-top: 0; border: none;">⚠️ 要注意！「ミントテロ」を防ぐ知恵</h3>
-    <p>ミント（スペアミント、ペパーミント等）は驚異的な繁殖力を持ちます。地植えにすると「地下茎」で庭中に広がり、数年で他の植物を駆逐してしまいます。</p>
-    <p><strong>回避策：</strong> ハーブ初心者の方は、必ず<strong>「独立したプランター」</strong>で育てるか、鉢ごと地面に埋めて根の広がりを制限しましょう。</p>
-  </div>
+<div class="guide-intro">
+  <p>キッチンから数歩で届く、香りの森へ。<br>料理のアクセントや天然の虫除けとして活躍するハーブは、初心者でも育てやすい植物の代表格です。</p>
+</div>
 
-  <div style="background: #fff; border: 2px solid #4A7c59; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-    <p style="font-weight: bold; margin-top: 0; color: #2d5a27;">＼ 届いてすぐに始められる！厳選苗セット ／</p>
-    <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">※ハーブは苗から育てたほうが収穫までの期間が短く、失敗も少ないです。</p>
-    <div class="shop-links">
-      <a href="#" class="btn-amazon">Amazonでハーブ苗を探す</a>
-      <a href="#" class="btn-rakuten">楽天市場でハーブ苗を探す</a>
-      <a href="#" class="btn-yahoo">Yahoo!ショッピングでハーブ苗を探す</a>
-    </div>
-  </div>
+<h2 class="section-h2">🌿 初心者におすすめの三種の神器</h2>
+<p>まずはこの 3 つから始めれば間違いありません。</p>
 
-  <h2>2. 香りを最大化する「土壌」と「環境」の作り方</h2>
-  <p>ハーブが本来持っている強い香りは、実は「少し厳しい環境」で引き出されます。栄養を与えすぎず、以下の2点を守るのがプロのコツです。</p>
+<div class="herb-card">
+  <span class="herb-tag">料理に最適</span>
+  <strong>ローズマリー</strong>
+  <p>丈夫で枯れにくく、お肉料理の消臭やポテトと一緒に焼くだけで最高のご馳走になります。</p>
+</div>
 
-  <h3>① 水はけを究極に高める</h3>
-  <p>多くのハーブは地中海沿岸が原産のため、湿気を極端に嫌います。土が常に湿っていると根腐れの原因に。市販の「ハーブ専用土」には、水はけを良くするパーライトや軽石が絶妙に配合されています。</p>
+<div class="herb-card">
+  <span class="herb-tag">虫除け・香料</span>
+  <strong>ラベンダー</strong>
+  <p>見た目の美しさと癒やしの香りは格別。乾燥させてポプリにすればクローゼットの虫除けにも。</p>
+</div>
 
-  <h3>② 「アルカリ性」への調整が鍵</h3>
-  <p>日本の雨は酸性のため、放置すると土壌も酸性に傾きます。しかし、多くのハーブは「弱アルカリ性」を好みます。専用の土にはあらかじめ「有機石灰」などが混ぜられており、ハーブが最も元気に育つpH（ペーハー）に調整されています。</p>
+<div class="herb-card">
+  <span class="herb-tag">ハーブティーに</span>
+  <strong>ミント</strong>
+  <p>驚くほど生命力が強く、プランター栽培に最適。摘みたてを炭酸水に入れるだけでオシャレなドリンクに。</p>
+</div>
 
-  <div style="background: #f9f9f9; border: 1px solid #ccc; padding: 25px; border-radius: 15px; text-align: center; margin-top: 30px;">
-    <p style="font-weight: bold; margin-top: 0; color: #333;">＼ プロも絶賛！香りを引き出す専用土 ／</p>
-    <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">重い土は通販で自宅まで届けてもらうのが、最も賢い選択です。</p>
-    <div class="shop-links">
-      <a href="#" class="btn-amazon">Amazonで専用土をチェック</a>
-      <a href="#" class="btn-rakuten">楽天市場で専用土をチェック</a>
-      <a href="#" class="btn-yahoo">Yahoo!ショッピングで専用土をチェック</a>
-    </div>
-  </div>
+<div class="affiliate-box">
+  <p style="text-align: center; font-weight: bold; font-size: 0.85rem; color: #558b2f;">＼ お得なハーブ苗セットをチェック ／</p>
+  <a href="#" class="shop-link btn-rakuten">楽天市場でハーブ苗を探す</a>
+  <a href="#" class="shop-link btn-amazon">Amazonでハーブ栽培キットを見る</a>
+  <a href="#" class="shop-link btn-yahoo">Yahoo!ショッピングで探す</a>
+</div>
 
-  <div style="margin-top: 50px; padding: 20px; background: #fff; border-top: 4px solid #4A7c59; text-align: center;">
-    <h3 style="margin-top: 0; border: none;">あわせて読みたい特集</h3>
-    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-      <a href="shade-garden.html" style="color: #4A7c59; font-weight: bold; text-decoration: none;">・日陰でも育つ！シェードガーデン向けハーブ ≫</a>
-      <a href="low-maintenance.html" style="color: #4A7c59; font-weight: bold; text-decoration: none;">・手入れ不要！植えっぱなしOKな最強宿根ハーブ ≫</a>
-    </div>
-  </div>
-</article>
-
-</body>
-</html>
+<div class="special-section">
+  <h3 style="text-align: center; color: #4A7c59; border-bottom: 2px solid #e0eadd; padding-bottom: 10px; margin-bottom: 20px;">＼ 咲くナビ特別ガイド ／</h3>
+  <a href="{{ '/shibafu-guide.html' | relative_url }}" class="feature-banner bg-shibafu">
+    <h4>🌿 芝生の完全攻略ガイド</h4>
+    <p>理想の緑の絨毯を作る種類選びと手入れ</p>
+  </a>
+  <a href="{{ '/shade-garden.html' | relative_url }}" class="feature-banner bg-shade">
+    <h4>⛱ 日陰のシェードガーデン</h4>
+    <p>北向き・暗い庭をおしゃれに変える魔法</p>
+  </a>
+  <a href="{{ '/low-maintenance.html' | relative_url }}" class="feature-banner bg-zabora">
+    <h4>🧹 究極のずぼら庭作り</h4>
+    <p>雑草対策と植えっぱなしOKな植物たち</p>
+  </a>
+</div>
