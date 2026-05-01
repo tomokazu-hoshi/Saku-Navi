@@ -1,69 +1,128 @@
 ---
 layout: default
-title: "咲くナビ トップページ"
+title: "咲くナビ｜初心者向け逆引き園芸図鑑"
 ---
 
 <style>
-  /* 特集セクションのスタイル */
-  .special-section { margin-top: 40px; padding: 0 5px; }
-  .feature-banner {
-    display: block;
-    margin-bottom: 15px;
-    padding: 20px;
-    border-radius: 15px;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    position: relative;
-    overflow: hidden;
-  }
-  .feature-banner h4 { margin: 0; font-size: 1.1rem; }
-  .feature-banner p { margin: 5px 0 0; font-size: 0.8rem; opacity: 0.9; }
+    /* トップページ専用のタイトルエリア */
+    .hero-area {
+        text-align: center;
+        padding: 30px 15px 10px;
+    }
+    .hero-area h2 {
+        color: #4A7c59;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    .hero-subtext {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 25px;
+        line-height: 1.5;
+    }
 
-  /* 特集ごとのカラー */
-  .bg-shibafu { background: linear-gradient(135deg, #2e7d32, #4caf50); }
-  .bg-herb { background: linear-gradient(135deg, #558b2f, #8bc34a); }
-  .bg-shade { background: linear-gradient(135deg, #0277bd, #03a9f4); }
-  .bg-zabora { background: linear-gradient(135deg, #5d4037, #8d6e63); }
+    /* メインカテゴリーボタン（10項目） */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        padding: 0 15px;
+    }
+
+    /* トップページは特集エリアを「目玉」として少し豪華に配置 */
+    .feature-stack {
+        margin-top: 20px;
+        padding: 30px 15px 40px;
+        border-top: 2px solid #e0eadd;
+        background-color: #f9fbf9;
+    }
+    .feature-stack-title {
+        font-size: 1.1rem;
+        color: #2d5a27;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .compact-feature {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 1px solid #e0eadd;
+        border-radius: 15px;
+        padding: 18px;
+        margin-bottom: 15px;
+        text-decoration: none;
+        color: #333;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s;
+    }
+    .compact-feature:active {
+        transform: scale(0.97);
+        background-color: #f0f4f0;
+    }
+    .feature-icon {
+        font-size: 2.0rem;
+        margin-right: 18px;
+    }
+    .feature-info b {
+        display: block;
+        color: #2e7d32;
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+    }
+    .feature-info span {
+        font-size: 0.85rem;
+        color: #777;
+        line-height: 1.4;
+    }
 </style>
 
-<div style="text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 20px;">
-  <p>初心者でも迷わず植物が見つかる、逆引き園芸図鑑。</p>
+<!-- ヒーローエリア（サイトの紹介） -->
+<div class="hero-area">
+    <h2>理想の植物がすぐ見つかる</h2>
+    <p class="hero-subtext">
+        「咲くナビ」は、名前がわからなくても色や環境から<br>
+        直感的に探せる逆引き園芸図鑑です。
+    </p>
 </div>
 
+<!-- カテゴリー検索メニュー -->
 <div class="category-grid">
-  <a href="{{ '/index-a-column.html' | relative_url }}" class="btn-home">五十音から探す<span>Index</span></a>
-  <a href="{{ '/months-menu.html' | relative_url }}" class="btn-home">月別から探す<span>Months</span></a>
-  <a href="{{ '/seasons-menu.html' | relative_url }}" class="btn-home">季節から探す<span>Season</span></a>
-  <a href="{{ '/colors-menu.html' | relative_url }}" class="btn-home">色から探す<span>Color</span></a>
-  <a href="{{ '/types-menu.html' | relative_url }}" class="btn-home">植物の分類<span>Type</span></a>
+  <a href="{{ '/index-a-column.html' | relative_url }}" class="btn-home">五十音<span>Index</span></a>
+  <a href="{{ '/months-menu.html' | relative_url }}" class="btn-home">月別<span>Months</span></a>
+  <a href="{{ '/seasons-menu.html' | relative_url }}" class="btn-home">季節<span>Season</span></a>
+  <a href="{{ '/colors-menu.html' | relative_url }}" class="btn-home">花の色<span>Color</span></a>
+  <a href="{{ '/types-menu.html' | relative_url }}" class="btn-home">植物分類<span>Type</span></a>
   <a href="{{ '/envs-menu.html' | relative_url }}" class="btn-home">育てる環境<span>Env</span></a>
   <a href="{{ '/purposes-menu.html' | relative_url }}" class="btn-home">目的・用途<span>Purpose</span></a>
-  <a href="{{ '/families-menu.html' | relative_url }}" class="btn-home">科名から探す<span>Family</span></a> 
-  <a href="{{ '/meanings-menu.html' | relative_url }}" class="btn-home">花言葉から探す<span>Meaning</span></a>
+  <a href="{{ '/families-menu.html' | relative_url }}" class="btn-home">科名<span>Family</span></a> 
+  <a href="{{ '/meanings-menu.html' | relative_url }}" class="btn-home">花言葉<span>Meaning</span></a>
   <a href="{{ '/methods-menu.html' | relative_url }}" class="btn-home">栽培方法<span>Method</span></a>
 </div>
 
-<div class="special-section">
-  <h3 style="text-align: center; color: #4A7c59; border-bottom: 2px solid #e0eadd; padding-bottom: 10px; margin-bottom: 20px;">＼ 咲くナビ特別ガイド ／</h3>
-  
-  <a href="{{ '/shibafu-guide.html' | relative_url }}" class="feature-banner bg-shibafu">
-    <h4>🌿 芝生の完全攻略ガイド</h4>
-    <p>理想の緑の絨毯を作る種類選びと手入れ</p>
-  </a>
-
-  <a href="{{ '/herb-project.html' | relative_url }}" class="feature-banner bg-herb">
-    <h4>🪴 ハーブの森プロジェクト</h4>
-    <p>料理・虫除けに！使って楽しむ香りの庭</p>
-  </a>
-
-  <a href="{{ '/shade-garden.html' | relative_url }}" class="feature-banner bg-shade">
-    <h4>⛱ 日陰のシェードガーデン</h4>
-    <p>北向き・暗い庭をおしゃれに変える魔法</p>
-  </a>
-
-  <a href="{{ '/low-maintenance.html' | relative_url }}" class="feature-banner bg-zabora">
-    <h4>🧹 究極のずぼら庭作り</h4>
-    <p>雑草対策と植えっぱなしOKな植物たち</p>
-  </a>
+<!-- 特集エリア：サイトの強力な収益・集客導線 -->
+<div class="feature-stack">
+    <p class="feature-stack-title">＼ 咲くナビ特別ガイド ／</p>
+    
+    <a href="{{ '/shibafu-guide.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-info"><b>芝生完全攻略ガイド</b><span>理想の緑の絨毯を作る種類選びと手入れ</span></div>
+    </a>
+    
+    <a href="{{ '/herb-project.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🪴</div>
+        <div class="feature-info"><b>ハーブの森プロジェクト</b><span>料理・虫除けに！使って楽しむ香りの庭</span></div>
+    </a>
+    
+    <a href="{{ '/shade-garden.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">⛱</div>
+        <div class="feature-info"><b>日陰のシェードガーデン</b><span>北向き・暗い庭をおしゃれに変える魔法</span></div>
+    </a>
+    
+    <a href="{{ '/low-maintenance.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🧹</div>
+        <div class="feature-info"><b>究極のずぼら庭作り</b><span>雑草対策と植えっぱなしOKな植物たち</span></div>
+    </a>
 </div>
