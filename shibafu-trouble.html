@@ -6,7 +6,7 @@ layout: none
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>芝生のトラブル解決ガイド｜茶色い枯れ・病害虫の診断と復活法｜咲くナビ</title>
+    <title>芝生のトラブル解決ガイド｜茶色い枯れ・病害虫の診断と復活法｜【園芸全書】咲くナビ</title>
     <style>
         :root {
             --primary-green: #2d5a27;   
@@ -18,7 +18,7 @@ layout: none
         }
         body { font-family: sans-serif; line-height: 1.6; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
 
-        /* --- ユーザー指定の共通ヘッダー・メニューCSS --- */
+        /* --- ハンバーガーメニュー（3本線） --- */
         .menu-trigger {
             position: fixed; top: 15px; left: 15px; 
             width: 50px; height: 50px; 
@@ -28,10 +28,12 @@ layout: none
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .menu-trigger span { display: block; width: 25px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
+        
         .active-menu span:nth-of-type(1) { transform: translateY(9px) rotate(-45deg); background-color: #fff !important; }
         .active-menu span:nth-of-type(2) { opacity: 0; }
         .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); background-color: #fff !important; }
 
+        /* --- 全画面メニューオーバーレイ --- */
         .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
         .overlay-content { width: 90%; max-width: 450px; text-align: center; padding-bottom: 40px; }
 
@@ -44,21 +46,18 @@ layout: none
         .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
         .menu-btn span { font-size: 0.65rem; opacity: 0.7; margin-top: 3px; }
 
+        /* --- 基本構造 --- */
         header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 15px; text-align: center; }
-        header h1 { margin: 0; color: var(--primary-green); font-size: 1.8rem; }
-        nav.top-bar { background: var(--nav-green); color: white; padding: 10px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 100; font-size: 0.9rem; }
+        header h1 { margin: 0; color: var(--primary-green); font-size: 1.5rem; }
+        nav.top-bar { display: none; } /* 不要な帯は非表示 */
         .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .main-card { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .main-card { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-        /* 記事内追加装飾 */
-        .trouble-section { margin-bottom: 40px; padding: 20px; border-radius: 12px; border-left: 6px solid; }
-        .trouble-disease { border-color: #d32f2f; background: #fff5f5; }
-        .trouble-pest { border-color: #f57f17; background: #fffde7; }
-        .trouble-soil { border-color: #455a64; background: #eceff1; }
-        .check-list { list-style: none; padding: 0; }
-        .check-list li::before { content: "⚠️"; margin-right: 10px; }
-        .solution-box { background: white; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px dashed #ccc; }
-        .shop-btn { display: block; padding: 15px; margin: 10px 0; text-align: center; border-radius: 8px; font-weight: bold; text-decoration: none; color: white; }
+        /* 収益化ボタン */
+        .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .shop-links a { display: block; padding: 16px; border-radius: 10px; text-align: center; text-decoration: none; color: white; font-weight: bold; }
+        .btn-amazon { background-color: #f0a500; }
+        .btn-rakuten { background-color: #bf0000; }
 
         footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
     </style>
@@ -76,88 +75,66 @@ layout: none
             <a href="/Saku-Navi/shibafu-guide.html" class="menu-special-banner">
                 <span class="menu-special-tag">人気</span><span class="menu-special-title">芝生の完全攻略ガイド</span>
             </a>
-            <a href="/Saku-Navi/herb-project.html" class="menu-special-banner">
-                <span class="menu-special-tag">実用</span><span class="menu-special-title">ハーブの森プロジェクト</span>
+            <a href="/Saku-Navi/shibafu-types.html" class="menu-special-banner">
+                <span class="menu-special-tag">図鑑</span><span class="menu-special-title">芝生の種類と選び方</span>
             </a>
-            <a href="/Saku-Navi/shade-garden.html" class="menu-special-banner">
-                <span class="menu-special-tag">解決</span><span class="menu-special-title">日陰のシェードガーデン</span>
-            </a>
-            <a href="/Saku-Navi/low-maintenance.html" class="menu-special-banner">
-                <span class="menu-special-tag">時短</span><span class="menu-special-title">究極のずぼら庭作り</span>
+            <a href="/Saku-Navi/shibafu-maintenance.html" class="menu-special-banner">
+                <span class="menu-special-tag">予定</span><span class="menu-special-title">芝生の手入れカレンダー</span>
             </a>
         </div>
-        <div style="color:white; margin-bottom:10px; font-weight:bold; font-size:0.9rem; opacity:0.8;">カテゴリーから探す</div>
         <div class="menu-grid">
             <a href="/Saku-Navi/index-a-column.html" class="menu-btn">五十音<span>Index</span></a>
             <a href="/Saku-Navi/months-menu.html" class="menu-btn">月別<span>Months</span></a>
-            <a href="/Saku-Navi/seasons-menu.html" class="menu-btn">季節<span>Season</span></a>
-            <a href="/Saku-Navi/colors-menu.html" class="menu-btn">花の色<span>Color</span></a>
-            <a href="/Saku-Navi/types-menu.html" class="menu-btn">分類<span>Type</span></a>
-            <a href="/Saku-Navi/envs-menu.html" class="menu-btn">環境<span>Env</span></a>
-            <a href="/Saku-Navi/purposes-menu.html" class="menu-btn">目的<span>Purpose</span></a>
-            <a href="/Saku-Navi/families-menu.html" class="menu-btn">科名<span>Family</span></a>
-            <a href="/Saku-Navi/meanings-menu.html" class="menu-btn">花言葉<span>Meaning</span></a>
+            <a href="/Saku-Navi/colors-menu.html" class="menu-btn">色<span>Color</span></a>
             <a href="/Saku-Navi/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
 
-<header><h1>【園芸全書】咲くナビ</h1></header>
-<nav class="top-bar">〜 あなたの庭に、最高の「咲く」を 〜</nav>
+<header><h1>【園芸全書】咲くナビ<br>(Saku-Navi)</h1></header>
 
 <div class="container">
     <article class="main-card">
-        <h2 style="font-size: 26px; color: #d32f2f; margin-top: 0;">芝生のトラブル解決ガイド｜枯れ・病害虫の復活法</h2>
-        <p>「芝生の一部が茶色くなった」「不自然に剥げてきた」…そんなトラブルは、早期発見と正確な診断が命です。症状別に原因を特定し、元の美しい緑を取り戻すための具体的な手順を解説します。</p>
+        <!-- ここから記事本文 -->
+        <h2 style="color: #d32f2f; margin-top: 0; font-size: 24px; border-bottom: 2px solid #ffcdd2; padding-bottom: 10px;">芝生のトラブル解決ガイド</h2>
+        <p>芝生が変色したり枯れたりした際、焦って間違った対処をすると致命的なダメージになります。まずは症状を正しく診断しましょう。</p>
 
-        <div class="trouble-section trouble-disease">
-            <h3 style="margin-top: 0;">1. 円形に広がる茶色い枯れ（ラージパッチ等）</h3>
-            <p>春や秋、気温が20℃前後の湿気が多い時期に発生しやすく、放置すると円状の枯れがどんどん合体して広がります。</p>
-            <ul class="check-list">
-                <li>中心部から外側へ向かって円形に広がっている。</li>
-                <li>枯れた部分の境目がオレンジや明るい茶色をしている。</li>
-            </ul>
-            <div class="solution-box">
-                <strong>【復活法】</strong> 殺菌剤「バリダマイシン」や「トップジンM」を散布。同時に、土に穴を開ける「エアレーション」を行い、地中の水はけと通気性を改善するのが根本解決です。
-            </div>
-            <a href="#" class="shop-btn" style="background: #bf0000;">楽天市場で殺菌剤を探す</a>
-        </div>
+        <h3 style="color: #c62828; border-left: 5px solid #c62828; padding-left: 10px; margin-top: 30px;">1. 病気：円形に茶色く枯れる（ラージパッチ）</h3>
+        <p>春や秋の長雨の時期に発生しやすいカビ（菌）が原因です。直径数十センチの円状の枯れがどんどん広がります。</p>
+        <p><strong>復活法：</strong> 殺菌剤「バリダマイシン」や「トップジンM」を散布します。また、地中の通気性を良くするためにエアレーションを行うことが根本的な解決につながります。</p>
 
-        <div class="trouble-section trouble-pest">
-            <h3 style="margin-top: 0;">2. 葉が食い千切られ、禿げている（シバツトガ・コガネムシ）</h3>
-            <p>蛾の幼虫（シバツトガ）が葉を、コガネムシの幼虫が根を食い荒らします。鳥が頻繁に地面をつついているなら、害虫がいるサインです。</p>
-            <div class="solution-box">
-                <strong>【復活法】</strong> 「スミチオン乳剤」を夕方に散布してください。幼虫は夜間に這い出してくるため、夕方の散布が最も効果的です。コガネムシには土壌混和する薬剤が有効。
-            </div>
-            <a href="#" class="shop-btn" style="background: #f0a500;">Amazonで殺虫剤を探す</a>
-        </div>
+        <h3 style="color: #e65100; border-left: 5px solid #e65100; padding-left: 10px; margin-top: 30px;">2. 害虫：葉が食い千切られ禿げている</h3>
+        <p>シバツトガやヨトウムシの幼虫が夜間に活動しています。鳥が芝生に集まっている時は、害虫がいるサインです。</p>
+        <p><strong>対策：</strong> 「スミチオン乳剤」を夕方に散布してください。夜に出てきた幼虫を直接狙い撃ちします。</p>
 
-        <div class="trouble-section trouble-soil">
-            <h3 style="margin-top: 0;">3. 踏み固めによる酸素不足と肥料焼け</h3>
-            <p>人がよく歩く場所だけが薄くなるのは「踏圧（とうあつ）」による窒息です。また、肥料の撒きすぎによる「肥料焼け」も急な枯れの原因になります。</p>
-            <div class="solution-box">
-                <strong>【復活法】</strong> 踏み固めには「ローンスパイク」で深さ10cm程度の穴を開け、新しい砂（目土）を入れます。肥料焼けの場合は、多量の水で肥料成分を流し出す「洗い流し」が必要です。
+        <div style="background: #fff3e0; padding: 20px; border-radius: 12px; margin-top: 30px;">
+            <p style="text-align: center; font-weight: bold; margin-top: 0;">＼ 芝生の薬・資材をチェック ／</p>
+            <div class="shop-links">
+                <!-- ここに収益化リンクを貼る -->
+                <a href="#" class="btn-rakuten">楽天市場で探す</a>
+                <a href="#" class="btn-amazon">Amazonで探す</a>
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 50px; padding: 20px; border-top: 2px solid #eee;">
+        <h3 style="color: #455a64; border-left: 5px solid #455a64; padding-left: 10px; margin-top: 30px;">3. 物理要因：地面がカチカチで育たない</h3>
+        <p>踏み固めによる酸素不足です。芝生が痩せ、雑草が増える原因になります。ローンスパイクで深さ10cm程度の穴を開け、新しい砂（目土）を入れましょう。</p>
+
+        <div style="text-align: center; margin-top: 50px;">
             <a href="/Saku-Navi/shibafu-guide.html" style="font-weight: bold; color: var(--primary-green); text-decoration: none;">← 芝生ガイドTOPへ戻る</a>
         </div>
     </article>
 </div>
 
-<footer><p>&copy; 2026 咲くナビ</p></footer>
+<footer><p>&copy; 2026 【園芸全書】咲くナビ</p></footer>
 
 <script>
     function toggleNav() {
         const menu = document.getElementById("fullMenu");
         const btn = document.getElementById("menuBtn");
         if (menu.style.width === "100%") {
-            menu.style.width = "0%";
-            btn.classList.remove("active-menu");
+            menu.style.width = "0%"; btn.classList.remove("active-menu");
         } else {
-            menu.style.width = "100%";
-            btn.classList.add("active-menu");
+            menu.style.width = "100%"; btn.classList.add("active-menu");
         }
     }
 </script>
