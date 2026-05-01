@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ラベンダー",
+    "url": "/plants/lavender.html",
+    "tags": ["紫", "春", "ハーブ", "日向"]
+  },
+  {
+    "name": "ギボウシ",
+    "url": "/plants/hosta.html",
+    "tags": ["白", "夏", "多年草", "日陰"]
+  },
+  {
+    "name": "ローズマリー",
+    "url": "/plants/rosemary.html",
+    "tags": ["青", "春", "ハーブ", "耐寒性"]
+  }
+]
