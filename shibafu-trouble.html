@@ -49,7 +49,6 @@ layout: none
         .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
         .main-card { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-size: 18px; }
 
-        /* 記事内装飾 */
         h2 { color: #d32f2f; border-left: 5px solid #d32f2f; padding-left: 10px; margin-top: 40px; font-size: 22px; }
         .diagnosis-box { background: #fff5f5; border: 1px solid #ffcdd2; border-radius: 10px; padding: 20px; margin: 20px 0; }
         .shop-links { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
@@ -70,22 +69,22 @@ layout: none
     <div class="overlay-content">
         <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
         <div class="menu-feature-list">
-            <a href="/shibafu-guide.html" class="menu-special-banner">
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-special-banner">
                 <span class="menu-special-tag">人気</span><span class="menu-special-title">芝生の完全攻略ガイド</span>
             </a>
-            <a href="/shibafu-types.html" class="menu-special-banner">
+            <a href="{{ '/shibafu-types.html' | relative_url }}" class="menu-special-banner">
                 <span class="menu-special-tag">図鑑</span><span class="menu-special-title">芝生の種類と選び方</span>
             </a>
-            <a href="/shibafu-maintenance.html" class="menu-special-banner">
+            <a href="{{ '/shibafu-maintenance.html' | relative_url }}" class="menu-special-banner">
                 <span class="menu-special-tag">予定</span><span class="menu-special-title">芝生の手入れカレンダー</span>
             </a>
         </div>
         <div class="menu-grid">
-            <a href="/index-a-column.html" class="menu-btn">五十音<span>Index</span></a>
-            <a href="/months-menu.html" class="menu-btn">月別<span>Months</span></a>
-            <a href="/colors-menu.html" class="menu-btn">花の色<span>Color</span></a>
-            <a href="/purposes-menu.html" class="menu-btn">目的<span>Purpose</span></a>
-            <a href="/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
+            <a href="{{ '/index-a-column.html' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
+            <a href="{{ '/months-menu.html' | relative_url }}" class="menu-btn">月別<span>Months</span></a>
+            <a href="{{ '/colors-menu.html' | relative_url }}" class="menu-btn">花の色<span>Color</span></a>
+            <a href="{{ '/purposes-menu.html' | relative_url }}" class="menu-btn">目的<span>Purpose</span></a>
+            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
@@ -125,7 +124,7 @@ layout: none
         <p>人がよく歩く場所は土がカチカチに固まり、根が窒息します。芝生が薄くなってきたら、ローンスパイクで深さ10cm程度の穴を開け、新しい砂を入れる「目土入れ」を行いましょう。これで新芽が爆発的に増えます。</p>
 
         <div style="text-align:center; margin-top:50px;">
-            <a href="/shibafu-guide.html" style="color:var(--primary-green); font-weight:bold; text-decoration:none;">← 芝生ガイドTOPへ戻る</a>
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" style="color:var(--primary-green); font-weight:bold; text-decoration:none;">← 芝生ガイドTOPへ戻る</a>
         </div>
     </article>
 </div>
