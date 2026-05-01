@@ -3,6 +3,84 @@ layout: default
 title: "咲くナビ トップページ"
 ---
 
+<style>
+  /* 既存のボタンデザイン（必要に応じてテーマCSSで読み込まれている場合は削除可能ですが念のため） */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  .btn-home {
+    background-color: #4A7c59;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
+  .btn-home:active {
+    transform: scale(0.95);
+    background-color: #8fcb9b;
+  }
+  .btn-home span {
+    font-size: 0.75rem;
+    color: #e8f5e9;
+    margin-top: 5px;
+    font-weight: normal;
+  }
+
+  /* 特集記事（芝生ガイド）用のバナー風ボタンスタイル */
+  .special-feature {
+    max-width: 600px;
+    margin: 40px auto 20px;
+    padding: 0 15px;
+  }
+  .btn-feature {
+    display: block;
+    background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+  }
+  .btn-feature:active {
+    transform: scale(0.98);
+  }
+  .feature-tag {
+    display: inline-block;
+    background-color: #fff;
+    color: #2e7d32;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .feature-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+  }
+  .feature-sub {
+    font-size: 0.85rem;
+    color: #e8f5e9;
+    margin: 0;
+  }
+</style>
+
 <div style="text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 20px;">
   <p>初心者でも迷わず植物が見つかる、逆引き園芸図鑑。</p>
 </div>
@@ -19,3 +97,16 @@ title: "咲くナビ トップページ"
   <a href="{{ '/meanings-menu.html' | relative_url }}" class="btn-home">花言葉から探す<span>Meaning</span></a>
   <a href="{{ '/methods-menu.html' | relative_url }}" class="btn-home">栽培方法<span>Method</span></a>
 </div>
+
+<!-- ここから追加：特集記事へのリンク -->
+<div class="special-feature">
+  <h3 style="text-align: center; color: #4A7c59; font-size: 1.1rem; margin-bottom: 15px;">＼ 注目の特集記事 ／</h3>
+  
+  <!-- 芝生ガイドTOPへのリンク -->
+  <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-guide.html" class="btn-feature">
+    <span class="feature-tag">Special Guide</span>
+    <h4 class="feature-title">日本でよく使われる芝生ガイド</h4>
+    <p class="feature-sub">種類選び・年間手入れ・トラブル解決を徹底解説</p>
+  </a>
+</div>
+<!-- 追加ここまで -->
