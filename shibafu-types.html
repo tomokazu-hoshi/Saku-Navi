@@ -73,12 +73,20 @@ layout: none
         
         .point-box { background: #fff8e1; border: 1px solid #ffecb3; border-radius: 12px; padding: 20px; margin: 30px 0; }
         
-        /* 縦型アフィリエイトボタン */
+        /* アフィリエイトボタン */
         .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         .shop-links a { display: block; padding: 16px; border-radius: 10px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 1.1rem; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
         .btn-amazon { background-color: var(--shop-amazon); }
         .btn-rakuten { background-color: var(--shop-rakuten); }
         .btn-yahoo { background-color: var(--shop-yahoo); }
+
+        /* 関連記事タイル */
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
+        .related-tile { text-decoration: none; background: #fff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s; }
+        .related-tile:active { transform: scale(0.98); }
+        .related-tile span.icon { font-size: 2.5rem; display: block; margin-bottom: 10px; }
+        .related-tile strong { color: var(--primary-green); font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .related-tile p { font-size: 0.85rem; color: #666; margin: 0; line-height: 1.4; }
 
         footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
     </style>
@@ -96,28 +104,28 @@ layout: none
     <div class="overlay-content">
         <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
         <div class="menu-feature-list">
-            <a href="/shibafu-guide.html" class="menu-special-banner">
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-special-banner">
                 <span class="menu-special-tag">人気</span><span class="menu-special-title">芝生の完全攻略ガイド</span>
             </a>
-            <a href="/herb-project.html" class="menu-special-banner">
+            <a href="{{ '/herb-project.html' | relative_url }}" class="menu-special-banner">
                 <span class="menu-special-tag">実用</span><span class="menu-special-title">ハーブの森プロジェクト</span>
             </a>
-            <a href="/shade-garden.html" class="menu-special-banner">
+            <a href="{{ '/shade-garden.html' | relative_url }}" class="menu-special-banner">
                 <span class="menu-special-tag">解決</span><span class="menu-special-title">日陰のシェードガーデン</span>
             </a>
-            <a href="/low-maintenance.html" class="menu-special-banner">
+            <a href="{{ '/low-maintenance.html' | relative_url }}" class="menu-special-banner">
                 <span class="menu-special-tag">時短</span><span class="menu-special-title">究極のずぼら庭作り</span>
             </a>
         </div>
         <div class="menu-grid">
-            <a href="/index-a-column.html" class="menu-btn">五十音<span>Index</span></a>
-            <a href="/months-menu.html" class="menu-btn">月別<span>Months</span></a>
-            <a href="/seasons-menu.html" class="menu-btn">季節<span>Season</span></a>
-            <a href="/colors-menu.html" class="menu-btn">花の色<span>Color</span></a>
-            <a href="/types-menu.html" class="menu-btn">分類<span>Type</span></a>
-            <a href="/envs-menu.html" class="menu-btn">環境<span>Env</span></a>
-            <a href="/purposes-menu.html" class="menu-btn">目的<span>Purpose</span></a>
-            <a href="/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
+            <a href="{{ '/index-a-column.html' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
+            <a href="{{ '/months-menu.html' | relative_url }}" class="menu-btn">月別<span>Months</span></a>
+            <a href="{{ '/seasons-menu.html' | relative_url }}" class="menu-btn">季節<span>Season</span></a>
+            <a href="{{ '/colors-menu.html' | relative_url }}" class="menu-btn">花の色<span>Color</span></a>
+            <a href="{{ '/types-menu.html' | relative_url }}" class="menu-btn">分類<span>Type</span></a>
+            <a href="{{ '/envs-menu.html' | relative_url }}" class="menu-btn">環境<span>Env</span></a>
+            <a href="{{ '/purposes-menu.html' | relative_url }}" class="menu-btn">目的<span>Purpose</span></a>
+            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
@@ -125,61 +133,92 @@ layout: none
 <div class="container">
     <article class="main-card">
         <h2 style="margin-top:0;">芝生の種類図鑑｜特徴と選び方を徹底比較</h2>
-        <p>「芝生を張りたいけれど、どの種類を選べばいいかわからない」という悩みは非常に多いものです。芝生は一度張るとやり直しが大変なため、**お住まいの地域の気候**と**管理にかけられる時間**に合わせた選択が欠かせません。</p>
+        <p>「芝生を張りたいけれど、どれがいいかわからない」という悩みは非常に多いものです。芝生は一度植えるとやり直しが非常に大変なため、**「地域の気候」「日当たり」「どれだけ手間をかけられるか」**の3点から選ぶのが失敗しないコツです。</p>
 
-        <h2>1. 日本芝（暖地型芝生）</h2>
-        <p>日本の夏に強く、本州、四国、九州などの暖かい地域で最も一般的に使われるグループです。冬は休眠して茶色くなります。</p>
+        <h2>1. 日本芝（暖地型・夏に強い）</h2>
+        <p>日本の高温多湿な夏に最も適しており、関東以南の平地で広く利用されます。冬は休眠して茶色くなりますが、非常に丈夫で初心者向きです。</p>
 
         <h3>● 高麗芝（コウライシバ）</h3>
-        <p>日本の家庭で最もポピュラーな種類。葉が細かく密度が高いため、非常に美しい緑の絨毯を作ることができます。
-        <br>・**向いている人：** 美観を重視したい。定期的な手入れが苦ではない人。
-        <br>・**注意点：** 夏場は週1回の芝刈りが必要です。</p>
+        <p>日本の住宅で最も普及している「王道」の芝生です。
+        <br>・**特徴：** 密度が高く、裸足で歩きたくなるような美しい緑の絨毯になります。
+        <br>・**メリット：** 日本の気候に最適で病害虫に強く、入手もしやすい。
+        <br>・**デメリット：** 春から秋にかけて、週1回程度の芝刈りが必要です。</p>
 
         <h3>● 姫高麗芝（ヒメコウライシバ）</h3>
-        <p>高麗芝よりもさらに葉が細かく、繊細で美しい芝生。密度が非常に高いのが特徴です。
-        <br>・**向いている人：** ゴルフ場のグリーンのような極上の美しさを目指したい人。
-        <br>・**注意点：** 成長が早いため、高麗芝以上に頻繁な芝刈りと管理が求められます。</p>
+        <p>高麗芝よりもさらに葉が細く、繊細な美しさが際立つ種類です。
+        <br>・**メリット：** 美観は最高級。ゴルフ場のグリーンのような仕上がりも可能。
+        <br>・**注意点：** 成長が非常に早いため、放置するとすぐにボサボサになります。マメな人向けの「愛好家向け」芝生です。</p>
 
         <h3>● 野芝（ノシバ）</h3>
-        <p>日本に自生する芝で、最も丈夫です。葉が硬く太いため、踏圧に非常に強く、手入れも最小限で済みます。
-        <br>・**向いている人：** 手間をかけたくない。犬や子供が走り回るタフな環境。
-        <br>・**注意点：** 葉が粗いため、絨毯のような繊細な見た目にはなりません。</p>
+        <p>日本に自生する芝の中で最もタフな種類。葉が太く、ゴワゴワとした質感です。
+        <br>・**メリット：** 踏まれる力に非常に強く、少ない手入れでも枯れにくい。
+        <br>・**向いている場所：** 公園、広い法面、大型犬を飼っているお庭。</p>
 
         <div class="point-box">
-            <strong style="color:#e65100; font-size:1.2rem;">おすすめ：トヨタが開発した省管理芝「TM9」</strong>
-            <p>高麗芝を改良した「TM9」は、成長が遅いため**芝刈りの回数が通常の1/3程度**で済みます。初期費用は少し高いですが、その後の楽さを考えると最もコスパが良い選択肢です。</p>
+            <strong style="color:#e65100; font-size:1.2rem;">★ 咲くナビ特選：省管理芝「TM9」</strong>
+            <p>トヨタ自動車が開発した「TM9」は、高麗芝の性質を持ちながら**成長が驚くほど遅い**のが特徴です。年間の芝刈り回数が通常の1/3で済むため、現代の忙しいお庭作りに最適です。</p>
             <div class="shop-links">
+                <a href="#" class="btn-rakuten">楽天市場でTM9の価格をチェック</a>
                 <a href="#" class="btn-amazon">AmazonでTM9をチェック</a>
-                <a href="#" class="btn-rakuten">楽天市場でTM9をチェック</a>
-                <a href="#" class="btn-yahoo">Yahoo!ショッピングでチェック</a>
             </div>
         </div>
 
-        <h3>● ティフトン（バミューダグラス類）</h3>
-        <p>サッカー場や競技場でも使われる、非常に回復力の強い芝です。踏まれてもすぐに新芽が出てきます。
-        <br>・**向いている人：** スポーツを楽しみたい庭。とにかく早く一面を緑にしたい人。</p>
+        <h3>● セントオーガスチングラス</h3>
+        <p>実は**「日陰に最も強い」**暖地型芝生です。
+        <br>・**特徴：** 葉が幅広で柔らかく、明るい日陰なら十分に育ちます。
+        <br>・**注意点：** 寒さにはやや弱いため、積雪地域には向きません。</p>
 
-        <h2>2. 西洋芝（寒地型芝生）</h2>
-        <p>北海道や東北、高冷地に向いています。一年中緑色を保つのが最大の特徴ですが、関東以南の高温多湿な夏には非常に弱く、夏越しが困難です。</p>
+        <h2>2. 西洋芝（寒地型・冬も緑）</h2>
+        <p>北海道や東北、標高の高い地域に適しています。関東以南では「夏越し」が最大の課題となります。</p>
 
         <h3>● ケンタッキーブルーグラス</h3>
-        <p>西洋芝の代表格。寒さに強く、鮮やかな濃い緑色が魅力です。
-        <br>・**特徴：** 地下茎で広がるため、一部が傷んでも自然に回復します。</p>
+        <p>西洋芝の代表格。寒冷地の公園や競技場でよく見られる、鮮やかな濃い緑色が魅力です。一年中緑を楽しみたい寒冷地のお庭ならこれ一択です。</p>
 
         <h3>● トールフェスク</h3>
-        <p>西洋芝の中では比較的暑さや乾燥に強く、丈夫な種類です。
-        <br>・**特徴：** 根が深く張るため、西洋芝を検討しているなら検討の価値ありです。</p>
+        <p>西洋芝の中では比較的暑さに耐性があります。根が深く張るため、乾燥にも強いタフな西洋芝です。</p>
 
-        <h2>3. 失敗しない選び方チャート</h2>
-        <ul style="background:#f9fbf9; padding:20px; border-radius:12px; list-style:none;">
-            <li style="margin-bottom:15px;">✅ **一年中緑を保ちたい（寒冷地）**<br>→ ケンタッキーブルーグラス</li>
-            <li style="margin-bottom:15px;">✅ **手入れを楽にしたい（一般地域）**<br>→ TM9 または 野芝</li>
-            <li style="margin-bottom:15px;">✅ **美しさを極めたい**<br>→ 姫高麗芝</li>
-            <li style="margin-bottom:15px;">✅ **日陰が多い場所**<br>→ セントオーガスチングラス（暖地向け）</li>
-        </ul>
+        <h2>3. 芝生選びの決定版比較表</h2>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 400px;">
+                <thead>
+                    <tr style="background: var(--primary-green); color: white;">
+                        <th style="padding: 10px; border: 1px solid #ddd;">種類</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">耐暑性</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">手入れ</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">おすすめ地域</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">高麗芝</td><td style="text-align:center;">◎</td><td style="text-align:center;">普通</td><td style="text-align:center;">関東以南</td></tr>
+                    <tr style="background: #f1f8e9;"><td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">TM9</td><td style="text-align:center;">◎</td><td style="text-align:center;">非常に楽</td><td style="text-align:center;">関東以南</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">野芝</td><td style="text-align:center;">◎</td><td style="text-align:center;">楽</td><td style="text-align:center;">日本全域</td></tr>
+                    <tr style="background: #e3f2fd;"><td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">ケンタッキー</td><td style="text-align:center;">△</td><td style="text-align:center;">大変</td><td style="text-align:center;">北海道・東北</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 復活：関連記事タイルセクション -->
+        <h2 style="text-align: center; color: var(--primary-green); margin-top: 60px;">芝生ガイドをもっと読む</h2>
+        <div class="related-grid">
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="related-tile">
+                <span class="icon">📖</span>
+                <strong>芝生ガイドTOP</strong>
+                <p>基本の育て方から種類選びまで全てがわかる</p>
+            </a>
+            <a href="{{ '/shibafu-maintenance.html' | relative_url }}" class="related-tile">
+                <span class="icon">📅</span>
+                <strong>手入れカレンダー</strong>
+                <p>美しい緑を保つための年間スケジュール</p>
+            </a>
+            <a href="{{ '/shibafu-trouble.html' | relative_url }}" class="related-tile">
+                <span class="icon">🩺</span>
+                <strong>トラブル解決ガイド</strong>
+                <p>枯れ・病気・害虫への適切な対処法</p>
+            </a>
+        </div>
 
         <div style="text-align:center; margin-top:50px;">
-            <a href="/shibafu-guide.html" style="color:var(--primary-green); font-weight:bold; text-decoration:none;">← 芝生ガイドTOPへ戻る</a>
+            <a href="{{ '/' | relative_url }}" style="color:#888; text-decoration:none; font-size:0.9rem;">← 咲くナビ トップページへ</a>
         </div>
     </article>
 </div>
