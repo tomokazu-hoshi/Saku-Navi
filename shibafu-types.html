@@ -1,114 +1,203 @@
+---
+layout: none
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>芝生の種類図鑑｜失敗しない選び方と特徴を徹底比較</title>
-<style>
-  /* 共通：ヘッダー＆メニュー */
-  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #fcfcfc; }
-  header { background-color: #4A7c59; color: white; padding: 15px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-  .menu-trigger { font-size: 24px; cursor: pointer; margin-right: 15px; background: none; border: none; color: white; }
-  .site-title { font-size: 1.2rem; font-weight: bold; text-decoration: none; color: white; }
-  #menu-cb { display: none; }
-  .side-menu { position: fixed; top: 0; left: -250px; width: 250px; height: 100%; background-color: #fff; color: #333; transition: 0.3s; z-index: 1001; padding-top: 60px; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
-  #menu-cb:checked ~ .side-menu { left: 0; }
-  .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
-  #menu-cb:checked ~ .menu-overlay { display: block; }
-  .side-menu ul { list-style: none; padding: 0; margin: 0; }
-  .side-menu li a { display: block; padding: 15px 20px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; }
-  
-  /* 共通：縦型アフィリエイトボタン */
-  .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
-  .shop-links a { display: block; padding: 16px; border-radius: 8px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 16px; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
-  .btn-amazon { background-color: #f0a500; }
-  .btn-rakuten { background-color: #bf0000; }
-  .btn-yahoo { background-color: #ff0033; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芝生の種類図鑑｜失敗しない選び方と特徴を徹底比較｜咲くナビ</title>
+    <style>
+        :root {
+            --primary-green: #2d5a27;   
+            --white: #ffffff;
+            --text-main: #333333;
+            --overlay-bg: rgba(45, 90, 39, 0.98); 
+            --accent-yellow: #fff9c4;
+            --shop-amazon: #f0a500;
+            --shop-rakuten: #bf0000;
+            --shop-yahoo: #ff0033;
+        }
+        body { font-family: sans-serif; line-height: 1.8; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
+
+        /* --- 統一ヘッダー --- */
+        header { 
+            background: var(--white); 
+            border-bottom: 5px solid var(--primary-green); 
+            padding: 20px 15px; 
+            text-align: center;
+            position: relative;
+        }
+        header h1 { 
+            margin: 0; 
+            color: var(--primary-green); 
+            font-size: 1.4rem; 
+            font-weight: bold; 
+            line-height: 1.3;
+        }
+
+        /* ハンバーガーメニューボタン */
+        .menu-trigger {
+            position: absolute; 
+            top: 50%;
+            left: 15px; 
+            transform: translateY(-50%);
+            width: 45px; height: 45px; 
+            cursor: pointer; z-index: 9999; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: rgba(255,255,255,0.9); border-radius: 50%; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .menu-trigger span { display: block; width: 22px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
+        .active-menu span:nth-of-type(1) { transform: translateY(9px) rotate(-45deg); background-color: #fff !important; }
+        .active-menu span:nth-of-type(2) { opacity: 0; }
+        .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); background-color: #fff !important; }
+
+        /* 全画面メニュー */
+        .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
+        .overlay-content { width: 90%; max-width: 450px; text-align: center; padding-bottom: 40px; }
+        .menu-feature-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; }
+        .menu-special-banner { background: rgba(255, 255, 255, 0.1); border: 1px solid var(--accent-yellow); border-radius: 12px; padding: 18px; text-decoration: none; display: block; text-align: left; }
+        .menu-special-title { color: white; font-size: 1.0rem; font-weight: bold; margin: 0; }
+        .menu-special-tag { background: var(--accent-yellow); color: var(--primary-green); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-right: 8px; font-weight: bold; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+        .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
+        .menu-btn span { font-size: 0.65rem; opacity: 0.7; margin-top: 3px; }
+
+        /* --- 記事レイアウト --- */
+        .container { max-width: 850px; margin: 20px auto; padding: 0 15px; }
+        .main-card { background: var(--white); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 18px; }
+
+        h2 { font-size: 1.4rem; color: var(--primary-green); border-bottom: 3px solid #e0eadd; padding-bottom: 8px; margin-top: 40px; }
+        h3 { font-size: 1.2rem; color: #2e7d32; background: #f1f8e9; padding: 10px 15px; border-radius: 8px; margin-top: 30px; }
+        
+        .point-box { background: #fff8e1; border: 1px solid #ffecb3; border-radius: 12px; padding: 20px; margin: 30px 0; }
+        
+        /* 縦型アフィリエイトボタン */
+        .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .shop-links a { display: block; padding: 16px; border-radius: 10px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 1.1rem; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
+        .btn-amazon { background-color: var(--shop-amazon); }
+        .btn-rakuten { background-color: var(--shop-rakuten); }
+        .btn-yahoo { background-color: var(--shop-yahoo); }
+
+        footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
+    </style>
 </head>
 <body>
 
-<!-- ハンバーガーメニュー機構 -->
-<input type="checkbox" id="menu-cb">
 <header>
-  <label for="menu-cb" class="menu-trigger">☰</label>
-  <a href="https://tomokazu-hoshi.github.io/Saku-Navi/" class="site-title">咲くナビ</a>
+    <div class="menu-trigger" id="menuBtn" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+    </div>
+    <h1>【園芸全書】咲くナビ<br>(Saku-Navi)</h1>
 </header>
-<label for="menu-cb" class="menu-overlay"></label>
-<nav class="side-menu">
-  <ul>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/">トップページ</a></li>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/index-a-column.html">五十音から探す</a></li>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/category/purposes/グランドカバー/">グランドカバー一覧</a></li>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-guide.html">芝生ガイドTOP</a></li>
-  </ul>
-</nav>
 
-<!-- 記事本文（文字サイズ18px） -->
-<article style="max-width: 800px; margin: auto; padding: 20px; line-height: 1.8; font-size: 18px; color: #333;">
-  <h1 style="font-size: 24px; color: #2e7d32; border-bottom: 3px solid #2e7d32; padding-bottom: 10px;">芝生の種類図鑑｜失敗しない選び方と特徴を徹底比較</h1>
-  
-  <p>理想のお庭を作る第一歩は、環境に合った「芝の種類」を選ぶことです。芝生は大きく分けて、日本の気候に合う<strong>「日本芝（暖地型）」</strong>と、冬も緑を保つ<strong>「西洋芝（寒地型）」</strong>の2つに分類されます。</p>
-
-  <h2 style="font-size: 22px; background: #f1f8e9; padding: 12px; border-left: 5px solid #2e7d32;">1. 日本芝（夏緑型・暖地型）</h2>
-  <p>日本の高温多湿な夏に非常に強く、本州以南で最も一般的に利用されます。冬（11月〜3月頃）は休眠して茶色くなりますが、手入れが比較的楽なのが最大のメリットです。</p>
-
-  <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e8f5e9; border-radius: 12px; background: #fff;">
-    <h3 style="color: #2e7d32; margin-top: 0; font-size: 20px;">● コウライシバ（高麗芝）</h3>
-    <p>日本の住宅で最も普及している「定番」です。密度が高く、美しい景観が作れます。</p>
-    <ul style="padding-left: 20px; font-size: 0.95em;">
-      <li><strong>メリット：</strong> 日本の気候に完璧に適合し、病気に強い。</li>
-      <li><strong>デメリット：</strong> 夏場は週1回程度の定期的な芝刈りが必要。</li>
-    </ul>
-  </div>
-
-  <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e8f5e9; border-radius: 12px; background: #fff;">
-    <h3 style="color: #2e7d32; margin-top: 0; font-size: 20px;">● ノシバ（野芝）</h3>
-    <p>日本自生種で非常にタフ。葉が太く硬いため、公園や法面にも使われます。</p>
-    <ul style="padding-left: 20px; font-size: 0.95em;">
-      <li><strong>メリット：</strong> 踏圧（踏まれる力）に最強。手入れが最も楽。</li>
-      <li><strong>デメリット：</strong> 葉が粗いため、絨毯のような繊細さには欠ける。</li>
-    </ul>
-  </div>
-
-  <div style="background: #fff8e1; border: 1px solid #ff9800; padding: 20px; margin-top: 30px; border-radius: 10px;">
-    <h3 style="color: #e65100; margin-top: 0; font-size: 20px;">💡 咲くナビ・アドバイス：TM9とは？</h3>
-    <p style="margin-bottom: 15px;">トヨタ自動車が開発した「TM9」は、高麗芝の改良種です。成長が極めて遅いため、年間の芝刈り回数を通常の半分以下に減らせる「夢の省管理芝」として大人気です。ホームセンターでは品薄なため、ネット通販での購入が確実です。</p>
-    
-    <div style="text-align: center; background: #fff; padding: 15px; border-radius: 8px;">
-      <p style="font-weight: bold; margin-top: 0; font-size: 0.9em; color: #555;">＼ 芝刈りをラクにしたいならTM9の苗 ／</p>
-      <div class="shop-links">
-        <a href="#" class="btn-amazon">Amazonで価格を見る</a>
-        <a href="#" class="btn-rakuten">楽天市場で価格を見る</a>
-        <a href="#" class="btn-yahoo">Yahoo!ショッピングで価格を見る</a>
-      </div>
+<div id="fullMenu" class="overlay">
+    <div class="overlay-content">
+        <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
+        <div class="menu-feature-list">
+            <a href="/shibafu-guide.html" class="menu-special-banner">
+                <span class="menu-special-tag">人気</span><span class="menu-special-title">芝生の完全攻略ガイド</span>
+            </a>
+            <a href="/herb-project.html" class="menu-special-banner">
+                <span class="menu-special-tag">実用</span><span class="menu-special-title">ハーブの森プロジェクト</span>
+            </a>
+            <a href="/shade-garden.html" class="menu-special-banner">
+                <span class="menu-special-tag">解決</span><span class="menu-special-title">日陰のシェードガーデン</span>
+            </a>
+            <a href="/low-maintenance.html" class="menu-special-banner">
+                <span class="menu-special-tag">時短</span><span class="menu-special-title">究極のずぼら庭作り</span>
+            </a>
+        </div>
+        <div class="menu-grid">
+            <a href="/index-a-column.html" class="menu-btn">五十音<span>Index</span></a>
+            <a href="/months-menu.html" class="menu-btn">月別<span>Months</span></a>
+            <a href="/seasons-menu.html" class="menu-btn">季節<span>Season</span></a>
+            <a href="/colors-menu.html" class="menu-btn">花の色<span>Color</span></a>
+            <a href="/types-menu.html" class="menu-btn">分類<span>Type</span></a>
+            <a href="/envs-menu.html" class="menu-btn">環境<span>Env</span></a>
+            <a href="/purposes-menu.html" class="menu-btn">目的<span>Purpose</span></a>
+            <a href="/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
+        </div>
     </div>
-  </div>
+</div>
 
-  <h2 style="font-size: 22px; background: #e1f5fe; padding: 12px; border-left: 5px solid #0277bd; margin-top: 40px;">2. 西洋芝（冬緑型・寒地型）</h2>
-  <p>北海道や東北などの寒冷地向けです。「一年中緑を楽しみたい」場合に選ばれますが、関東以南での夏越しは非常に難易度が高いです。</p>
-  <ul style="padding-left: 20px; font-size: 0.95em; background: #fff; border: 1px solid #e1f5fe; padding: 20px; border-radius: 12px;">
-    <li style="margin-bottom: 10px;"><strong>ケンタッキーブルーグラス：</strong> 西洋芝の代表格。寒さに強く、鮮やかな濃い緑色が魅力。</li>
-    <li><strong>ベントグラス：</strong> ゴルフ場のグリーン用。非常に繊細で、毎日の手入れと低刈りが必須。</li>
-  </ul>
+<div class="container">
+    <article class="main-card">
+        <h2 style="margin-top:0;">芝生の種類図鑑｜特徴と選び方を徹底比較</h2>
+        <p>「芝生を張りたいけれど、どの種類を選べばいいかわからない」という悩みは非常に多いものです。芝生は一度張るとやり直しが大変なため、**お住まいの地域の気候**と**管理にかけられる時間**に合わせた選択が欠かせません。</p>
 
-  <!-- 関連記事タイル -->
-  <section style="margin-top: 60px; border-top: 2px solid #eee; padding-top: 30px;">
-    <h2 style="text-align: center; color: #4A7c59; font-size: 22px; margin-bottom: 25px;">芝生のお手入れとトラブル解決</h2>
-    <div style="display: flex; flex-direction: column; gap: 15px;">
-      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-maintenance.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-        <span style="font-size: 30px;">📅</span><br>
-        <strong style="color: #4A7c59; font-size: 20px;">手入れカレンダー</strong><br>
-        <span style="font-size: 14px; color: #666;">美しい緑を保つ年間スケジュール</span>
-      </a>
-      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-trouble.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-        <span style="font-size: 30px;">🩺</span><br>
-        <strong style="color: #4A7c59; font-size: 20px;">トラブル解決ガイド</strong><br>
-        <span style="font-size: 14px; color: #666;">枯れ・病気・害虫の対処法</span>
-      </a>
-    </div>
-  </section>
-</article>
+        <h2>1. 日本芝（暖地型芝生）</h2>
+        <p>日本の夏に強く、本州、四国、九州などの暖かい地域で最も一般的に使われるグループです。冬は休眠して茶色くなります。</p>
 
+        <h3>● 高麗芝（コウライシバ）</h3>
+        <p>日本の家庭で最もポピュラーな種類。葉が細かく密度が高いため、非常に美しい緑の絨毯を作ることができます。
+        <br>・**向いている人：** 美観を重視したい。定期的な手入れが苦ではない人。
+        <br>・**注意点：** 夏場は週1回の芝刈りが必要です。</p>
+
+        <h3>● 姫高麗芝（ヒメコウライシバ）</h3>
+        <p>高麗芝よりもさらに葉が細かく、繊細で美しい芝生。密度が非常に高いのが特徴です。
+        <br>・**向いている人：** ゴルフ場のグリーンのような極上の美しさを目指したい人。
+        <br>・**注意点：** 成長が早いため、高麗芝以上に頻繁な芝刈りと管理が求められます。</p>
+
+        <h3>● 野芝（ノシバ）</h3>
+        <p>日本に自生する芝で、最も丈夫です。葉が硬く太いため、踏圧に非常に強く、手入れも最小限で済みます。
+        <br>・**向いている人：** 手間をかけたくない。犬や子供が走り回るタフな環境。
+        <br>・**注意点：** 葉が粗いため、絨毯のような繊細な見た目にはなりません。</p>
+
+        <div class="point-box">
+            <strong style="color:#e65100; font-size:1.2rem;">おすすめ：トヨタが開発した省管理芝「TM9」</strong>
+            <p>高麗芝を改良した「TM9」は、成長が遅いため**芝刈りの回数が通常の1/3程度**で済みます。初期費用は少し高いですが、その後の楽さを考えると最もコスパが良い選択肢です。</p>
+            <div class="shop-links">
+                <a href="#" class="btn-amazon">AmazonでTM9をチェック</a>
+                <a href="#" class="btn-rakuten">楽天市場でTM9をチェック</a>
+                <a href="#" class="btn-yahoo">Yahoo!ショッピングでチェック</a>
+            </div>
+        </div>
+
+        <h3>● ティフトン（バミューダグラス類）</h3>
+        <p>サッカー場や競技場でも使われる、非常に回復力の強い芝です。踏まれてもすぐに新芽が出てきます。
+        <br>・**向いている人：** スポーツを楽しみたい庭。とにかく早く一面を緑にしたい人。</p>
+
+        <h2>2. 西洋芝（寒地型芝生）</h2>
+        <p>北海道や東北、高冷地に向いています。一年中緑色を保つのが最大の特徴ですが、関東以南の高温多湿な夏には非常に弱く、夏越しが困難です。</p>
+
+        <h3>● ケンタッキーブルーグラス</h3>
+        <p>西洋芝の代表格。寒さに強く、鮮やかな濃い緑色が魅力です。
+        <br>・**特徴：** 地下茎で広がるため、一部が傷んでも自然に回復します。</p>
+
+        <h3>● トールフェスク</h3>
+        <p>西洋芝の中では比較的暑さや乾燥に強く、丈夫な種類です。
+        <br>・**特徴：** 根が深く張るため、西洋芝を検討しているなら検討の価値ありです。</p>
+
+        <h2>3. 失敗しない選び方チャート</h2>
+        <ul style="background:#f9fbf9; padding:20px; border-radius:12px; list-style:none;">
+            <li style="margin-bottom:15px;">✅ **一年中緑を保ちたい（寒冷地）**<br>→ ケンタッキーブルーグラス</li>
+            <li style="margin-bottom:15px;">✅ **手入れを楽にしたい（一般地域）**<br>→ TM9 または 野芝</li>
+            <li style="margin-bottom:15px;">✅ **美しさを極めたい**<br>→ 姫高麗芝</li>
+            <li style="margin-bottom:15px;">✅ **日陰が多い場所**<br>→ セントオーガスチングラス（暖地向け）</li>
+        </ul>
+
+        <div style="text-align:center; margin-top:50px;">
+            <a href="/shibafu-guide.html" style="color:var(--primary-green); font-weight:bold; text-decoration:none;">← 芝生ガイドTOPへ戻る</a>
+        </div>
+    </article>
+</div>
+
+<footer><p>&copy; 2026 咲くナビ</p></footer>
+
+<script>
+    function toggleNav() {
+        const menu = document.getElementById("fullMenu");
+        const btn = document.getElementById("menuBtn");
+        if (menu.style.width === "100%") {
+            menu.style.width = "0%";
+            btn.classList.remove("active-menu");
+        } else {
+            menu.style.width = "100%";
+            btn.classList.add("active-menu");
+        }
+    }
+</script>
 </body>
 </html>
