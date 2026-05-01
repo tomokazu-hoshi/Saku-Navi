@@ -83,6 +83,16 @@
         .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
         .main-card { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
+        /* ★復旧部分：カテゴリボタン（2×5タイル等）のデザイン --- */
+        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+        .btn-home {
+            background: var(--primary-green); color: white !important; height: 80px;
+            text-decoration: none; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-radius: 12px; font-weight: bold; font-size: 0.95rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-home span { font-size: 0.65rem; opacity: 0.8; margin-top: 4px; }
+        .btn-home:active { transform: scale(0.95); background: var(--nav-green); }
+
         footer { background: #e0eadd; text-align: center; padding: 30px; margin-top: 40px; font-size: 0.8rem; color: #555; }
     </style>
 </head>
@@ -96,7 +106,7 @@
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
         
-        <!-- ★ここに特集バナーを追加しました -->
+        <!-- 特集バナー -->
         <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-special-banner">
             <span class="menu-special-tag">PICK UP 特集</span>
             <h3 class="menu-special-title">🌿 芝生の完全攻略ガイド</h3>
