@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ローメンテナンスな庭作り｜手入れ不要の「究極のずぼら庭」を作る3ステップ</title>
+---
+layout: default
+title: "ローメンテナンスな庭作り｜手入れ不要の「究極のずぼら庭」を作る3ステップ"
+---
+
 <style>
-  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #fcfcfc; line-height: 1.8; font-size: 18px; color: #333; }
+  /* 記事固有のスタイル */
   article { max-width: 800px; margin: auto; padding: 20px; }
   h1 { font-size: 26px; color: #5d4037; border-bottom: 3px solid #5d4037; padding-bottom: 10px; margin-bottom: 30px; }
   h2 { font-size: 22px; background: #efebe9; padding: 12px; border-left: 6px solid #5d4037; margin-top: 45px; margin-bottom: 20px; }
@@ -24,9 +23,21 @@
     background: #5d4037; color: white; font-size: 10px; font-weight: bold;
     padding: 2px 6px; border-radius: 4px;
   }
+
+  /* 関連記事セクションの共通スタイル */
+  .special-section { margin-top: 40px; padding: 0 5px; }
+  .feature-banner {
+    display: block; margin-bottom: 15px; padding: 20px; border-radius: 15px;
+    text-decoration: none; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .feature-banner h4 { margin: 0; font-size: 1.1rem; }
+  .feature-banner p { margin: 5px 0 0; font-size: 0.8rem; opacity: 0.9; }
+
+  .bg-shibafu { background: linear-gradient(135deg, #2e7d32, #4caf50); }
+  .bg-herb { background: linear-gradient(135deg, #558b2f, #8bc34a); }
+  .bg-shade { background: linear-gradient(135deg, #0277bd, #03a9f4); }
+  .bg-zabora { background: linear-gradient(135deg, #5d4037, #8d6e63); }
 </style>
-</head>
-<body>
 
 <article>
   <h1>ローメンテナンスな庭作り｜手入れ不要の「究極のずぼら庭」</h1>
@@ -88,14 +99,28 @@
     </div>
   </div>
 
-  <div style="margin-top: 50px; padding: 20px; background: #fff; border-top: 4px solid #5d4037; text-align: center;">
-    <h3 style="margin-top: 0; border: none;">あわせて読みたい特集</h3>
-    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-      <a href="shibafu-guide.html" style="color: #5d4037; font-weight: bold; text-decoration: none;">・芝生は管理が大変？省管理芝「TM9」の秘密 ≫</a>
-      <a href="herb-project.html" style="color: #5d4037; font-weight: bold; text-decoration: none;">・料理に使える！プランターで始める簡単ハーブ ≫</a>
-    </div>
+  <!-- 共通関連記事（咲くナビ特別ガイド） -->
+  <div class="special-section">
+    <h3 style="text-align: center; color: #4A7c59; border-bottom: 2px solid #e0eadd; padding-bottom: 10px; margin-bottom: 20px;">＼ 咲くナビ特別ガイド ／</h3>
+    
+    <a href="{{ '/shibafu-guide.html' | relative_url }}" class="feature-banner bg-shibafu">
+      <h4>🌿 芝生の完全攻略ガイド</h4>
+      <p>理想の緑の絨毯を作る種類選びと手入れ</p>
+    </a>
+
+    <a href="{{ '/herb-project.html' | relative_url }}" class="feature-banner bg-herb">
+      <h4>🪴 ハーブの森プロジェクト</h4>
+      <p>料理・虫除けに！使って楽しむ香りの庭</p>
+    </a>
+
+    <a href="{{ '/shade-garden.html' | relative_url }}" class="feature-banner bg-shade">
+      <h4>⛱ 日陰のシェードガーデン</h4>
+      <p>北向き・暗い庭をおしゃれに変える魔法</p>
+    </a>
+
+    <a href="{{ '/low-maintenance.html' | relative_url }}" class="feature-banner bg-zabora">
+      <h4>🧹 究極のずぼら庭作り</h4>
+      <p>雑草対策と植えっぱなしOKな植物たち</p>
+    </a>
   </div>
 </article>
-
-</body>
-</html>
