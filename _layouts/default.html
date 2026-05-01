@@ -11,6 +11,7 @@
             --white: #ffffff;
             --text-main: #333333;
             --overlay-bg: rgba(45, 90, 39, 0.98); 
+            --accent-yellow: #fff9c4; /* 特集用のアクセントカラー */
         }
         body {
             font-family: sans-serif;
@@ -40,6 +41,32 @@
             display: flex; flex-direction: column; align-items: center; padding-top: 60px;
         }
         .overlay-content { width: 90%; max-width: 400px; text-align: center; padding-bottom: 40px; }
+
+        /* ★追加：メニュー内の特集バナーデザイン */
+        .menu-special-banner {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+        .menu-special-banner:active { background: rgba(255, 255, 255, 0.2); }
+        .menu-special-tag {
+            background: var(--accent-yellow);
+            color: var(--primary-green);
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .menu-special-title { color: white; font-size: 1.1rem; font-weight: bold; margin: 0; }
+        .menu-special-sub { color: rgba(255,255,255,0.8); font-size: 0.75rem; margin-top: 5px; }
+
         .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
         .menu-btn {
             background: rgba(255,255,255,0.15); color: white !important; text-decoration: none;
@@ -56,16 +83,6 @@
         .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
         .main-card { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-        /* --- カテゴリーボタン（2×5タイル） --- */
-        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
-        .btn-home {
-            background: var(--primary-green); color: white !important; height: 80px;
-            text-decoration: none; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            border-radius: 12px; font-weight: bold; font-size: 0.95rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .btn-home span { font-size: 0.65rem; opacity: 0.8; margin-top: 4px; }
-        .btn-home:active { transform: scale(0.95); background: var(--nav-green); }
-
         footer { background: #e0eadd; text-align: center; padding: 30px; margin-top: 40px; font-size: 0.8rem; color: #555; }
     </style>
 </head>
@@ -75,9 +92,18 @@
     <span></span><span></span><span></span>
 </div>
 
+<!-- 全画面メニュー -->
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
-        <div style="color:white; margin-bottom:20px; font-weight:bold;">カテゴリー検索</div>
+        
+        <!-- ★ここに特集バナーを追加しました -->
+        <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-special-banner">
+            <span class="menu-special-tag">PICK UP 特集</span>
+            <h3 class="menu-special-title">🌿 芝生の完全攻略ガイド</h3>
+            <p class="menu-special-sub">種類・手入れ・トラブル解決を徹底解説！</p>
+        </a>
+
+        <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:0.9rem; opacity:0.8;">カテゴリーから探す</div>
         <div class="menu-grid">
             <a href="{{ '/index-a-column.html' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
             <a href="{{ '/months-menu.html' | relative_url }}" class="menu-btn">月別<span>Months</span></a>
