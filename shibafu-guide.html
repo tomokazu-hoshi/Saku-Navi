@@ -4,137 +4,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>日本でよく使われる芝生の種類と選び方｜咲くナビ</title>
+    <style>
+        /* --- ヘッダー・メニュー用スタイル --- */
+        header {
+            background: #fff;
+            border-bottom: 2px solid #4A7c59;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            color: #4A7c59;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        /* ハンバーガーボタン */
+        .menu-btn {
+            width: 30px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .menu-btn span {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #4A7c59;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        .menu-btn span:nth-child(1) { top: 0; }
+        .menu-btn span:nth-child(2) { top: 10px; }
+        .menu-btn span:nth-child(3) { top: 20px; }
+        /* 開いた時のアニメーション */
+        .menu-btn.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+        .menu-btn.open span:nth-child(2) { opacity: 0; }
+        .menu-btn.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+        /* メニューの中身 */
+        nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100%;
+            background: #fff;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            padding-top: 60px;
+            z-index: 999;
+        }
+        nav.open { right: 0; }
+        nav ul { list-style: none; padding: 0; }
+        nav ul li { border-bottom: 1px solid #eee; }
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:active { background: #f1f8e9; }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+        }
+        .overlay.show { display: block; }
+
+        /* --- 元の記事用スタイル --- */
+        body { font-family: sans-serif; line-height: 1.6; color: #333; margin: 0; }
+        .content-inner { padding: 15px; max-width: 800px; margin: auto; }
+    </style>
 </head>
-<body style="font-family: sans-serif; line-height: 1.6; color: #333; padding: 15px; max-width: 800px; margin: auto;">
+<body>
 
-  <h1>日本でよく使われる芝生の種類と選び方</h1>
-  <p>芝生選びは、お住まいの地域と「冬に緑を保ちたいか」がポイントになります。代表的な種類をまとめました。</p>
+  <!-- ヘッダーセクション -->
+  <header>
+    <a href="/" class="logo">園芸全書 咲くナビ</a>
+    <div class="menu-btn" id="menu-btn">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
 
-  <!-- ① 目次セクション -->
-  <section id="toc" style="background-color: #f0f4f0; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
-    <h2 style="font-size: 1.1em; margin-top: 0; color: #2e7d32;">目次（タップで移動）</h2>
-    <ul style="list-style: none; padding: 0;">
-      <li style="margin-bottom: 12px;"><a href="#warm" style="color: #2e7d32; font-weight: bold;">▼ 暖地型芝生（日本の夏に強い）</a></li>
-      <li style="margin-bottom: 12px;"><a href="#cool" style="color: #2e7d32; font-weight: bold;">▼ 寒地型芝生（一年中緑を保ちやすい）</a></li>
-      <li style="margin-bottom: 12px;"><a href="#other" style="color: #d84315; font-weight: bold;">▼ 芝生以外のグランドカバー</a></li>
-      <li style="margin-bottom: 0;"><a href="#care" style="color: #2e7d32; font-weight: bold;">▼ 手入れ・トラブル解決</a></li>
+  <!-- スライドメニュー -->
+  <div class="overlay" id="overlay"></div>
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="/">トップページ</a></li>
+      <li><a href="/index-a-column.html">五十音から探す</a></li>
+      <li><a href="/colors-menu.html">花の色から探す</a></li>
+      <li><a href="/months-menu.html">開花月から探す</a></li>
+      <li><a href="/purposes-menu.html">目的・用途から探す</a></li>
+      <li><a href="/envs-menu.html">育てる環境から探す</a></li>
     </ul>
-  </section>
+  </nav>
 
-  <!-- 暖地型：あいうえお順 -->
-  <section id="warm" style="margin-bottom: 50px;">
-    <h2 style="border-bottom: 2px solid #2e7d32; color: #2e7d32;">暖地型芝生（夏緑型）</h2>
-    <p>関東以南の暖かい地域に最適です。夏に旺盛に育ち、冬は休眠して茶色くなります。</p>
-    
-    <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・コウライシバ（高麗芝）</h3>
-      <p style="margin: 0; font-size: 0.95em;">日本の家庭で最もポピュラー。密度が高く美しい緑の絨毯になります。</p>
-    </div>
-    <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・セントオーガスチングラス</h3>
-      <p style="margin: 0; font-size: 0.95em;">日陰や塩害に強く、海岸近くの地域や明るい日陰にも適しています。</p>
-    </div>
-    <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・ティフトン</h3>
-      <p style="margin: 0; font-size: 0.95em;">非常に成長が早く、踏まれてもすぐに回復するため競技場などで使われます。</p>
-    </div>
-    <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・ノシバ（野芝）</h3>
-      <p style="margin: 0; font-size: 0.95em;">日本自生の最も丈夫な種類。葉が硬く、少ない手入れでも枯れにくいのが特徴。</p>
-    </div>
-    <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・バミューダグラス</h3>
-      <p style="margin: 0; font-size: 0.95em;">乾燥に強く、広範囲を素早く緑で覆いたい場合に向いています。</p>
-    </div>
-    <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・ヒメコウライシバ（姫高麗芝）</h3>
-      <p style="margin: 0; font-size: 0.95em;">高麗芝よりさらに繊細。美観を重視する方に人気ですが、芝刈りの頻度は多めです。</p>
-    </div>
-  </section>
+  <div class="content-inner">
+    <h1>日本でよく使われる芝生の種類と選び方</h1>
+    <p>芝生選びは、お住まいの地域と「冬に緑を保ちたいか」がポイントになります。代表的な種類をまとめました。</p>
 
-  <!-- 寒地型：あいうえお順 -->
-  <section id="cool" style="margin-bottom: 50px;">
-    <h2 style="border-bottom: 2px solid #0277bd; color: #0277bd;">寒地型芝生（冬緑型）</h2>
-    <p>北海道や東北などの寒冷地に適しています。夏場（30℃以上）の管理には注意が必要です。</p>
+    <!-- ① 目次セクション -->
+    <section id="toc" style="background-color: #f0f4f0; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
+      <h2 style="font-size: 1.1em; margin-top: 0; color: #2e7d32;">目次（タップで移動）</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 12px;"><a href="#warm" style="color: #2e7d32; font-weight: bold;">▼ 暖地型芝生（日本の夏に強い）</a></li>
+        <li style="margin-bottom: 12px;"><a href="#cool" style="color: #2e7d32; font-weight: bold;">▼ 寒地型芝生（一年中緑を保ちやすい）</a></li>
+        <li style="margin-bottom: 12px;"><a href="#other" style="color: #d84315; font-weight: bold;">▼ 芝生以外のグランドカバー</a></li>
+        <li style="margin-bottom: 0;"><a href="#care" style="color: #2e7d32; font-weight: bold;">▼ 手入れ・トラブル解決</a></li>
+      </ul>
+    </section>
 
-    <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・ケンタッキーブルーグラス</h3>
-      <p style="margin: 0; font-size: 0.95em;">寒冷地の家庭用として最も一般的。鮮やかな濃い緑色が魅力です。</p>
-    </div>
-    <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・トールフェスク</h3>
-      <p style="margin: 0; font-size: 0.95em;">寒地型の中では比較的暑さや乾燥に強く、タフな環境でも育ちます。</p>
-    </div>
-    <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・ベントグラス</h3>
-      <p style="margin: 0; font-size: 0.95em;">最高級の美しさ。ゴルフ場のように短く刈り込んで維持するのに適しています。</p>
-    </div>
-    <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
-      <h3 style="margin: 0 0 5px 0;">・ペレニアルライグラス</h3>
-      <p style="margin: 0; font-size: 0.95em;">成長が非常に早く、冬に枯れた芝生の上に種をまく「追い蒔き」によく使われます。</p>
-    </div>
-  </section>
-
-  <!-- ② グランドカバーへのボタンリンク -->
-  <section id="other" style="margin-bottom: 50px; text-align: center; padding: 25px; background-color: #fff3e0; border-radius: 12px; border: 2px dashed #ff9800;">
-    <h3 style="margin-top: 0; color: #e65100;">芝生以外の選択肢をお探しですか？</h3>
-    <p>「芝刈りが面倒」「花も楽しみたい」という方には、他のグランドカバー植物もおすすめです。</p>
-    <a href="https://tomokazu-hoshi.github.io/Saku-Navi/category/purposes/グランドカバー/" style="display: inline-block; padding: 15px 30px; background-color: #ff9800; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 0 #ef6c00;">グランドカバー植物一覧を見る</a>
-  </section>
-
-  <!-- ③ 追加記事セクション -->
-  <section id="care" style="background-color: #fafafa; padding: 20px; border-radius: 10px; margin-bottom: 40px;">
-    <h2 style="color: #333;">芝生のお役立ち情報</h2>
-    <div style="margin-bottom: 25px;">
-      <h4 style="margin-bottom: 10px; color: #2e7d32;">● 芝生の手入れスケジュール（和芝）</h4>
-      <p style="font-size: 0.9em;">
-        ・3月〜4月：サッチング、目土入れ（更新作業）<br>
-        ・5月〜8月：定期的な芝刈り、水やり、施肥<br>
-        ・9月〜10月：最後の芝刈り、冬越しの準備
-      </p>
-    </div>
-    <div>
-      <h4 style="margin-bottom: 10px; color: #2e7d32;">● 困ったときのQ&A</h4>
-      <p style="font-size: 0.9em;">
-        <strong>Q. 芝生の一部が枯れてきた</strong><br>
-        A. 病気（ラージパッチなど）や、害虫（シバツトガなど）が原因です。症状に合わせて適切な薬剤を使用しましょう。
-      </p>
-    </div>
-  </section>
-
-  <!-- タイル状ボタンリンク・セクション -->
-  <section id="related-articles" style="margin-top: 60px; border-top: 2px solid #eee; padding-top: 30px;">
-    <h2 style="text-align: center; color: #2e7d32; margin-bottom: 25px; font-size: 1.3em;">こちらの記事も読まれています</h2>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+    <!-- 暖地型：あいうえお順 -->
+    <section id="warm" style="margin-bottom: 50px;">
+      <h2 style="border-bottom: 2px solid #2e7d32; color: #2e7d32;">暖地型芝生（夏緑型）</h2>
+      <p>関東以南の暖かい地域に最適です。夏に旺盛に育ち、冬は休眠して茶色くなります。</p>
       
-      <!-- タイル1: 種類図鑑 -->
-      <a href="shibafu-types.html" style="text-decoration: none; background: #ffffff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center;">
-        <span style="font-size: 2em; margin-bottom: 10px;">🌿</span>
-        <span style="font-weight: bold; color: #2e7d32;">芝生の種類図鑑</span>
-        <span style="font-size: 0.8em; color: #666; margin-top: 5px;">あなたにぴったりの芝を見つける</span>
-      </a>
+      <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・コウライシバ（高麗芝）</h3>
+        <p style="margin: 0; font-size: 0.95em;">日本の家庭で最もポピュラー。密度が高く美しい緑の絨毯になります。</p>
+      </div>
+      <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・セントオーガスチングラス</h3>
+        <p style="margin: 0; font-size: 0.95em;">日陰や塩害に強く、海岸近くの地域や明るい日陰にも適しています。</p>
+      </div>
+      <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・ティフトン</h3>
+        <p style="margin: 0; font-size: 0.95em;">非常に成長が早く、踏まれてもすぐに回復するため競技場などで使われます。</p>
+      </div>
+      <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・ノシバ（野芝）</h3>
+        <p style="margin: 0; font-size: 0.95em;">日本自生の最も丈夫な種類。葉が硬く、少ない手入れでも枯れにくいのが特徴。</p>
+      </div>
+      <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・バミューダグラス</h3>
+        <p style="margin: 0; font-size: 0.95em;">乾燥に強く、広範囲を素早く緑で覆いたい場合に向いています。</p>
+      </div>
+      <div style="border-left: 4px solid #81c784; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・ヒメコウライシバ（姫高麗芝）</h3>
+        <p style="margin: 0; font-size: 0.95em;">高麗芝よりさらに繊細。美観を重視する方に人気ですが、芝刈りの頻度は多めです。</p>
+      </div>
+    </section>
 
-      <!-- タイル2: 手入れカレンダー -->
-      <a href="shibafu-maintenance.html" style="text-decoration: none; background: #ffffff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center;">
-        <span style="font-size: 2em; margin-bottom: 10px;">📅</span>
-        <span style="font-weight: bold; color: #2e7d32;">手入れカレンダー</span>
-        <span style="font-size: 0.8em; color: #666; margin-top: 5px;">美しい緑を保つ年間スケジュール</span>
-      </a>
+    <!-- 寒地型：あいうえお順 -->
+    <section id="cool" style="margin-bottom: 50px;">
+      <h2 style="border-bottom: 2px solid #0277bd; color: #0277bd;">寒地型芝生（冬緑型）</h2>
+      <p>北海道や東北などの寒冷地に適しています。夏場（30℃以上）の管理には注意が必要です。</p>
 
-      <!-- タイル3: トラブル解決 -->
-      <a href="shibafu-trouble.html" style="text-decoration: none; background: #ffffff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center;">
-        <span style="font-size: 2em; margin-bottom: 10px;">🩺</span>
-        <span style="font-weight: bold; color: #2e7d32;">トラブル解決ガイド</span>
-        <span style="font-size: 0.8em; color: #666; margin-top: 5px;">枯れ・病気・害虫の対処法</span>
-      </a>
+      <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・ケンタッキーブルーグラス</h3>
+        <p style="margin: 0; font-size: 0.95em;">寒冷地の家庭用として最も一般的。鮮やかな濃い緑色が魅力です。</p>
+      </div>
+      <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・トールフェスク</h3>
+        <p style="margin: 0; font-size: 0.95em;">寒地型の中では比較的暑さや乾燥に強く、タフな環境でも育ちます。</p>
+      </div>
+      <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・ベントグラス</h3>
+        <p style="margin: 0; font-size: 0.95em;">最高級の美しさ。ゴルフ場のように短く刈り込んで維持するのに適しています。</p>
+      </div>
+      <div style="border-left: 4px solid #4fc3f7; padding-left: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 5px 0;">・ペレニアルライグラス</h3>
+        <p style="margin: 0; font-size: 0.95em;">成長が非常に早く、冬に枯れた芝生の上に種をまく「追い蒔き」によく使われます。</p>
+      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ② グランドカバーへのボタンリンク -->
+    <section id="other" style="margin-bottom: 50px; text-align: center; padding: 25px; background-color: #fff3e0; border-radius: 12px; border: 2px dashed #ff9800;">
+      <h3 style="margin-top: 0; color: #e65100;">芝生以外の選択肢をお探しですか？</h3>
+      <p>「芝刈りが面倒」「花も楽しみたい」という方には、他のグランドカバー植物もおすすめです。</p>
+      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/category/purposes/グランドカバー/" style="display: inline-block; padding: 15px 30px; background-color: #ff9800; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 0 #ef6c00;">グランドカバー植物一覧を見る</a>
+    </section>
 
-  <p style="text-align: center; margin-top: 50px;">
-    <a href="#toc" style="color: #888; text-decoration: none; font-size: 0.9em;">↑ 目次に戻る</a>
-  </p>
+    <!-- ③ 追加記事セクション -->
+    <section id="care" style="background-color: #fafafa; padding: 20px; border-radius: 10px; margin-bottom: 40px;">
+      <h2 style="color: #333;">芝生のお役立ち情報</h2>
+      <div style="margin-bottom: 25px;">
+        <h4 style="margin-bottom: 10px; color: #2e7d32;">● 芝生の手入れスケジュール（和芝）</h4>
+        <p style="font-size: 0.9em;">
+          ・3月〜4月：サッチング、目土入れ（更新作業）<br>
+          ・5月〜8月：定期的な芝刈り、水やり、施肥<br>
+          ・9月〜10月：最後の芝刈り、冬越しの準備
+        </p>
+      </div>
+      <div>
+        <h4 style="margin-bottom: 10px; color: #2e7d32;">● 困ったときのQ&A</h4>
+        <p style="font-size: 0.9em;">
+          <strong>Q. 芝生の一部が枯れてきた</strong><br>
+          A. 病気（ラージパッチなど）や、害虫（シバツトガなど）が原因です。症状に合わせて適切な薬剤を使用しましょう。
+        </p>
+      </div>
+    </section>
 
+    <!-- タイル状ボタンリンク・セクション -->
+    <section id="related-articles" style="margin-top: 60px; border-top: 2px solid #eee; padding-top: 30px;">
+      <h2 style="text-align: center; color: #2e7d32; margin-bottom: 25px; font-size: 1.3em;">こちらの記事も読まれています</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+        <a href="shibafu-types.html" style="text-decoration: none; background: #ffffff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 2em; margin-bottom: 10px;">🌿</span>
+          <span style="font-weight: bold; color: #2e7d32;">芝生の種類図鑑</span>
+          <span style="font-size: 0.8em; color: #666; margin-top: 5px;">あなたにぴったりの芝を見つける</span>
+        </a>
+        <a href="shibafu-maintenance.html" style="text-decoration: none; background: #ffffff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 2em; margin-bottom: 10px;">📅</span>
+          <span style="font-weight: bold; color: #2e7d32;">手入れカレンダー</span>
+          <span style="font-size: 0.8em; color: #666; margin-top: 5px;">美しい緑を保つ年間スケジュール</span>
+        </a>
+        <a href="shibafu-trouble.html" style="text-decoration: none; background: #ffffff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 2em; margin-bottom: 10px;">🩺</span>
+          <span style="font-weight: bold; color: #2e7d32;">トラブル解決ガイド</span>
+          <span style="font-size: 0.8em; color: #666; margin-top: 5px;">枯れ・病気・害虫の対処法</span>
+        </a>
+      </div>
+    </section>
+
+    <p style="text-align: center; margin-top: 50px;">
+      <a href="#toc" style="color: #888; text-decoration: none; font-size: 0.9em;">↑ 目次に戻る</a>
+    </p>
+  </div>
+
+  <script>
+    // メニューの開閉
+    const btn = document.getElementById('menu-btn');
+    const nav = document.getElementById('nav-menu');
+    const overlay = document.getElementById('overlay');
+
+    btn.onclick = () => {
+      btn.classList.toggle('open');
+      nav.classList.toggle('open');
+      overlay.classList.toggle('show');
+    };
+
+    overlay.onclick = () => {
+      btn.classList.remove('open');
+      nav.classList.remove('open');
+      overlay.classList.remove('show');
+    };
+  </script>
 </body>
 </html>
