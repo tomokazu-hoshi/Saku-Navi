@@ -1,14 +1,12 @@
 ---
-layout: default
-title: "日本でよく使われる芝生の種類と選び方｜咲くナビ"
+layout: none
 ---
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本でよく使われる芝生の種類と選び方｜咲くナビ</title>
+    <title>日本でよく使われる芝生の種類と選び方｜【園芸全書】咲くナビ</title>
     <style>
         :root {
             --primary-green: #2d5a27;   
@@ -19,52 +17,42 @@ title: "日本でよく使われる芝生の種類と選び方｜咲くナビ"
         }
         body { font-family: sans-serif; line-height: 1.6; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
 
-        /* --- ヘッダー（タイトルを左上のメニュー横に配置） --- */
+        /* --- ヘッダー：サイト名のみをシンプルに表示 --- */
         header { 
             background: var(--white); 
             border-bottom: 5px solid var(--primary-green); 
-            padding: 15px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
+            padding: 20px 15px; 
+            text-align: center;
             position: relative;
-            min-height: 60px;
         }
         header h1 { 
             margin: 0; 
             color: var(--primary-green); 
             font-size: 1.4rem; 
             font-weight: bold; 
-            line-height: 1.2;
-            text-align: center;
-            padding-left: 50px; /* メニューボタンとの干渉防止 */
+            line-height: 1.3;
         }
 
-        /* ハンバーガーメニューボタン */
+        /* --- メニューボタン（配置を調整し、一つだけに統一） --- */
         .menu-trigger {
             position: absolute; 
             top: 50%;
             left: 15px; 
             transform: translateY(-50%);
-            width: 45px; 
-            height: 45px; 
-            cursor: pointer; 
-            z-index: 9999; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center;
-            background: rgba(255,255,255,0.9); 
-            border-radius: 50%; 
+            width: 45px; height: 45px; 
+            cursor: pointer; z-index: 9999; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: rgba(255,255,255,0.9); border-radius: 50%; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .menu-trigger span { display: block; width: 22px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
         
+        /* メニューが開いている時の形 */
         .active-menu span:nth-of-type(1) { transform: translateY(9px) rotate(-45deg); background-color: #fff !important; }
         .active-menu span:nth-of-type(2) { opacity: 0; }
         .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); background-color: #fff !important; }
 
-        /* 全画面メニューオーバーレイ */
+        /* --- 全画面メニュー（中身は維持） --- */
         .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
         .overlay-content { width: 90%; max-width: 450px; text-align: center; padding-bottom: 40px; }
 
@@ -77,15 +65,16 @@ title: "日本でよく使われる芝生の種類と選び方｜咲くナビ"
         .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
         .menu-btn span { font-size: 0.65rem; opacity: 0.7; margin-top: 3px; }
 
-        /* レイアウト構造 */
-        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .main-card { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        /* --- 記事本文のカード --- */
+        .container { max-width: 850px; margin: 20px auto; padding: 0 15px; }
+        .main-card { background: var(--white); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
         footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
     </style>
 </head>
 <body>
 
+<!-- サイトヘッダー -->
 <header>
     <div class="menu-trigger" id="menuBtn" onclick="toggleNav()">
         <span></span><span></span><span></span>
@@ -93,46 +82,47 @@ title: "日本でよく使われる芝生の種類と選び方｜咲くナビ"
     <h1>【園芸全書】咲くナビ<br>(Saku-Navi)</h1>
 </header>
 
+<!-- 全画面メニュー -->
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
         <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
         <div class="menu-feature-list">
-            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-special-banner">
+            <a href="/shibafu-guide.html" class="menu-special-banner">
                 <span class="menu-special-tag">人気</span><span class="menu-special-title">芝生の完全攻略ガイド</span>
             </a>
-            <a href="{{ '/herb-project.html' | relative_url }}" class="menu-special-banner">
+            <a href="/herb-project.html" class="menu-special-banner">
                 <span class="menu-special-tag">実用</span><span class="menu-special-title">ハーブの森プロジェクト</span>
             </a>
-            <a href="{{ '/shade-garden.html' | relative_url }}" class="menu-special-banner">
+            <a href="/shade-garden.html" class="menu-special-banner">
                 <span class="menu-special-tag">解決</span><span class="menu-special-title">日陰のシェードガーデン</span>
             </a>
-            <a href="{{ '/low-maintenance.html' | relative_url }}" class="menu-special-banner">
+            <a href="/low-maintenance.html" class="menu-special-banner">
                 <span class="menu-special-tag">時短</span><span class="menu-special-title">究極のずぼら庭作り</span>
             </a>
         </div>
         <div style="color:white; margin-bottom:10px; font-weight:bold; font-size:0.9rem; opacity:0.8;">カテゴリーから探す</div>
         <div class="menu-grid">
-            <a href="{{ '/index-a-column.html' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
-            <a href="{{ '/months-menu.html' | relative_url }}" class="menu-btn">月別<span>Months</span></a>
-            <a href="{{ '/seasons-menu.html' | relative_url }}" class="menu-btn">季節<span>Season</span></a>
-            <a href="{{ '/colors-menu.html' | relative_url }}" class="menu-btn">花の色<span>Color</span></a>
-            <a href="{{ '/types-menu.html' | relative_url }}" class="menu-btn">分類<span>Type</span></a>
-            <a href="{{ '/envs-menu.html' | relative_url }}" class="menu-btn">環境<span>Env</span></a>
-            <a href="{{ '/purposes-menu.html' | relative_url }}" class="menu-btn">目的<span>Purpose</span></a>
-            <a href="{{ '/families-menu.html' | relative_url }}" class="menu-btn">科名<span>Family</span></a>
-            <a href="{{ '/meanings-menu.html' | relative_url }}" class="menu-btn">花言葉<span>Meaning</span></a>
-            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
+            <a href="/index-a-column.html" class="menu-btn">五十音<span>Index</span></a>
+            <a href="/months-menu.html" class="menu-btn">月別<span>Months</span></a>
+            <a href="/seasons-menu.html" class="menu-btn">季節<span>Season</span></a>
+            <a href="/colors-menu.html" class="menu-btn">花の色<span>Color</span></a>
+            <a href="/types-menu.html" class="menu-btn">分類<span>Type</span></a>
+            <a href="/envs-menu.html" class="menu-btn">環境<span>Env</span></a>
+            <a href="/purposes-menu.html" class="menu-btn">目的<span>Purpose</span></a>
+            <a href="/families-menu.html" class="menu-btn">科名<span>Family</span></a>
+            <a href="/meanings-menu.html" class="menu-btn">花言葉<span>Meaning</span></a>
+            <a href="/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
 
 <div class="container">
     <article class="main-card">
-        <!-- 重複していたタイトル部分を削除し、直接記事を開始 -->
-        <h2 style="color: #333; font-size: 1.5rem; margin: 0 0 15px 0; border-bottom: 2px solid var(--primary-green); padding-bottom: 10px;">日本でよく使われる芝生の種類と選び方</h2>
+        <!-- 記事タイトル -->
+        <h2 style="color: var(--primary-green); font-size: 1.5rem; margin: 0 0 15px 0; border-bottom: 2px solid #e0eadd; padding-bottom: 10px;">日本でよく使われる芝生の種類と選び方</h2>
         <p>芝生選びは、お住まいの地域と「冬に緑を保ちたいか」がポイントになります。代表的な種類をまとめました。</p>
 
-        <!-- 目次 -->
+        <!-- 目次セクション -->
         <section id="toc" style="background-color: #f0f4f0; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
           <h2 style="font-size: 1.1em; margin-top: 0; color: #2e7d32;">目次（タップで移動）</h2>
           <ul style="list-style: none; padding: 0;">
@@ -199,7 +189,7 @@ title: "日本でよく使われる芝生の種類と選び方｜咲くナビ"
         <section id="other" style="margin-bottom: 50px; text-align: center; padding: 25px; background-color: #fff3e0; border-radius: 12px; border: 2px dashed #ff9800;">
           <h3 style="margin-top: 0; color: #e65100;">芝生以外の選択肢をお探しですか？</h3>
           <p>「芝刈りが面倒」「花も楽しみたい」という方には、他のグランドカバー植物もおすすめです。</p>
-          <a href="https://tomokazu-hoshi.github.io/Saku-Navi/category/purposes/グランドカバー/" style="display: inline-block; padding: 15px 30px; background-color: #ff9800; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 0 #ef6c00;">グランドカバー植物一覧を見る</a>
+          <a href="/category/purposes/グランドカバー/" style="display: inline-block; padding: 15px 30px; background-color: #ff9800; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 0 #ef6c00;">グランドカバー植物一覧を見る</a>
         </section>
 
         <!-- お役立ち情報 -->
