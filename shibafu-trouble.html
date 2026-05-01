@@ -6,20 +6,17 @@ layout: none
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>芝生のトラブル解決ガイド｜病害虫診断と復活法｜【園芸全書】咲くナビ</title>
+    <title>芝生のトラブル解決ガイド｜咲くナビ</title>
     <style>
         :root {
             --primary-green: #2d5a27;   
+            --nav-green: #4caf50;       
             --white: #ffffff;
             --text-main: #333333;
             --overlay-bg: rgba(45, 90, 39, 0.98); 
             --accent-yellow: #fff9c4;
         }
-        body { font-family: sans-serif; line-height: 1.8; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
-
-        /* --- 統合ヘッダー --- */
-        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 15px; text-align: center; position: relative; }
-        header h1 { margin: 0; color: var(--primary-green); font-size: 1.5rem; font-weight: bold; line-height: 1.3; }
+        body { font-family: sans-serif; line-height: 1.6; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
 
         .menu-trigger {
             position: fixed; top: 15px; left: 15px; 
@@ -34,21 +31,22 @@ layout: none
 
         .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
         .overlay-content { width: 90%; max-width: 450px; text-align: center; padding-bottom: 40px; }
+        .menu-feature-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; }
+        .menu-special-banner { background: rgba(255, 255, 255, 0.1); border: 1px solid var(--accent-yellow); border-radius: 12px; padding: 18px; text-decoration: none; display: block; text-align: left; }
+        .menu-special-title { color: white; font-size: 1.0rem; font-weight: bold; margin: 0; }
+        .menu-special-tag { background: var(--accent-yellow); color: var(--primary-green); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-right: 8px; font-weight: bold; }
         .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
         .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
+        .menu-btn span { font-size: 0.65rem; opacity: 0.7; margin-top: 3px; }
 
-        /* --- 記事レイアウト --- */
-        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .main-card { background: var(--white); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 18px; }
-
-        h2 { color: #d32f2f; border-left: 6px solid #d32f2f; padding-left: 12px; margin-top: 45px; font-size: 22px; }
-        .trouble-card { background: #fff5f5; border: 1px solid #ffcdd2; border-radius: 12px; padding: 20px; margin: 20px 0; }
-        .shop-links a { display: block; padding: 16px; border-radius: 8px; text-align: center; text-decoration: none; color: white; font-weight: bold; margin-top: 10px; }
+        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 15px; text-align: center; }
+        header h1 { margin: 0; color: var(--primary-green); font-size: 1.5rem; }
         
-        /* 関連記事タイル */
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 40px; }
-        .related-tile { text-decoration: none; background: #fff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        .main-card { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-size: 18px; }
 
+        h2 { color: #d32f2f; border-left: 5px solid #d32f2f; padding-left: 10px; margin-top: 40px; }
+        .shop-links a { display: block; padding: 16px; border-radius: 8px; text-align: center; text-decoration: none; color: white; font-weight: bold; margin-top: 10px; }
         footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
     </style>
 </head>
@@ -60,12 +58,25 @@ layout: none
 
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
-        <div style="color:white; margin-bottom:20px; font-weight:bold;">🌿 咲くナビ・メニュー</div>
+        <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
+        <div class="menu-feature-list">
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-special-banner">
+                <span class="menu-special-tag">人気</span><span class="menu-special-title">芝生の完全攻略ガイド</span>
+            </a>
+            <a href="{{ '/shibafu-types.html' | relative_url }}" class="menu-special-banner">
+                <span class="menu-special-tag">図鑑</span><span class="menu-special-title">芝生の種類と選び方</span>
+            </a>
+            <a href="{{ '/shibafu-maintenance.html' | relative_url }}" class="menu-special-banner">
+                <span class="menu-special-tag">予定</span><span class="menu-special-title">芝生の手入れカレンダー</span>
+            </a>
+        </div>
         <div class="menu-grid">
-            <a href="{{ '/' | relative_url }}" class="menu-btn">トップ<span>Home</span></a>
-            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-btn">芝生ガイド<span>Guide</span></a>
-            <a href="{{ '/shibafu-types.html' | relative_url }}" class="menu-btn">芝生図鑑<span>Types</span></a>
-            <a href="{{ '/shibafu-maintenance.html' | relative_url }}" class="menu-btn">手入れ<span>Calendar</span></a>
+            <a href="{{ '/index-a-column.html' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
+            <a href="{{ '/months-menu.html' | relative_url }}" class="menu-btn">月別<span>Months</span></a>
+            <a href="{{ '/colors-menu.html' | relative_url }}" class="menu-btn">花の色<span>Color</span></a>
+            <a href="{{ '/types-menu.html' | relative_url }}" class="menu-btn">分類<span>Type</span></a>
+            <a href="{{ '/purposes-menu.html' | relative_url }}" class="menu-btn">目的<span>Purpose</span></a>
+            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
@@ -74,42 +85,27 @@ layout: none
 
 <div class="container">
     <article class="main-card">
-        <h2 style="margin-top:0; border:none; padding:0; color:#333; font-size:26px;">芝生のトラブル解決ガイド</h2>
-        <p>芝生の一部が茶色くなったり、剥げたりしていませんか？原因を正しく見極めることが復活への最短距離です。プロの視点で症状別の対策を解説します。</p>
+        <h2 style="margin-top:0; color:#333; border:none; padding:0; font-size:26px;">芝生のトラブル解決ガイド</h2>
+        <p>芝生が急に変色したり、剥げたりしても焦らないでください。原因を特定すれば、適切な対策で再び緑を取り戻すことができます。</p>
 
-        <h2>1. 病気：円形に広がる茶色い枯れ（ラージパッチ等）</h2>
-        <div class="trouble-card">
-            <p><strong>【症状】</strong> 直径10cmから数メートルに及ぶ円形の枯れが広がる。<br>
-            <strong>【原因】</strong> カビ（菌）の一種で、春や秋の長雨時に発生します。<br>
-            <strong>【処方箋】</strong> 殺菌剤「バリダマイシン」などの散布が効果的です。また、土を柔らかくする「エアレーション」で湿気を逃がしましょう。</p>
+        <h2>1. 円状に茶色く枯れてきた（ラージパッチ）</h2>
+        <p>春や秋の長雨の時期に発生しやすい菌の病気です。直径数十センチの枯れが広がります。</p>
+        <p><strong>対策：</strong> 殺菌剤「バリダマイシン」の散布が効果的です。また、土を柔らかくする「エアレーション」で水はけを改善しましょう。</p>
+
+        <h2>2. 葉が食べられ、剥げている（害虫）</h2>
+        <p>シバツトガやヨトウムシの幼虫が夜間に葉を食べています。鳥が頻繁についばみに集まっていたら要注意です。</p>
+        <p><strong>対策：</strong> 「スミチオン乳剤」などの殺虫剤を夕方に散布して駆除します。</p>
+
+        <div style="background: #fff5f5; border: 1px solid #ffcdd2; padding: 20px; border-radius: 12px; margin-top: 30px;">
+            <p style="text-align: center; font-weight: bold; margin-top: 0; color: #d32f2f;">＼ 芝生のトラブルを解決するアイテム ／</p>
             <div class="shop-links">
-                <a href="#" style="background:#bf0000;">楽天市場で芝生用殺菌剤を探す</a>
+                <a href="#" style="background-color: #f0a500;">Amazonで殺菌・殺虫剤を探す</a>
+                <a href="#" style="background-color: #bf0000;">楽天市場で芝生の薬を探す</a>
             </div>
         </div>
 
-        <h2>2. 害虫：葉が食べられ、軸だけが残る</h2>
-        <div class="trouble-card" style="background:#fff3e0; border-color:#ffe0b2;">
-            <p><strong>【症状】</strong> 朝起きると葉が丸ごと無くなっている。鳥が頻繁に地面をつついている。<br>
-            <strong>【原因】</strong> シバツトガやヨトウムシの幼虫が夜間に活動しています。<br>
-            <strong>【処方箋】</strong> 「スミチオン乳剤」を夕方に散布してください。夜に出てきた幼虫を直接狙い撃ちします。</p>
-        </div>
-
-        <h2>3. 物理的要因：人が歩く場所だけが枯れる</h2>
-        <p><strong>原因：踏み固めによる酸素不足</strong><br>土がカチカチになると根が呼吸できず、芝生が衰退して雑草に負けてしまいます。
-        <br><strong>対策：</strong> ローンスパイクで穴を開け、新しい砂（目土）を入れましょう。これで劇的に復活します。</p>
-
-        <h2 style="text-align: center; color: var(--primary-green); border:none;">あわせて読みたい記事</h2>
-        <div class="related-grid">
-            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="related-tile">
-                <span style="font-size:2.5rem;">📖</span>
-                <strong>芝生ガイドTOP</strong>
-                <p>基本から応用まで全て解説</p>
-            </a>
-            <a href="{{ '/shibafu-maintenance.html' | relative_url }}" class="related-tile">
-                <span style="font-size:2.5rem;">📅</span>
-                <strong>手入れカレンダー</strong>
-                <p>美しい緑を保つ年間計画</p>
-            </a>
+        <div style="text-align:center; margin-top:50px;">
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" style="color:var(--primary-green); font-weight:bold; text-decoration:none;">← 芝生ガイドTOPへ戻る</a>
         </div>
     </article>
 </div>
@@ -120,11 +116,7 @@ layout: none
     function toggleNav() {
         const menu = document.getElementById("fullMenu");
         const btn = document.getElementById("menuBtn");
-        if (menu.style.width === "100%") {
-            menu.style.width = "0%"; btn.classList.remove("active-menu");
-        } else {
-            menu.style.width = "100%"; btn.classList.add("active-menu");
-        }
+        if (menu.style.width === "100%") { menu.style.width = "0%"; btn.classList.remove("active-menu"); } else { menu.style.width = "100%"; btn.classList.add("active-menu"); }
     }
 </script>
 </body>
