@@ -58,10 +58,10 @@ layout: none
     <div class="overlay-content">
         <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
         <div class="menu-grid">
-            <a href="/shibafu-guide.html" class="menu-btn">芝生ガイド<span>Guide</span></a>
-            <a href="/shibafu-types.html" class="menu-btn">芝生図鑑<span>Types</span></a>
-            <a href="/shibafu-trouble.html" class="menu-btn">トラブル解決<span>Trouble</span></a>
-            <a href="/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-btn">芝生ガイド<span>Guide</span></a>
+            <a href="{{ '/shibafu-types.html' | relative_url }}" class="menu-btn">芝生図鑑<span>Types</span></a>
+            <a href="{{ '/shibafu-trouble.html' | relative_url }}" class="menu-btn">トラブル解決<span>Trouble</span></a>
+            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
@@ -72,6 +72,11 @@ layout: none
     <article class="main-card">
         <h2 style="margin-top:0; border:none; padding:0; color:#333; font-size:26px;">芝生の手入れカレンダー</h2>
         <p>美しい芝生を維持するコツは「時期に合った適切な作業」を行うことです。日本芝（高麗芝、TM9、野芝）を基準とした、年間スケジュールを徹底解説します。</p>
+
+        <div class="important-box" style="background: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; border-radius: 8px; margin: 20px 0;">
+            <strong>⚠️ 最大のタブー：軸刈り（じくがり）</strong>
+            <p>伸びすぎてしまった芝を一気に短く刈ると、茎の成長点まで切ってしまい枯れる原因になります。一度の芝刈りでカットするのは**「全体の高さの1/3まで」**が鉄則です。</p>
+        </div>
 
         <h2>🌱 春：目覚めと更新作業（3月・4月・5月）</h2>
         <div class="schedule-box">
@@ -97,10 +102,8 @@ layout: none
             <p>芝生が茶色くなり始めたら、過度な散水や踏み込みは避け、休ませてあげましょう。</p>
         </div>
 
-        <h2 style="text-align: center; color: var(--primary-green); margin-top: 60px;">芝生ガイドをもっと読む</h2>
-        <div class="menu-grid">
-            <a href="/shibafu-guide.html" class="menu-btn" style="background:var(--primary-green); color:white; height:100px;">芝生ガイドTOP<span>基本を網羅</span></a>
-            <a href="/shibafu-types.html" class="menu-btn" style="background:var(--primary-green); color:white; height:100px;">芝生の種類図鑑<span>最適な芝を選ぶ</span></a>
+        <div style="text-align:center; margin-top:50px;">
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" style="color:var(--primary-green); font-weight:bold; text-decoration:none;">← 芝生ガイドTOPへ戻る</a>
         </div>
     </article>
 </div>
