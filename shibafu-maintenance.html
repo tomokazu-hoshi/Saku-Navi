@@ -1,107 +1,66 @@
 ---
-layout: none
+layout: default
+title: "芝生の手入れカレンダー｜美しい緑を保つ年間スケジュール"
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>芝生の手入れカレンダー｜年間スケジュール｜【園芸全書】咲くナビ</title>
-    <style>
-        /* --- 共通デザインをそのまま適用 --- */
-        :root {
-            --primary-green: #2d5a27;   
-            --nav-green: #4caf50;       
-            --white: #ffffff;
-            --text-main: #333333;
-            --overlay-bg: rgba(45, 90, 39, 0.98); 
-            --accent-yellow: #fff9c4;
-        }
-        body { font-family: sans-serif; line-height: 1.6; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
 
-        .menu-trigger {
-            position: fixed; top: 15px; left: 15px; 
-            width: 50px; height: 50px; 
-            cursor: pointer; z-index: 9999; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: rgba(255,255,255,0.8); border-radius: 50%; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .menu-trigger span { display: block; width: 25px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
-        .active-menu span:nth-of-type(1) { transform: translateY(9px) rotate(-45deg); background-color: #fff !important; }
-        .active-menu span:nth-of-type(2) { opacity: 0; }
-        .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); background-color: #fff !important; }
+<style>
+  .calendar-item { border-left: 5px solid #2d5a27; background: #f9fbf9; padding: 20px; margin-bottom: 25px; border-radius: 0 12px 12px 0; }
+  .month-tag { display: inline-block; background: #2d5a27; color: white; padding: 2px 12px; border-radius: 20px; font-weight: bold; margin-bottom: 10px; }
+  
+  .shop-group { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+  .shop-btn { display: block; padding: 15px; border-radius: 10px; text-align: center; text-decoration: none; color: white; font-weight: bold; }
+  .btn-amazon { background-color: #f0a500; }
+  .btn-rakuten { background-color: #bf0000; }
+  .btn-yahoo { background-color: #ff0033; }
 
-        .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
-        .overlay-content { width: 90%; max-width: 450px; text-align: center; }
-        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
-        .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; font-weight: bold; }
+  .related-box { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .related-item { text-decoration: none; background: white; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #e0eadd; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; }
+  .related-item:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+</style>
 
-        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 15px; text-align: center; }
-        header h1 { margin: 0; color: var(--primary-green); font-size: 1.5rem; }
-        
-        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .main-card { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-size: 18px; }
+<div style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+  <p>芝生を一年中、青々と美しく保つ秘訣は「時期に合った適切な作業」です。植物の成長サイクルに合わせて、いつ何をすべきかを徹底解説します。</p>
 
-        /* カレンダー用装飾 */
-        .season-box { background: #f1f8e9; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #e0eadd; }
-        .month-tag { display: inline-block; background: var(--primary-green); color: white; padding: 2px 10px; border-radius: 4px; font-weight: bold; margin-bottom: 10px; }
-
-        footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
-    </style>
-</head>
-<body>
-
-<div class="menu-trigger" id="menuBtn" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-</div>
-
-<div id="fullMenu" class="overlay">
-    <div class="overlay-content">
-        <div class="menu-grid">
-            <a href="/Saku-Navi/shibafu-guide.html" class="menu-btn">芝生ガイド<span>Guide</span></a>
-            <a href="/Saku-Navi/shibafu-types.html" class="menu-btn">芝生図鑑<span>Types</span></a>
-            <a href="/Saku-Navi/shibafu-trouble.html" class="menu-btn">トラブル解決<span>Trouble</span></a>
-            <a href="/Saku-Navi/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
-        </div>
+  <div class="calendar-item">
+    <span class="month-tag">3月・4月：更新作業</span>
+    <p>冬の眠りから覚めるこの時期に、地中に空気を通す「エアレーション」と、古い枯葉を掻き出す「サッチング」を行います。新芽が育つスペースを作る最重要期間です。</p>
+    <div class="shop-group">
+      <p style="text-align: center; font-weight: bold; margin-bottom: 5px; color: #2d5a27;">＼ 春の目覚めに必須！肥料・目土 ／</p>
+      <a href="#" class="shop-btn btn-rakuten">楽天市場で芝生の肥料を探す</a>
+      <a href="#" class="shop-btn btn-amazon">Amazonで目土をチェック</a>
     </div>
+  </div>
+
+  <div class="calendar-item" style="border-color: #0277bd; background: #e1f5fe;">
+    <span class="month-tag" style="background: #0277bd;">7月・8月：成長ピークと徹底散水</span>
+    <p>最も成長が早い時期。週1回の芝刈りを行い、高さを揃えることで密度の高い美しい芝になります。猛暑日は「朝」の涼しい時間にたっぷりと水をあげ、土の温度を下げて乾燥から守りましょう。</p>
+    <div class="shop-group">
+      <p style="text-align: center; font-weight: bold; margin-bottom: 5px; color: #0277bd;">＼ 夏の作業を劇的にラクにする！ ／</p>
+      <a href="#" class="shop-btn btn-amazon">Amazonで電動芝刈機を見る</a>
+      <a href="#" class="shop-btn btn-rakuten">楽天市場で売れ筋をチェック</a>
+      <a href="#" class="shop-btn btn-yahoo">Yahoo!ショッピングで探す</a>
+    </div>
+  </div>
+
+  <div class="calendar-item" style="border-color: #e65100; background: #fff3e0;">
+    <span class="month-tag" style="background: #e65100;">10月・11月：冬越しの準備</span>
+    <p>冬の休眠に入る前に、最後の追肥を行い根を強くします。芝刈りは10月下旬を目安に終了し、冬の寒さから守るためにいつもより少し「長め」に刈って今年を終えます。</p>
+  </div>
 </div>
 
-<header><h1>【園芸全書】咲くナビ<br>(Saku-Navi)</h1></header>
-
-<div class="container">
-    <article class="main-card">
-        <h2 style="font-size: 26px; color: var(--primary-green); margin-top: 0; border-bottom: 2px solid #e0eadd; padding-bottom: 10px;">芝生の手入れカレンダー</h2>
-        <p>美しい芝生を作る秘訣は「時期に合った適切な作業」です。日本芝（高麗芝、野芝、TM9）の年間スケジュールを網羅しました。</p>
-
-        <div class="season-box">
-            <span class="month-tag">3月・4月：更新作業</span>
-            <p>冬の枯れ葉を取り除き（サッチング）、土に穴を開けて酸素を送ります（エアレーション）。凹凸には砂を入れて平らにし、新芽が育つスペースを作ります。</p>
-        </div>
-
-        <div class="season-box" style="background: #e1f5fe; border-color: #bbdefb;">
-            <span class="month-tag" style="background: #0277bd;">7月・8月：成長ピーク</span>
-            <p>最も成長が早い時期です。週1回の芝刈りと、猛暑日は朝の涼しい時間にたっぷりと散水を行い、地面の温度を下げて乾燥から守ります。</p>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="/Saku-Navi/shibafu-guide.html" style="font-weight: bold; color: var(--primary-green); text-decoration: none;">← 芝生ガイドTOPへ戻る</a>
-        </div>
-    </article>
+<div class="related-box">
+  <h3 style="text-align: center; color: #4A7c59; margin-bottom: 30px;">あわせて読みたい</h3>
+  <div class="related-grid">
+    <a href="{{ '/shibafu-types.html' | relative_url }}" class="related-item">
+      <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">🌿</span>
+      <strong style="color: #2d5a27;">芝生の種類図鑑</strong>
+      <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">失敗しない選び方の決定版</p>
+    </a>
+    <a href="{{ '/shibafu-trouble.html' | relative_url }}" class="related-item">
+      <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">🩺</span>
+      <strong style="color: #2d5a27;">トラブル解決ガイド</strong>
+      <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">枯れ・病気・害虫の対処法</p>
+    </a>
+  </div>
 </div>
-
-<footer><p>&copy; 2026 【園芸全書】咲くナビ</p></footer>
-
-<script>
-    function toggleNav() {
-        const menu = document.getElementById("fullMenu");
-        const btn = document.getElementById("menuBtn");
-        if (menu.style.width === "100%") {
-            menu.style.width = "0%"; btn.classList.remove("active-menu");
-        } else {
-            menu.style.width = "100%"; btn.classList.add("active-menu");
-        }
-    }
-</script>
-</body>
-</html>
