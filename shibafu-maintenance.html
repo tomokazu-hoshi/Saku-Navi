@@ -1,107 +1,144 @@
+---
+layout: none
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>芝生の手入れカレンダー｜美しい緑を保つ年間スケジュール</title>
-<style>
-  /* 共通：ヘッダー＆メニュー */
-  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #fcfcfc; }
-  header { background-color: #4A7c59; color: white; padding: 15px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-  .menu-trigger { font-size: 24px; cursor: pointer; margin-right: 15px; background: none; border: none; color: white; }
-  .site-title { font-size: 1.2rem; font-weight: bold; text-decoration: none; color: white; }
-  #menu-cb { display: none; }
-  .side-menu { position: fixed; top: 0; left: -250px; width: 250px; height: 100%; background-color: #fff; color: #333; transition: 0.3s; z-index: 1001; padding-top: 60px; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
-  #menu-cb:checked ~ .side-menu { left: 0; }
-  .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
-  #menu-cb:checked ~ .menu-overlay { display: block; }
-  .side-menu ul { list-style: none; padding: 0; margin: 0; }
-  .side-menu li a { display: block; padding: 15px 20px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; }
-  
-  /* 共通：縦型アフィリエイトボタン */
-  .shop-links { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
-  .shop-links a { display: block; padding: 16px; border-radius: 8px; text-align: center; text-decoration: none; color: white; font-weight: bold; font-size: 16px; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
-  .btn-amazon { background-color: #f0a500; }
-  .btn-rakuten { background-color: #bf0000; }
-  .btn-yahoo { background-color: #ff0033; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芝生の手入れカレンダー｜美しい緑を保つ年間計画｜咲くナビ</title>
+    <style>
+        :root {
+            --primary-green: #2d5a27;   
+            --white: #ffffff;
+            --text-main: #333333;
+            --overlay-bg: rgba(45, 90, 39, 0.98); 
+            --accent-yellow: #fff9c4;
+            --calendar-bg: #f1f8e9;
+        }
+        body { font-family: sans-serif; line-height: 1.8; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
+
+        /* --- 統一ヘッダー --- */
+        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 20px 15px; text-align: center; position: relative; }
+        header h1 { margin: 0; color: var(--primary-green); font-size: 1.4rem; font-weight: bold; line-height: 1.3; }
+
+        .menu-trigger { position: absolute; top: 50%; left: 15px; transform: translateY(-50%); width: 45px; height: 45px; cursor: pointer; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(255,255,255,0.9); border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .menu-trigger span { display: block; width: 22px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
+        .active-menu span:nth-of-type(1) { transform: translateY(9px) rotate(-45deg); background-color: #fff !important; }
+        .active-menu span:nth-of-type(2) { opacity: 0; }
+        .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); background-color: #fff !important; }
+
+        .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
+        .overlay-content { width: 90%; max-width: 450px; text-align: center; padding-bottom: 40px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+        .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
+
+        /* --- カレンダー記事デザイン --- */
+        .container { max-width: 850px; margin: 20px auto; padding: 0 15px; }
+        .main-card { background: var(--white); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 18px; }
+
+        h2 { font-size: 1.4rem; color: var(--primary-green); border-bottom: 3px solid #e0eadd; padding-bottom: 8px; margin-top: 40px; }
+        .month-box { background: var(--calendar-bg); border-radius: 12px; padding: 20px; margin: 20px 0; }
+        .month-label { display: inline-block; background: var(--primary-green); color: white; padding: 4px 12px; border-radius: 20px; font-weight: bold; margin-bottom: 10px; }
+
+        .important-box { background: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 30px; }
+        .related-tile { text-decoration: none; background: #fff; border: 2px solid #e8f5e9; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
+    </style>
 </head>
 <body>
 
-<!-- ハンバーガーメニュー機構 -->
-<input type="checkbox" id="menu-cb">
 <header>
-  <label for="menu-cb" class="menu-trigger">☰</label>
-  <a href="https://tomokazu-hoshi.github.io/Saku-Navi/" class="site-title">咲くナビ</a>
+    <div class="menu-trigger" id="menuBtn" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+    </div>
+    <h1>【園芸全書】咲くナビ<br>(Saku-Navi)</h1>
 </header>
-<label for="menu-cb" class="menu-overlay"></label>
-<nav class="side-menu">
-  <ul>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/">トップページ</a></li>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/index-a-column.html">五十音から探す</a></li>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/category/purposes/グランドカバー/">グランドカバー一覧</a></li>
-    <li><a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-guide.html">芝生ガイドTOP</a></li>
-  </ul>
-</nav>
 
-<!-- 記事本文（文字サイズ18px） -->
-<article style="max-width: 800px; margin: auto; padding: 20px; line-height: 1.8; font-size: 18px; color: #333;">
-  <h1 style="font-size: 24px; color: #2e7d32; border-bottom: 3px solid #2e7d32; padding-bottom: 10px;">芝生の手入れカレンダー｜美しい緑を保つ年間スケジュール</h1>
-  
-  <p>美しい芝生を作る秘訣は<strong>「時期に合った適切な作業」</strong>です。日本芝（高麗芝など）を基準にした、失敗しないお手入れの流れを徹底解説します。</p>
-
-  <h2 style="font-size: 22px; color: #2e7d32; border-left: 5px solid #2e7d32; padding-left: 10px;">【春】3月〜5月：更新作業と目覚め</h2>
-  <p>芝生が冬の休眠から目覚める重要な時期です。</p>
-  <ul style="background: #f1f8e9; padding: 20px 20px 20px 40px; border-radius: 10px;">
-    <li style="margin-bottom: 10px;"><strong>3月（サッチング・エアレーション）：</strong> 冬の枯れ葉（サッチ）を熊手で取り、専用の道具で土に穴を開けて新鮮な空気を根に届けます。</li>
-    <li style="margin-bottom: 10px;"><strong>4月（目土入れ）：</strong> 表面の凹凸を砂で整え、新芽の成長を促します。</li>
-    <li><strong>5月（芝刈り開始）：</strong> 緑が揃ってきたら、今年初めての芝刈りを行い、雑草をこまめに抜きます。</li>
-  </ul>
-
-  <h2 style="font-size: 22px; color: #0277bd; border-left: 5px solid #0277bd; padding-left: 10px; margin-top: 40px;">【夏】6月〜8月：成長ピークと水やり</h2>
-  <p>最も芝生が美しくなる反面、管理の手間がかかる時期です。</p>
-  <ul style="background: #e1f5fe; padding: 20px 20px 20px 40px; border-radius: 10px;">
-    <li style="margin-bottom: 10px;"><strong>6月（梅雨対策）：</strong> 湿気で病気が出やすい時期。水はけを確認しましょう。</li>
-    <li><strong>7〜8月（芝刈り・水やり）：</strong> 成長が最も早いため、週1回の芝刈りが理想です。猛暑日は朝の涼しい時間にたっぷりと水やりを行い、乾燥から守ります。</li>
-  </ul>
-
-  <div style="background: #fff; border: 1px solid #ccc; padding: 20px; border-radius: 10px; margin-top: 20px;">
-    <p style="text-align: center; font-weight: bold; margin-top: 0; font-size: 1.1em;">＼ 夏の芝刈りを劇的にラクにする！電動バリカン ／</p>
-    <div class="shop-links">
-      <a href="#" class="btn-amazon">Amazonで売れ筋をチェック</a>
-      <a href="#" class="btn-rakuten">楽天市場で売れ筋をチェック</a>
-      <a href="#" class="btn-yahoo">Yahoo!ショッピングで売れ筋をチェック</a>
+<div id="fullMenu" class="overlay">
+    <div class="overlay-content">
+        <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
+        <div class="menu-grid">
+            <a href="{{ '/' | relative_url }}" class="menu-btn">トップ<span>Home</span></a>
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-btn">芝生ガイド<span>Guide</span></a>
+            <a href="{{ '/shibafu-types.html' | relative_url }}" class="menu-btn">芝生図鑑<span>Types</span></a>
+            <a href="{{ '/shibafu-trouble.html' | relative_url }}" class="menu-btn">トラブル解決<span>Trouble</span></a>
+        </div>
     </div>
-  </div>
+</div>
 
-  <h2 style="font-size: 22px; color: #e65100; border-left: 5px solid #e65100; padding-left: 10px; margin-top: 40px;">【秋・冬】9月〜2月：冬越しの準備</h2>
-  <ul style="background: #fff3e0; padding: 20px 20px 20px 40px; border-radius: 10px;">
-    <li style="margin-bottom: 10px;"><strong>9〜10月（肥料・刈り納め）：</strong> 冬を越す体力をつけるため秋用の肥料を与えます。10月下旬に、冬の寒さから根を守るためいつもより「やや長め」に刈って今年のお手入れを終了します。</li>
-    <li><strong>11月〜2月（休眠）：</strong> 芝生は茶色くなり眠りに入ります。水やりも不要ですが、強く踏まないようにしましょう。</li>
-  </ul>
+<div class="container">
+    <article class="main-card">
+        <h2 style="margin-top:0;">芝生の手入れカレンダー｜年間スケジュール</h2>
+        <p>芝生を一年中美しく保つ最大の秘訣は**「時期を外さない手入れ」**にあります。特に日本芝（高麗芝、TM9、野芝）を育てている方向けに、月ごとの必須作業をプロの視点でまとめました。</p>
 
-  <div style="background: #fff5f5; border-left: 5px solid #d32f2f; padding: 20px; margin-top: 30px; border-radius: 10px;">
-    <h3 style="color: #d32f2f; margin-top: 0; font-size: 20px;">⚠️ プロの知恵：最大の失敗「軸刈り」に注意！</h3>
-    <p style="margin-bottom: 0;">長く伸ばしすぎた芝を一気に短く刈ると、茎の成長点ごと刈り取ってしまい枯れる「軸刈り」になります。芝刈りは必ず<strong>「伸びた分の3分の1まで」</strong>を刈るのが基本ルールです。</p>
-  </div>
+        <div class="important-box">
+            <strong>⚠️ 最大のタブー：軸刈り（じくがり）</strong>
+            <p>伸びすぎてしまった芝を一気に短く刈ると、茎の成長点まで切ってしまい枯れる原因になります。一度の芝刈りでカットするのは**「全体の高さの1/3まで」**が鉄則です。</p>
+        </div>
 
-  <!-- 関連記事タイル -->
-  <section style="margin-top: 60px; border-top: 2px solid #eee; padding-top: 30px;">
-    <h2 style="text-align: center; color: #4A7c59; font-size: 22px; margin-bottom: 25px;">芝生の種類とトラブル対策</h2>
-    <div style="display: flex; flex-direction: column; gap: 15px;">
-      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-types.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-        <span style="font-size: 30px;">🌿</span><br>
-        <strong style="color: #4A7c59; font-size: 20px;">芝生の種類図鑑</strong><br>
-        <span style="font-size: 14px; color: #666;">あなたにぴったりの芝を見つける</span>
-      </a>
-      <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-trouble.html" style="text-decoration: none; background: #fff; border: 2px solid #4A7c59; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-        <span style="font-size: 30px;">🩺</span><br>
-        <strong style="color: #4A7c59; font-size: 20px;">トラブル解決ガイド</strong><br>
-        <span style="font-size: 14px; color: #666;">枯れ・病気・害虫の対処法</span>
-      </a>
-    </div>
-  </section>
-</article>
+        <h2>🌱 春（3月・4月・5月）：更新作業と目覚め</h2>
+        <div class="month-box">
+            <span class="month-label">3月・4月：更新作業</span>
+            <p>冬の枯れ葉（サッチ）を掻き出し、土に穴を開ける「エアレーション」を。新芽が育つスペースを作ります。凹凸がある場所には「目土（めつち）」を入れましょう。</p>
+            <span class="month-label">5月：芝刈り開始</span>
+            <p>緑が揃ってきたら、今年最初の芝刈りです。雑草も元気になる時期なので、早めに抜いておきましょう。</p>
+        </div>
 
+        <h2>☀️ 夏（6月・7月・8月）：成長ピーク</h2>
+        <div class="month-box">
+            <span class="month-label">6月：梅雨の排水管理</span>
+            <p>湿気でカビ（病気）が発生しやすい時期。水はけが悪い場所は特に注意。肥料は梅雨入り前に与えるのが理想です。</p>
+            <span class="month-label">7月・8月：水やりと頻繁な刈り込み</span>
+            <p>最も成長が早い時期。週1回の芝刈りが必要です。猛暑日は「朝」の涼しい時間にたっぷりと水をあげ、土の乾燥を防ぎましょう。</p>
+        </div>
+
+        <h2>🍂 秋・冬（9月〜2月）：冬越しの準備</h2>
+        <div class="month-box">
+            <span class="month-label">9月・10月：追肥と刈り止め</span>
+            <p>冬を越す体力をつけるため肥料を与えます。10月下旬に少し高めの位置（3〜4cm程度）で今年最後の芝刈りを行います。</p>
+            <span class="month-label">11月〜2月：休眠期</span>
+            <p>水やりや芝刈りは不要ですが、芝生を強く踏みすぎないよう注意。春の目覚めを静かに待ちましょう。</p>
+        </div>
+
+        <h2 style="text-align: center; color: var(--primary-green); margin-top: 60px;">芝生ガイドをもっと読む</h2>
+        <div class="related-grid">
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="related-tile">
+                <span style="font-size:2rem;">📖</span>
+                <strong>芝生ガイドTOP</strong>
+                <p>基本から全てわかる</p>
+            </a>
+            <a href="{{ '/shibafu-types.html' | relative_url }}" class="related-tile">
+                <span style="font-size:2rem;">🌿</span>
+                <strong>芝生の種類図鑑</strong>
+                <p>自分に合う芝を選ぶ</p>
+            </a>
+            <a href="{{ '/shibafu-trouble.html' | relative_url }}" class="related-tile">
+                <span style="font-size:2rem;">🩺</span>
+                <strong>トラブル解決</strong>
+                <p>枯れ・病気の診断</p>
+            </a>
+        </div>
+    </article>
+</div>
+
+<footer><p>&copy; 2026 咲くナビ</p></footer>
+
+<script>
+    function toggleNav() {
+        const menu = document.getElementById("fullMenu");
+        const btn = document.getElementById("menuBtn");
+        if (menu.style.width === "100%") {
+            menu.style.width = "0%";
+            btn.classList.remove("active-menu");
+        } else {
+            menu.style.width = "100%";
+            btn.classList.add("active-menu");
+        }
+    }
+</script>
 </body>
 </html>
