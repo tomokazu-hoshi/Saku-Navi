@@ -4,85 +4,22 @@ title: "花の色から探す｜咲くナビ"
 ---
 
 <style>
-    /* ページタイトルエリア */
-    .search-title-area {
-        text-align: center;
-        margin-top: 20px;
-        padding: 0 15px;
-    }
-    .search-title-area h2 {
-        color: #4A7c59;
-        font-size: 1.4rem;
-        margin-bottom: 10px;
-    }
-    .search-subtext {
-        font-size: 0.95rem;
-        color: #666;
-        margin-bottom: 25px;
-    }
+  /* 特集セクションのデザイン（統一） */
+  .special-section { margin-top: 40px; padding: 0 5px; }
+  .feature-banner {
+    display: block; margin-bottom: 15px; padding: 20px; border-radius: 15px;
+    text-decoration: none; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .feature-banner h4 { margin: 0; font-size: 1.1rem; }
+  .feature-banner p { margin: 5px 0 0; font-size: 0.8rem; opacity: 0.9; }
 
-    /* 色選択グリッド */
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        max-width: 600px;
-        margin: 0 auto 40px;
-        padding: 0 15px;
-    }
-
-    /* 特集エリア（最下部） */
-    .feature-stack {
-        margin-top: 50px;
-        padding: 20px 15px 40px;
-        border-top: 2px solid #e0eadd;
-        background-color: #f9fbf9;
-    }
-    .feature-stack-title {
-        font-size: 0.85rem;
-        color: #888;
-        font-weight: bold;
-        margin-bottom: 15px;
-        text-align: center;
-    }
-    .compact-feature {
-        display: flex;
-        align-items: center;
-        background: white;
-        border: 1px solid #e0eadd;
-        border-radius: 12px;
-        padding: 15px;
-        margin-bottom: 12px;
-        text-decoration: none;
-        color: #333;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        transition: transform 0.2s;
-    }
-    .compact-feature:active {
-        transform: scale(0.98);
-        background-color: #f0f4f0;
-    }
-    .feature-icon {
-        font-size: 1.8rem;
-        margin-right: 15px;
-    }
-    .feature-info b {
-        display: block;
-        color: #2e7d32;
-        font-size: 1.0rem;
-        margin-bottom: 2px;
-    }
-    .feature-info span {
-        font-size: 0.8rem;
-        color: #777;
-    }
+  .bg-shibafu { background: linear-gradient(135deg, #2e7d32, #4caf50); }
+  .bg-herb { background: linear-gradient(135deg, #558b2f, #8bc34a); }
+  .bg-shade { background: linear-gradient(135deg, #0277bd, #03a9f4); }
+  .bg-zabora { background: linear-gradient(135deg, #5d4037, #8d6e63); }
 </style>
 
-<!-- メインコンテンツ -->
-<div class="search-title-area">
-    <h2>花の色から探す</h2>
-    <p class="search-subtext">お好みの色を選んで植物を見つけましょう。</p>
-</div>
+<h2 style="text-align: center; color: #4A7c59;">色を選ぶ</h2>
 
 <div class="category-grid">
   <a href="{{ site.baseurl }}/category/colors/赤/" class="btn-home">赤</a>
@@ -99,31 +36,26 @@ title: "花の色から探す｜咲くナビ"
   <a href="{{ site.baseurl }}/category/colors/複色/" class="btn-home">複色</a>
 </div>
 
-<div style="text-align: center; margin-bottom: 30px;">
-    <a href="{{ '/' | relative_url }}" style="color: #4A7c59; text-decoration: none; font-weight: bold; font-size: 1.0rem;">← トップページへ戻る</a>
-</div>
+<div class="special-section">
+  <h3 style="text-align: center; color: #4A7c59; border-bottom: 2px solid #e0eadd; padding-bottom: 10px; margin-bottom: 20px;">＼ 咲くナビ特別ガイド ／</h3>
+  
+  <a href="{{ '/shibafu-guide.html' | relative_url }}" class="feature-banner bg-shibafu">
+    <h4>🌿 芝生の完全攻略ガイド</h4>
+    <p>理想の緑の絨毯を作る種類選びと手入れ</p>
+  </a>
 
-<!-- 特集エリア：読み物コンテンツへの導線 -->
-<div class="feature-stack">
-    <p class="feature-stack-title">🌿 咲くナビ特別ガイド</p>
-    
-    <a href="{{ '/shibafu-guide.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">🌿</div>
-        <div class="feature-info"><b>芝生ガイド</b><span>種類と手入れの基本を徹底解説</span></div>
-    </a>
-    
-    <a href="{{ '/herb-project.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">🪴</div>
-        <div class="feature-info"><b>ハーブの森</b><span>料理と虫除けに役立つ活用術</span></div>
-    </a>
-    
-    <a href="{{ '/shade-garden.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">⛱</div>
-        <div class="feature-info"><b>日陰の庭</b><span>北向きの場所を明るく彩る方法</span></div>
-    </a>
-    
-    <a href="{{ '/low-maintenance.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">🧹</div>
-        <div class="feature-info"><b>ずぼら庭作り</b><span>手間を最小限にする雑草対策</span></div>
-    </a>
+  <a href="{{ '/herb-project.html' | relative_url }}" class="feature-banner bg-herb">
+    <h4>🪴 ハーブの森プロジェクト</h4>
+    <p>料理・虫除けに！使って楽しむ香りの庭</p>
+  </a>
+
+  <a href="{{ '/shade-garden.html' | relative_url }}" class="feature-banner bg-shade">
+    <h4>⛱ 日陰のシェードガーデン</h4>
+    <p>北向き・暗い庭をおしゃれに変える魔法</p>
+  </a>
+
+  <a href="{{ '/low-maintenance.html' | relative_url }}" class="feature-banner bg-zabora">
+    <h4>🧹 究極のずぼら庭作り</h4>
+    <p>雑草対策と植えっぱなしOKな植物たち</p>
+  </a>
 </div>
