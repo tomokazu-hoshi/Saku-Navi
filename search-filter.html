@@ -4,105 +4,171 @@ title: "こだわり条件検索｜咲くナビ"
 ---
 
 <style>
-  .filter-group { background: #f1f8e9; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
-  .filter-group h3 { font-size: 1rem; color: #4A7c59; margin: 0 0 10px 0; border-bottom: 1px solid #c8e6c9; }
-  .checkbox-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .checkbox-list label { font-size: 0.9rem; display: flex; align-items: center; cursor: pointer; color: #333; }
-  .checkbox-list input { margin-right: 8px; transform: scale(1.1); }
+  .filter-section { margin-bottom: 30px; padding: 0 10px; }
+  .filter-group { 
+    background: #f9fbf9; border: 1px solid #e0eadd; 
+    border-radius: 12px; padding: 15px; margin-bottom: 15px; 
+  }
+  .filter-group h3 { 
+    font-size: 0.95rem; color: #4A7c59; margin: 0 0 12px 0; 
+    border-left: 4px solid #4A7c59; padding-left: 10px;
+  }
+  .checkbox-list { 
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; 
+  }
+  /* 3列にしたい場合（月別など）用 */
+  .checkbox-list.triple { grid-template-columns: repeat(3, 1fr); }
+
+  .checkbox-list label { 
+    font-size: 0.85rem; display: flex; align-items: center; 
+    cursor: pointer; color: #444; background: white;
+    padding: 8px; border-radius: 6px; border: 1px solid #eee;
+  }
+  .checkbox-list input { margin-right: 6px; }
 
   #search-btn {
-    display: block; width: 100%; padding: 16px; background: #4A7c59; color: white;
-    border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; margin: 25px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: block; width: 95%; margin: 20px auto; padding: 18px;
+    background: linear-gradient(135deg, #4A7c59, #2d5a27);
+    color: white; border: none; border-radius: 15px;
+    font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
 
-  #result-count { font-size: 0.9rem; color: #666; margin-bottom: 10px; font-weight: bold; }
+  #result-info { font-size: 1rem; color: #333; margin: 20px 10px 10px; font-weight: bold; }
   .result-item {
     display: block; background: white; border: 1px solid #e0eadd;
-    padding: 16px; border-radius: 12px; margin-bottom: 12px; text-decoration: none; color: #333;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 18px; border-radius: 15px; margin-bottom: 15px; 
+    text-decoration: none; color: #333; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
-  .result-item b { color: #2e7d32; display: block; font-size: 1.1rem; margin-bottom: 4px; }
-  .result-tags { font-size: 0.75rem; color: #888; }
+  .result-item b { color: #2e7d32; font-size: 1.15rem; display: block; margin-bottom: 6px; }
+  .result-cats { font-size: 0.75rem; color: #888; line-height: 1.4; }
 </style>
 
-<div style="padding: 10px;">
-  <h2 style="text-align: center; color: #4A7c59;">条件を絞り込む</h2>
+<div class="filter-section">
+  <h2 style="text-align: center; color: #4A7c59; margin-bottom: 25px;">こだわり条件で探す</h2>
 
+  <!-- 1. 五十音 -->
   <div class="filter-group">
-    <h3>🌿 植物の分類</h3>
+    <h3>索引（五十音）</h3>
     <div class="checkbox-list">
-      <label><input type="checkbox" name="tag" value="一年草"> 一年草</label>
-      <label><input type="checkbox" name="tag" value="多年草"> 多年草</label>
-      <label><input type="checkbox" name="tag" value="宿根草"> 宿根草</label>
-      <label><input type="checkbox" name="tag" value="ハーブ"> ハーブ</label>
+      {% assign syllabary = "あ,か,さ,た,な,は,ま,や,ら,わ" | split: "," %}
+      {% for s in syllabary %}<label><input type="checkbox" name="f" value="{{s}}">{{s}}行</label>{% endfor %}
     </div>
   </div>
 
+  <!-- 2. 月別・季節 -->
   <div class="filter-group">
-    <h3>🎨 花の色</h3>
+    <h3>開花時期・季節</h3>
+    <div class="checkbox-list triple">
+      {% for i in (1..12) %}<label><input type="checkbox" name="f" value="{{i}}月">{{i}}月</label>{% endfor %}
+      <label><input type="checkbox" name="f" value="春">春</label>
+      <label><input type="checkbox" name="f" value="夏">夏</label>
+      <label><input type="checkbox" name="f" value="秋">秋</label>
+      <label><input type="checkbox" name="f" value="冬">冬</label>
+      <label><input type="checkbox" name="f" value="四季咲き">四季咲き</label>
+    </div>
+  </div>
+
+  <!-- 3. 花の色 -->
+  <div class="filter-group">
+    <h3>花の色</h3>
     <div class="checkbox-list">
-      <label><input type="checkbox" name="tag" value="赤"> 赤</label>
-      <label><input type="checkbox" name="tag" value="ピンク"> ピンク</label>
-      <label><input type="checkbox" name="tag" value="白"> 白</label>
-      <label><input type="checkbox" name="tag" value="青"> 青</label>
+      {% assign colors = "赤,ピンク,オレンジ,黄,白,青,紫,緑,茶,黒,シルバー,複色" | split: "," %}
+      {% for c in colors %}<label><input type="checkbox" name="f" value="{{c}}">{{c}}</label>{% endfor %}
+    </div>
+  </div>
+
+  <!-- 4. 分類 -->
+  <div class="filter-group">
+    <h3>植物の分類</h3>
+    <div class="checkbox-list">
+      <label><input type="checkbox" name="f" value="一年草-春まき">一年草</label>
+      <label><input type="checkbox" name="f" value="多年草">多年草</label>
+      <label><input type="checkbox" name="f" value="宿根草">宿根草</label>
+      <label><input type="checkbox" name="f" value="球根">球根</label>
+      <label><input type="checkbox" name="f" value="花木-落葉">落葉樹</label>
+      <label><input type="checkbox" name="f" value="花木-常緑">常緑樹</label>
+      <label><input type="checkbox" name="f" value="ハーブ">ハーブ</label>
+      <label><input type="checkbox" name="f" value="観葉植物">観葉植物</label>
+      <label><input type="checkbox" name="f" value="多肉植物">多肉植物</label>
+      <label><input type="checkbox" name="f" value="サボテン">サボテン</label>
+      <label><input type="checkbox" name="f" value="シダ植物">シダ植物</label>
+      <label><input type="checkbox" name="f" value="コケ植物">コケ植物</label>
+      <label><input type="checkbox" name="f" value="水生植物">水生植物</label>
+      <label><input type="checkbox" name="f" value="つる性植物">つる性</label>
+    </div>
+  </div>
+
+  <!-- 5. 環境 -->
+  <div class="filter-group">
+    <h3>育てる環境</h3>
+    <div class="checkbox-list">
+      <label><input type="checkbox" name="f" value="日向">日向</label>
+      <label><input type="checkbox" name="f" value="半日陰">半日陰</label>
+      <label><input type="checkbox" name="f" value="日陰">日陰</label>
+      <label><input type="checkbox" name="f" value="耐寒性">寒さに強い</label>
+      <label><input type="checkbox" name="f" value="耐暑性">暑さに強い</label>
+      <label><input type="checkbox" name="f" value="耐乾性">乾燥に強い</label>
+      <label><input type="checkbox" name="f" value="耐湿性">湿気に強い</label>
+    </div>
+  </div>
+
+  <!-- 6. 目的 -->
+  <div class="filter-group">
+    <h3>目的・用途</h3>
+    <div class="checkbox-list">
+      <label><input type="checkbox" name="f" value="初心者向け">初心者向け</label>
+      <label><input type="checkbox" name="f" value="ローメンテナンス">手入れが楽</label>
+      <label><input type="checkbox" name="f" value="グランドカバー">面を覆う</label>
+      <label><input type="checkbox" name="f" value="切り花">切り花</label>
+      <label><input type="checkbox" name="f" value="芳香">香りが良い</label>
+      <label><input type="checkbox" name="f" value="プレゼント・贈り物">贈り物</label>
+      <!-- 他、必要に応じて追加 -->
     </div>
   </div>
 
   <button id="search-btn">この条件で検索する</button>
 
-  <div id="result-count"></div>
+  <div id="result-info"></div>
   <div id="search-results"></div>
 </div>
 
 <script>
 let plantData = [];
 
-// 1. 自動生成されたJSONデータを読み込む
+// データを読み込み
 fetch("{{ '/search-data.json' | relative_url }}")
-  .then(response => response.json())
-  .then(data => {
-    plantData = data;
-    console.log("データ読み込み完了");
-  })
-  .catch(error => console.error("データの読み込みに失敗しました:", error));
+  .then(res => res.json())
+  .then(data => { plantData = data; });
 
-// 2. 検索ボタンの動作
 document.getElementById('search-btn').addEventListener('click', function() {
-  const selectedTags = Array.from(document.querySelectorAll('input[name="tag"]:checked')).map(el => el.value);
-  const resultsContainer = document.getElementById('search-results');
-  const countContainer = document.getElementById('result-count');
+  const selected = Array.from(document.querySelectorAll('input[name="f"]:checked')).map(el => el.value);
+  const resultsArea = document.getElementById('search-results');
+  const infoArea = document.getElementById('result-info');
   
-  if (selectedTags.length === 0) {
-    alert("絞り込み条件を1つ以上選択してください。");
+  if (selected.length === 0) {
+    alert("条件を1つ以上選択してください。");
     return;
   }
 
-  // フィルタリング（AND検索：選択したタグが全て含まれる記事を抽出）
-  const filteredResults = plantData.filter(plant => 
-    selectedTags.every(tag => plant.tags.includes(tag))
+  // 選択した全てのタグを含んでいる記事を抽出
+  const filtered = plantData.filter(p => 
+    selected.every(s => p.categories.includes(s))
   );
 
-  resultsContainer.innerHTML = '';
-  countContainer.textContent = `検索結果: ${filteredResults.length} 件`;
+  resultsArea.innerHTML = '';
+  infoArea.textContent = `検索結果: ${filtered.length} 件`;
 
-  if (filteredResults.length === 0) {
-    resultsContainer.innerHTML = '<p style="text-align:center; color:#999; margin-top:20px;">条件に合う植物が見つかりませんでした。</p>';
-    return;
+  if (filtered.length === 0) {
+    resultsArea.innerHTML = '<p style="text-align:center; padding:40px; color:#999;">条件に合う植物は見つかりませんでした。</p>';
+  } else {
+    filtered.forEach(p => {
+      const item = document.createElement('a');
+      item.href = p.url;
+      item.className = 'result-item';
+      item.innerHTML = `<b>${p.title}</b><div class="result-cats">🏷 ${p.categories.join(' / ')}</div>`;
+      resultsArea.appendChild(item);
+    });
   }
-
-  filteredResults.forEach(plant => {
-    const item = document.createElement('a');
-    item.href = plant.url;
-    item.className = 'result-item';
-    item.innerHTML = `
-      <b>${plant.title}</b>
-      <div class="result-tags">🏷 ${plant.tags.join(' / ')}</div>
-    `;
-    resultsContainer.appendChild(item);
-  });
-  
-  // 結果エリアへスクロール（スマホ対策）
-  countContainer.scrollIntoView({ behavior: 'smooth' });
+  infoArea.scrollIntoView({ behavior: 'smooth' });
 });
 </script>
