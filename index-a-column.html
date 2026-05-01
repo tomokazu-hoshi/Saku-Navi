@@ -4,41 +4,85 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
 ---
 
 <style>
-    /* 特集エリア（五十音ページ用） */
-    .feature-stack { margin-bottom: 30px; }
-    .compact-feature {
-        display: flex; align-items: center; background: white;
-        border: 1px solid #e0eadd; border-radius: 10px;
-        padding: 12px; margin-bottom: 10px; text-decoration: none; color: #333;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    /* 植物を探すセクション */
+    .search-title-area {
+        text-align: center;
+        margin-top: 20px;
+        padding: 0 15px;
     }
-    .feature-icon { font-size: 1.5rem; margin-right: 15px; }
-    .feature-info b { display: block; color: #2e7d32; font-size: 0.95rem; }
-    .feature-info span { font-size: 0.75rem; color: #777; }
+    .search-title-area h2 {
+        color: #4A7c59;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .search-subtext {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    /* 五十音グリッド */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        padding: 0 15px;
+    }
+
+    /* 特集エリア（最下部に配置） */
+    .feature-stack {
+        margin-top: 50px;
+        padding: 20px 15px 40px;
+        border-top: 2px solid #e0eadd;
+        background-color: #f9fbf9;
+    }
+    .feature-stack-title {
+        font-size: 0.85rem;
+        color: #888;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+        letter-spacing: 0.05em;
+    }
+    .compact-feature {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 1px solid #e0eadd;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 12px;
+        text-decoration: none;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: transform 0.2s;
+    }
+    .compact-feature:active {
+        transform: scale(0.98);
+        background-color: #f0f4f0;
+    }
+    .feature-icon {
+        font-size: 1.8rem;
+        margin-right: 15px;
+    }
+    .feature-info b {
+        display: block;
+        color: #2e7d32;
+        font-size: 1.0rem;
+        margin-bottom: 2px;
+    }
+    .feature-info span {
+        font-size: 0.8rem;
+        color: #777;
+    }
 </style>
 
-<div class="feature-stack">
-    <p style="font-size: 0.8rem; color: #999; margin-left: 5px; margin-bottom: 8px;">PICK UP 特別ガイド</p>
-    <a href="{{ '/shibafu-guide.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">🌿</div>
-        <div class="feature-info"><b>芝生ガイド</b><span>種類と手入れの基本</span></div>
-    </a>
-    <a href="{{ '/herb-project.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">🪴</div>
-        <div class="feature-info"><b>ハーブの森</b><span>料理と虫除け活用術</span></div>
-    </a>
-    <a href="{{ '/shade-garden.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">⛱</div>
-        <div class="feature-info"><b>日陰の庭</b><span>暗い場所を明るく彩る</span></div>
-    </a>
-    <a href="{{ '/low-maintenance.html' | relative_url }}" class="compact-feature">
-        <div class="feature-icon">🧹</div>
-        <div class="feature-info"><b>ずぼら庭</b><span>手間を減らす雑草対策</span></div>
-    </a>
-</div>
-
-<div style="text-align: center;">
-    <h2 style="color: #4A7c59; font-size: 1.3rem; margin-bottom: 20px;">五十音から植物を探す</h2>
+<!-- メインコンテンツ：検索エリア -->
+<div class="search-title-area">
+    <h2>五十音から植物を探す</h2>
+    <p class="search-subtext">調べたい植物の最初の「行」を選んでください。</p>
 </div>
 
 <div class="category-grid">
@@ -52,4 +96,33 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
     <a href="{{ '/ya-row.html' | relative_url }}" class="btn-home">や行</a>
     <a href="{{ '/ra-row.html' | relative_url }}" class="btn-home">ら行</a>
     <a href="{{ '/wa-row.html' | relative_url }}" class="btn-home">わ行</a>
+</div>
+
+<div style="text-align: center; margin-bottom: 30px;">
+    <a href="{{ '/' | relative_url }}" style="color: #4A7c59; text-decoration: none; font-weight: bold; font-size: 1.0rem;">← トップページへ戻る</a>
+</div>
+
+<!-- 特集エリア：読み物コンテンツへの導線 -->
+<div class="feature-stack">
+    <p class="feature-stack-title">🌿 咲くナビ特別ガイド</p>
+    
+    <a href="{{ '/shibafu-guide.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-info"><b>芝生ガイド</b><span>種類と手入れの基本を徹底解説</span></div>
+    </a>
+    
+    <a href="{{ '/herb-project.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🪴</div>
+        <div class="feature-info"><b>ハーブの森</b><span>料理と虫除けに役立つ活用術</span></div>
+    </a>
+    
+    <a href="{{ '/shade-garden.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">⛱</div>
+        <div class="feature-info"><b>日陰の庭</b><span>北向きの場所を明るく彩る方法</span></div>
+    </a>
+    
+    <a href="{{ '/low-maintenance.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🧹</div>
+        <div class="feature-info"><b>ずぼら庭作り</b><span>手間を最小限にする雑草対策</span></div>
+    </a>
 </div>
