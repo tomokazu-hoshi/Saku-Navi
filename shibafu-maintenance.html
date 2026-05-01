@@ -6,7 +6,7 @@ layout: none
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>芝生の手入れカレンダー｜年間スケジュール｜【園芸全書】咲くナビ</title>
+    <title>芝生の手入れカレンダー｜咲くナビ</title>
     <style>
         :root {
             --primary-green: #2d5a27;   
@@ -16,27 +16,24 @@ layout: none
         }
         body { font-family: sans-serif; line-height: 1.8; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
 
-        /* --- ヘッダー --- */
-        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 15px; text-align: center; position: relative; }
-        header h1 { margin: 0; color: var(--primary-green); font-size: 1.5rem; font-weight: bold; line-height: 1.3; }
-
         .menu-trigger { position: fixed; top: 15px; left: 15px; width: 50px; height: 50px; cursor: pointer; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(255,255,255,0.8); border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .menu-trigger span { display: block; width: 25px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
+        .active-menu span:nth-of-type(1) { transform: translateY(9px) rotate(-45deg); background-color: #fff !important; }
+        .active-menu span:nth-of-type(2) { opacity: 0; }
+        .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); background-color: #fff !important; }
+
         .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
         .overlay-content { width: 90%; max-width: 450px; text-align: center; }
-        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; font-weight: bold; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+        .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- 記事本文 --- */
+        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 15px; text-align: center; }
+        header h1 { margin: 0; color: var(--primary-green); font-size: 1.5rem; }
         .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .main-card { background: var(--white); border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 18px; }
+        .main-card { background: var(--white); border-radius: 12px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-size: 18px; }
 
-        h2 { color: var(--primary-green); border-bottom: 3px solid #e0eadd; padding-bottom: 8px; margin-top: 40px; font-size: 22px; }
-        .season-box { background: #f1f8e9; border-radius: 12px; padding: 20px; margin: 20px 0; }
-        .month-label { display: inline-block; background: var(--primary-green); color: white; padding: 4px 12px; border-radius: 20px; font-weight: bold; margin-bottom: 10px; }
-
-        .important { background: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; border-radius: 8px; margin: 20px 0; font-weight: bold; }
-
+        h2 { color: var(--primary-green); border-bottom: 2px solid #e0eadd; padding-bottom: 8px; margin-top: 40px; }
+        .month-box { background: #f1f8e9; border-radius: 12px; padding: 20px; margin: 20px 0; }
         footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
     </style>
 </head>
@@ -48,11 +45,12 @@ layout: none
 
 <div id="fullMenu" class="overlay">
     <div class="overlay-content">
+        <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.0rem;">🌿 咲くナビ特別ガイド</div>
         <div class="menu-grid">
-            <a href="{{ '/' | relative_url }}" class="menu-btn">トップ<span>Home</span></a>
-            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-btn">ガイドTOP<span>Guide</span></a>
+            <a href="{{ '/shibafu-guide.html' | relative_url }}" class="menu-btn">芝生ガイド<span>Guide</span></a>
             <a href="{{ '/shibafu-types.html' | relative_url }}" class="menu-btn">芝生図鑑<span>Types</span></a>
             <a href="{{ '/shibafu-trouble.html' | relative_url }}" class="menu-btn">トラブル解決<span>Trouble</span></a>
+            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
@@ -61,29 +59,24 @@ layout: none
 
 <div class="container">
     <article class="main-card">
-        <h2 style="margin-top:0; border:none; padding:0; color:#333; font-size:26px;">芝生の手入れカレンダー</h2>
-        <p>美しい芝生を作る秘訣は、適切な「時期」に適切な「作業」を行うことです。日本芝（高麗芝、野芝、TM9）を基準にした年間計画を網羅しました。</p>
+        <h2 style="margin-top:0; color:#333; border:none; padding:0; font-size:26px;">芝生の手入れカレンダー</h2>
+        <p>美しい芝生を保つ秘訣は、時期に合った適切な手入れです。失敗しないための年間スケジュールを解説します。</p>
 
-        <div class="important">⚠️ 注意：軸刈り（じくがり）厳禁！<br>伸びすぎた芝を一気に短く刈ると、茎を傷めて枯れてしまいます。常に「伸びた分の1/3」だけを刈るようにしましょう。</div>
-
-        <h2>🌱 春：更新作業と芽吹き（3月〜5月）</h2>
-        <div class="season-box">
-            <span class="month-label">3月・4月：サッチングとエアレーション</span>
-            <p>冬の枯葉を取り除き、土に穴を開けて根に空気を送り込みます。新芽が出るスペースを空ける重要な作業です。</p>
-            <span class="month-label">5月：芝刈り開始</span>
-            <p>芝が伸び始めたら、刈り高を20mm程度に設定してシーズン最初の刈り込みを行います。</p>
+        <h2>🌱 春：3月〜5月（更新作業）</h2>
+        <div class="month-box">
+            <p><strong>3月・4月：</strong> 冬の枯れ葉を取り除き（サッチング）、土に穴を開けて空気を送る（エアレーション）を行います。</p>
+            <p><strong>5月：</strong> 芝が伸び始めたら、今年最初の芝刈りを行い、追肥をしましょう。</p>
         </div>
 
-        <h2>☀️ 夏：成長のピーク（6月〜8月）</h2>
-        <div class="season-box" style="background:#e1f5fe;">
-            <span class="month-label" style="background:#0277bd;">7月・8月：頻繁な刈り込みと水やり</span>
-            <p>最も成長が早い時期。週1回の芝刈りと、猛暑日は朝の涼しい時間にたっぷりと散水を行いましょう。</p>
+        <h2>☀️ 夏：6月〜8月（成長ピーク）</h2>
+        <div class="month-box" style="background:#e1f5fe;">
+            <p>成長が最も早い時期です。週1回の芝刈りと、猛暑日は朝の涼しい時間にたっぷりと水やりをしましょう。</p>
         </div>
 
-        <h2>🍂 秋：冬越しの準備（9月〜11月）</h2>
-        <div class="season-box" style="background:#fff3e0;">
-            <span class="month-label" style="background:#e65100;">10月：最後の芝刈り（刈り止め）</span>
-            <p>冬の寒さから根を守るため、いつもより「やや高め」に刈って今年のお手入れを終了します。</p>
+        <h2>🍂 秋・冬：9月〜2月（冬越しの準備）</h2>
+        <div class="month-box" style="background:#fff3e0;">
+            <p><strong>10月：</strong> 冬の寒さから根を守るため、いつもより高めに刈って、今年最後の手入れを終えます。</p>
+            <p><strong>11月以降：</strong> 芝は休眠します。強く踏まないように見守りましょう。</p>
         </div>
 
         <div style="text-align:center; margin-top:50px;">
@@ -91,6 +84,8 @@ layout: none
         </div>
     </article>
 </div>
+
+<footer><p>&copy; 2026 咲くナビ</p></footer>
 
 <script>
     function toggleNav() {
