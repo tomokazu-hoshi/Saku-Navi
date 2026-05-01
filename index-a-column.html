@@ -4,100 +4,52 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
 ---
 
 <style>
-    /* 特集バナーのデザイン（iPhoneでも押しやすく、かつ目立つデザイン） */
-    .special-feature-card {
-        background: linear-gradient(135deg, #f1f8e9 0%, #ffffff 100%);
-        border: 2px solid #4A7c59;
-        border-radius: 15px;
-        margin: 20px 15px 40px;
-        padding: 20px;
-        display: block;
-        text-decoration: none;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        transition: transform 0.2s;
+    /* 特集エリア（五十音ページ用） */
+    .feature-stack { margin-bottom: 30px; }
+    .compact-feature {
+        display: flex; align-items: center; background: white;
+        border: 1px solid #e0eadd; border-radius: 10px;
+        padding: 12px; margin-bottom: 10px; text-decoration: none; color: #333;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    .special-feature-card:active {
-        transform: scale(0.98);
-    }
-    .feature-label {
-        background-color: #4A7c59;
-        color: white;
-        font-size: 0.8rem;
-        font-weight: bold;
-        padding: 4px 12px;
-        border-radius: 50px;
-        display: inline-block;
-        margin-bottom: 12px;
-    }
-    .feature-title {
-        color: #2e7d32;
-        font-size: 1.3rem;
-        font-weight: bold;
-        margin: 0 0 8px 0;
-        display: block;
-    }
-    .feature-description {
-        color: #666;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin: 0;
-    }
-
-    /* 五十音グリッドの既存デザイン（スマホ最適化） */
-    .kana-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 0 15px;
-    }
-    .btn-kana-row {
-        background-color: #4A7c59;
-        color: white;
-        text-align: center;
-        padding: 22px 0;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    .feature-icon { font-size: 1.5rem; margin-right: 15px; }
+    .feature-info b { display: block; color: #2e7d32; font-size: 0.95rem; }
+    .feature-info span { font-size: 0.75rem; color: #777; }
 </style>
 
-<!-- 【追加】ここが一番の「変化」ポイント：特集バナー -->
-<div style="padding-top: 10px;">
-    <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-guide.html" class="special-feature-card">
-        <span class="feature-label">PICK UP 特集</span>
-        <span class="feature-title">🌿 失敗しない！芝生の完全攻略ガイド</span>
-        <p class="feature-description">
-            種類選びから、プロが教える年間のお手入れ、枯れた時の復活法まで。綺麗な芝生を作る全てがここに！
-        </p>
+<div class="feature-stack">
+    <p style="font-size: 0.8rem; color: #999; margin-left: 5px; margin-bottom: 8px;">PICK UP 特別ガイド</p>
+    <a href="{{ '/shibafu-guide.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-info"><b>芝生ガイド</b><span>種類と手入れの基本</span></div>
+    </a>
+    <a href="{{ '/herb-project.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🪴</div>
+        <div class="feature-info"><b>ハーブの森</b><span>料理と虫除け活用術</span></div>
+    </a>
+    <a href="{{ '/shade-garden.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">⛱</div>
+        <div class="feature-info"><b>日陰の庭</b><span>暗い場所を明るく彩る</span></div>
+    </a>
+    <a href="{{ '/low-maintenance.html' | relative_url }}" class="compact-feature">
+        <div class="feature-icon">🧹</div>
+        <div class="feature-info"><b>ずぼら庭</b><span>手間を減らす雑草対策</span></div>
     </a>
 </div>
 
-<!-- 既存のコンテンツ -->
-<div style="text-align: center; margin-top: 10px; padding: 0 15px;">
-    <h2 style="color: #4A7c59; font-size: 1.4rem;">行から植物を探す</h2>
-    <p style="font-size: 1.0rem; color: #666; margin-bottom: 30px;">調べたい植物の最初の「行」を選んでください。</p>
+<div style="text-align: center;">
+    <h2 style="color: #4A7c59; font-size: 1.3rem; margin-bottom: 20px;">五十音から植物を探す</h2>
 </div>
 
-<div class="kana-grid">
-    <a href="{{ '/a-row.html' | relative_url }}" class="btn-kana-row">あ行</a>
-    <a href="{{ '/ka-row.html' | relative_url }}" class="btn-kana-row">か行</a>
-    <a href="{{ '/sa-row.html' | relative_url }}" class="btn-kana-row">さ行</a>
-    <a href="{{ '/ta-row.html' | relative_url }}" class="btn-kana-row">た行</a>
-    <a href="{{ '/na-row.html' | relative_url }}" class="btn-kana-row">な行</a>
-    <a href="{{ '/ha-row.html' | relative_url }}" class="btn-kana-row">は行</a>
-    <a href="{{ '/ma-row.html' | relative_url }}" class="btn-kana-row">ま行</a>
-    <a href="{{ '/ya-row.html' | relative_url }}" class="btn-kana-row">や行</a>
-    <a href="{{ '/ra-row.html' | relative_url }}" class="btn-kana-row">ら行</a>
-    <a href="{{ '/wa-row.html' | relative_url }}" class="btn-kana-row">わ行</a>
-</div>
-
-<div style="text-align: center; margin-top: 50px; padding-bottom: 40px;">
-    <a href="{{ '/' | relative_url }}" style="color: #4A7c59; text-decoration: none; font-weight: bold; font-size: 1.1rem;">← トップページへ戻る</a>
+<div class="category-grid">
+    <a href="{{ '/a-row.html' | relative_url }}" class="btn-home">あ行</a>
+    <a href="{{ '/ka-row.html' | relative_url }}" class="btn-home">か行</a>
+    <a href="{{ '/sa-row.html' | relative_url }}" class="btn-home">さ行</a>
+    <a href="{{ '/ta-row.html' | relative_url }}" class="btn-home">た行</a>
+    <a href="{{ '/na-row.html' | relative_url }}" class="btn-home">な行</a>
+    <a href="{{ '/ha-row.html' | relative_url }}" class="btn-home">は行</a>
+    <a href="{{ '/ma-row.html' | relative_url }}" class="btn-home">ま行</a>
+    <a href="{{ '/ya-row.html' | relative_url }}" class="btn-home">や行</a>
+    <a href="{{ '/ra-row.html' | relative_url }}" class="btn-home">ら行</a>
+    <a href="{{ '/wa-row.html' | relative_url }}" class="btn-home">わ行</a>
 </div>
