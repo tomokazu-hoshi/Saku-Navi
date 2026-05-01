@@ -4,35 +4,164 @@ title: "五十音から探す｜【園芸全書】咲くナビ"
 ---
 
 <style>
+    /* --- ヘッダー・メニューの基本デザイン --- */
+    header {
+        background-color: #4A7c59;
+        color: white;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .menu-trigger {
+        font-size: 26px;
+        cursor: pointer;
+        margin-right: 15px;
+        background: none;
+        border: none;
+        color: white;
+    }
+    .site-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+    }
+    #menu-cb { display: none; }
+    
+    /* サイドメニュー本体 */
+    .side-menu {
+        position: fixed;
+        top: 0;
+        left: -280px; /* 初期位置は隠す */
+        width: 280px;
+        height: 100%;
+        background-color: #fff;
+        transition: 0.3s;
+        z-index: 1001;
+        padding-top: 20px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+        overflow-y: auto;
+    }
+    #menu-cb:checked ~ .side-menu { left: 0; }
+    
+    /* 背景を暗くするオーバーレイ */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        z-index: 1000;
+    }
+    #menu-cb:checked ~ .menu-overlay { display: block; }
+
+    /* --- サイドメニュー内のデザイン --- */
+    .menu-section-title {
+        font-size: 0.85rem;
+        color: #999;
+        padding: 15px 20px 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .side-menu ul { list-style: none; padding: 0; margin: 0; }
+    .side-menu ul li a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+        border-bottom: 1px solid #f5f5f5;
+        font-size: 1.05rem;
+    }
+
+    /* ★注目：メニュー内の「特集バナー」デザイン */
+    .menu-feature-box {
+        margin: 10px 15px;
+        padding: 15px;
+        background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+        border: 2px solid #4A7c59;
+        border-radius: 12px;
+        text-decoration: none;
+        display: block;
+    }
+    .menu-feature-label {
+        background: #4A7c59;
+        color: #white;
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 5px;
+        color: white;
+    }
+    .menu-feature-text {
+        color: #2e7d32;
+        font-weight: bold;
+        font-size: 1rem;
+        display: block;
+    }
+
+    /* --- 五十音グリッドの既存デザイン --- */
     .kana-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2列（2×5）に変更 */
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         max-width: 600px;
-        margin: 40px auto;
-        padding: 0 10px;
+        margin: 30px auto;
+        padding: 0 15px;
     }
     .btn-kana-row {
         background-color: #4A7c59;
         color: white;
         text-align: center;
-        padding: 20px 0; /* 少し高さを調整 */
+        padding: 20px 0;
         border-radius: 10px;
         text-decoration: none;
         font-weight: bold;
         font-size: 1.1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .btn-kana-row:active {
-        transform: scale(0.95);
-        background-color: #8fcb9b;
-    }
 </style>
 
+<!-- メニュー機構 -->
+<input type="checkbox" id="menu-cb">
+<header>
+    <label for="menu-cb" class="menu-trigger">☰</label>
+    <a href="{{ '/' | relative_url }}" class="site-title">咲くナビ</a>
+</header>
+<label for="menu-cb" class="menu-overlay"></label>
+
+<nav class="side-menu">
+    <div style="padding: 20px; text-align: center; border-bottom: 2px solid #eee;">
+        <strong style="color: #4A7c59; font-size: 1.2rem;">咲くナビ メニュー</strong>
+    </div>
+    
+    <!-- 特集セクション（一番目立たせる） -->
+    <div class="menu-section-title">Pick Up 特集</div>
+    <a href="https://tomokazu-hoshi.github.io/Saku-Navi/shibafu-guide.html" class="menu-feature-box">
+        <span class="menu-feature-label">人気ガイド</span>
+        <span class="menu-feature-text">🌿 芝生の完全攻略ガイド</span>
+        <span style="font-size: 0.75rem; color: #666;">種類・手入れ・トラブル解決</span>
+    </a>
+
+    <!-- 通常メニュー -->
+    <div class="menu-section-title">カテゴリー</div>
+    <ul>
+        <li><a href="{{ '/' | relative_url }}">🏠 トップページ</a></li>
+        <li><a href="{{ '/index-a-column.html' | relative_url }}">🔤 五十音から探す</a></li>
+        <li><a href="{{ '/category/purposes/グランドカバー/' | relative_url }}">🌱 グランドカバー一覧</a></li>
+    </ul>
+</nav>
+
+<!-- メインコンテンツ -->
 <div style="text-align: center; margin-top: 30px; padding: 0 15px;">
     <h2 style="color: #4A7c59;">行から植物を探す</h2>
     <p style="font-size: 0.9rem; color: #666;">調べたい植物の最初の「行」を選んでください。</p>
