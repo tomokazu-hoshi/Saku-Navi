@@ -11,6 +11,7 @@
             --nav-green: #4caf50;       /* 明るいナビゲーション */
             --text-main: #333333;
             --white: #ffffff;
+            --overlay-bg: rgba(45, 90, 39, 0.98); 
         }
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -20,69 +21,99 @@
             margin: 0;
             padding: 0;
         }
-        header {
-            background-color: var(--white);
-            border-bottom: 5px solid var(--primary-green);
-            padding: 30px 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: var(--primary-green);
-            font-size: 1.8rem;
-            letter-spacing: 0.05em;
-        }
-        nav {
-            background: var(--nav-green);
-            color: var(--white);
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 15px;
-        }
-        .main-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        
-        /* カテゴリタイル（元のデザインを保持） */
+
+        /* --- 1. 元々のデザイン（2列ボタン）を保持 --- */
         .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
         .btn-home { background: var(--primary-green); color: white !important; height: 90px; text-decoration: none; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 15px; font-weight: bold; font-size: 1.0rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .btn-home span { font-size: 0.7rem; opacity: 0.8; margin-top: 5px; }
 
-        footer {
-            background: #e0eadd;
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 60px;
-            color: #555;
-            font-size: 0.9rem;
+        /* --- 2. 3本線（ハンバーガーメニュー） --- */
+        .menu-trigger {
+            position: fixed; top: 15px; left: 15px; width: 50px; height: 50px; 
+            cursor: pointer; z-index: 9999; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; background: rgba(255,255,255,0.9); 
+            border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        .menu-trigger span { display: block; width: 25px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
+        .active-menu span:nth-of-type(1) { transform: translateY(9px) rotate(-45deg); }
+        .active-menu span:nth-of-type(2) { opacity: 0; }
+        .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); }
+
+        .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; transition: 0.4s; padding-top: 80px; text-align: center; }
+        .overlay-content { width: 90%; margin: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .menu-link { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; padding: 15px 5px; border-radius: 10px; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; }
+
+        /* --- 基本レイアウト --- */
+        header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 20px; text-align: center; }
+        header h1 { margin: 0; color: var(--primary-green); font-size: 1.8rem; }
+        nav { background: var(--nav-green); color: white; padding: 12px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+        .main-card { background: var(--white); border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+        /* --- 3. 特集記事セクション（記事下に表示） --- */
+        .special-section { margin-top: 40px; padding-top: 30px; border-top: 2px solid #eee; }
+        .special-section h2 { color: var(--primary-green); font-size: 1.3rem; text-align: center; margin-bottom: 20px; }
+        .feature-card { display: flex; align-items: center; background: var(--accent-light); border-radius: 10px; margin-bottom: 12px; text-decoration: none; color: var(--text-main); overflow: hidden; padding-right: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .feature-card img { width: 80px; height: 80px; object-fit: cover; margin-right: 15px; }
+        .feature-card h3 { margin: 0; font-size: 0.95rem; color: var(--primary-green); }
+
+        /* --- 4. トップに戻るボタン --- */
+        .back-to-top { text-align: center; margin-top: 30px; }
+        .btn-back { display: inline-block; background: var(--primary-green); color: white !important; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+
+        footer { background: #e0eadd; text-align: center; padding: 50px 20px; margin-top: 60px; color: #555; font-size: 0.9rem; }
     </style>
 </head>
 <body>
+
+<div class="menu-trigger" id="menuBtn" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+</div>
+
+<div id="fullMenu" class="overlay">
+    <div style="color:white; margin-bottom:20px; font-weight:bold;">🌿 カテゴリーから探す</div>
+    <div class="overlay-content">
+        <a href="{{ '/category/syllabary/あ/' | relative_url }}" class="menu-link">五十音検索</a>
+        <a href="{{ '/category/months/1月/' | relative_url }}" class="menu-link">月別・季節</a>
+        <a href="{{ '/category/colors/赤/' | relative_url }}" class="menu-link">花の色</a>
+        <a href="{{ '/category/types/一年草-春まき/' | relative_url }}" class="menu-link">植物の分類</a>
+        <a href="{{ '/category/environments/日向/' | relative_url }}" class="menu-link">育てる環境</a>
+        <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="menu-link">目的・用途</a>
+        <a href="{{ '/category/families/バラ科/' | relative_url }}" class="menu-link">科名から探す</a>
+        <a href="{{ '/category/methods/地植え/' | relative_url }}" class="menu-link">栽培方法</a>
+        <a href="{{ '/' | relative_url }}" class="menu-link" style="background:rgba(255,255,255,0.4);">トップページ</a>
+    </div>
+</div>
 
 <header>
     <h1>{{ site.title }}</h1>
 </header>
 
-<nav>
-    〜 あなたの庭に, 最高の「咲く」を。 〜
-</nav>
+<nav>〜 あなたの庭に、最高の「咲く」を。 〜</nav>
 
 <div class="container">
     <article class="main-card">
         {{ content }}
+
+        <section class="special-section">
+            <h2>🌱 5月下旬〜6月の特集記事</h2>
+            <a href="{{ '/feature/ajisai.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/ajisai.jpg' | relative_url }}" alt="アジサイ">
+                <h3>【6月の主役】失敗しないアジサイの育て方と色を楽しむコツ</h3>
+            </a>
+            <a href="{{ '/feature/summer-flowers.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/summer-flowers.PNG' | relative_url }}" alt="夏の花">
+                <h3>雨に負けない！5月に植える夏の花5選</h3>
+            </a>
+            <a href="{{ '/feature/herbs.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/herbs.PNG' | relative_url }}" alt="ハーブ">
+                <h3>料理が楽しくなる！初心者向けハーブの栽培術</h3>
+            </a>
+        </section>
+
+        <div class="back-to-top">
+            <a href="{{ '/' | relative_url }}" class="btn-back">トップページに戻る</a>
+        </div>
     </article>
 </div>
 
@@ -90,6 +121,20 @@
     <p>&copy; 2026 {{ site.title }}<br>
     国内最大級の逆引き園芸・植物図鑑データベース</p>
 </footer>
+
+<script>
+    function toggleNav() {
+        const menu = document.getElementById("fullMenu");
+        const btn = document.getElementById("menuBtn");
+        if (menu.style.width === "100%") {
+            menu.style.width = "0%";
+            btn.classList.remove("active-menu");
+        } else {
+            menu.style.width = "100%";
+            btn.classList.add("active-menu");
+        }
+    }
+</script>
 
 </body>
 </html>
