@@ -127,31 +127,25 @@
     <article class="main-card">
         {{ content }}
     
-        <!-- ↓追加セクション：5月下旬〜6月の特集記事↓ -->
         <section class="special-section">
             <h2>🌱 5月下旬〜6月の特集記事</h2>
             
-            <!-- カード1: アジサイ（iPhoneプレビュー用ダミー画像） -->
-            <a href="/feature/ajisai.html" class="feature-card">
-                <img src="https://via.placeholder.com/85x85?text=ajisai" alt="アジサイ">
+            <a href="{{ '/feature/ajisai.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/ajisai.jpg' | relative_url }}" alt="アジサイ">
                 <h3>【6月の主役】失敗しないアジサイの育て方と色を楽しむコツ</h3>
             </a>
             
-            <!-- カード2: 夏の花（iPhoneプレビュー用ダミー画像） -->
-            <a href="/feature/summer-flowers.html" class="feature-card">
-                <img src="https://via.placeholder.com/85x85?text=flowers" alt="夏の花">
+            <a href="{{ '/feature/summer-flowers.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/summer-flowers.PNG' | relative_url }}" alt="夏の花">
                 <h3>雨に負けない！5月に植える夏の花5選</h3>
             </a>
             
-            <!-- カード3: ハーブ（iPhoneプレビュー用ダミー画像） -->
-            <a href="/feature/herbs.html" class="feature-card">
-                <img src="https://via.placeholder.com/85x85?text=herbs" alt="ハーブ">
+            <a href="{{ '/feature/herbs.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/herbs.PNG' | relative_url }}" alt="ハーブ">
                 <h3>料理が楽しくなる！初心者向けハーブの栽培術</h3>
             </a>
         </section>
-        <!-- ↑追加セクション終了↑ -->
-
-    </article>
+        </article>
 </div>
 
 <footer>
