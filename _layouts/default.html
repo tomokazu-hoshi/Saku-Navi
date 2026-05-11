@@ -6,22 +6,23 @@
     <title>{{ page.title }}</title>
     <style>
         :root {
-            --primary-green: #2d5a27;   
-            --nav-green: #4caf50;       
+            --primary-green: #2d5a27;   /* 信頼感のある深い緑 */
+            --accent-light: #e8f5e9;    /* 優しい背景の薄緑 */
+            --nav-green: #4caf50;       /* 明るいナビゲーション */
             --white: #ffffff;
             --text-main: #333333;
             --overlay-bg: rgba(45, 90, 39, 0.98); 
             --accent-yellow: #fff9c4;
         }
-        body { font-family: sans-serif; line-height: 1.6; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; line-height: 1.8; color: var(--text-main); background-color: #f4f7f4; margin: 0; padding: 0; }
 
-        /* --- ハンバーガーメニュー（3本線）タップしやすく修正 --- */
+        /* --- ハンバーガーメニュー --- */
         .menu-trigger {
             position: fixed; top: 15px; left: 15px; 
-            width: 50px; height: 50px; /* タップ範囲を拡大 */
+            width: 50px; height: 50px; 
             cursor: pointer; z-index: 9999; 
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: rgba(255,255,255,0.8); border-radius: 50%; /* ボタンを分かりやすく */
+            background: rgba(255,255,255,0.8); border-radius: 50%; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .menu-trigger span { display: block; width: 25px; height: 3px; background-color: var(--primary-green); margin: 3px 0; transition: 0.3s; }
@@ -35,30 +36,68 @@
         .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
         .overlay-content { width: 90%; max-width: 450px; text-align: center; padding-bottom: 40px; }
 
-        /* 特集バナーデザイン */
+        /* 特集バナーデザイン (メニュー内) */
         .menu-feature-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; }
         .menu-special-banner { background: rgba(255, 255, 255, 0.1); border: 1px solid var(--accent-yellow); border-radius: 12px; padding: 18px; text-decoration: none; display: block; text-align: left; }
         .menu-special-title { color: white; font-size: 1.0rem; font-weight: bold; margin: 0; }
         .menu-special-tag { background: var(--accent-yellow); color: var(--primary-green); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-right: 8px; font-weight: bold; }
 
-        /* カテゴリーボタン（2列） */
+        /* カテゴリーボタン（2列） (メニュー内) */
         .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
         .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
         .menu-btn span { font-size: 0.65rem; opacity: 0.7; margin-top: 3px; }
 
         /* --- 基本構造 --- */
         header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 15px; text-align: center; }
-        header h1 { margin: 0; color: var(--primary-green); font-size: 1.8rem; }
-        nav.top-bar { background: var(--nav-green); color: white; padding: 10px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 100; font-size: 0.9rem; }
-        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .main-card { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header h1 { margin: 0; color: var(--primary-green); font-size: 1.8rem; letter-spacing: 0.05em; }
+        nav.top-bar { background: var(--nav-green); color: white; padding: 12px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 100; font-size: 0.95rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+        .main-card { background: var(--white); border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-        /* カテゴリタイル（復旧済み） */
-        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
-        .btn-home { background: var(--primary-green); color: white !important; height: 90px; text-decoration: none; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 15px; font-weight: bold; font-size: 1.0rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .btn-home span { font-size: 0.7rem; opacity: 0.8; margin-top: 5px; }
+        /* --- 特集記事セクション（記事下に追加） --- */
+        .special-section {
+            margin-top: 45px;
+            padding-top: 35px;
+            border-top: 2px solid #ddd;
+        }
+        .special-section h2 {
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .feature-card {
+            display: flex; /* 横並びリスト */
+            align-items: center;
+            background: #e8f5e9; /* 薄緑背景（accent-light） */
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            overflow: hidden;
+            transition: box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding-right: 15px;
+        }
+        .feature-card:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .feature-card img {
+            width: 85px; /* スマホ向けに小さく */
+            height: 85px; /* 正方形 */
+            object-fit: cover; /* 3:4画像を切り抜く */
+            margin-right: 15px;
+        }
+        .feature-card h3 {
+            margin: 0;
+            font-size: 1.0rem;
+            line-height: 1.4;
+            color: var(--primary-green);
+        }
 
-        footer { background: #e0eadd; text-align: center; padding: 40px 20px; margin-top: 40px; font-size: 0.85rem; color: #555; }
+        footer { background: #e0eadd; text-align: center; padding: 50px 20px; margin-top: 60px; font-size: 0.9rem; color: #555; }
     </style>
 </head>
 <body>
@@ -108,10 +147,38 @@
 <div class="container">
     <article class="main-card">
         {{ content }}
+    
+        <!-- ↓追加セクション：5月下旬〜6月の特集記事↓ -->
+        <section class="special-section">
+            <h2>🌱 5月下旬〜6月の特集記事</h2>
+            
+            <!-- カード1: アジサイ -->
+            <a href="{{ '/feature/ajisai.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/ajisai.jpg' | relative_url }}" alt="アジサイ">
+                <h3>【6月の主役】失敗しないアジサイの育て方と色を楽しむコツ</h3>
+            </a>
+            
+            <!-- カード2: 夏の花 -->
+            <a href="{{ '/feature/summer-flowers.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/summer-flowers.PNG' | relative_url }}" alt="夏の花">
+                <h3>雨に負けない！5月に植える夏の花5選</h3>
+            </a>
+            
+            <!-- カード3: ハーブ -->
+            <a href="{{ '/feature/herbs.html' | relative_url }}" class="feature-card">
+                <img src="{{ '/assets/img/herbs.PNG' | relative_url }}" alt="ハーブ">
+                <h3>料理が楽しくなる！初心者向けハーブの栽培術</h3>
+            </a>
+        </section>
+        <!-- ↑追加セクション終了↑ -->
+
     </article>
 </div>
 
-<footer><p>&copy; 2026 {{ site.title }}</p></footer>
+<footer>
+    <p>&copy; 2026 {{ site.title }}<br>
+    国内最大級の逆引き園芸・植物図鑑データベース</p>
+</footer>
 
 <script>
     function toggleNav() {
