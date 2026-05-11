@@ -22,7 +22,7 @@
             padding: 0;
         }
 
-        /* --- 1. ハンバーガーメニュー（復旧） --- */
+        /* --- 1. ハンバーガーメニュー --- */
         .menu-trigger {
             position: fixed; top: 15px; left: 15px; 
             width: 50px; height: 50px; 
@@ -38,11 +38,11 @@
         .active-menu span:nth-of-type(2) { opacity: 0; }
         .active-menu span:nth-of-type(3) { transform: translateY(-9px) rotate(45deg); background-color: #fff !important; }
 
-        /* --- 2. 全画面メニューオーバーレイ（カテゴリーリスト） --- */
+        /* --- 2. 全画面メニューオーバーレイ --- */
         .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
         .overlay-content { width: 90%; max-width: 450px; text-align: center; padding-bottom: 40px; }
 
-        /* カテゴリーボタン（2列リスト：サイトマップに基づいて整理） */
+        /* カテゴリーボタン（2列リスト） */
         .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 20px; }
         .menu-btn { background: rgba(255,255,255,0.15); color: white !important; text-decoration: none; height: 75px; display: flex; flex-direction: column; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 0.9rem; }
         .menu-btn span { font-size: 0.65rem; opacity: 0.7; margin-top: 3px; }
@@ -54,12 +54,12 @@
         .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
         .main-card { background: var(--white); border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-        /* カテゴリタイル（復旧済み：トップページの2x⚪︎ボックスボタン） */
+        /* カテゴリタイル（トップページの2x⚪︎ボックスボタン） */
         .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
         .btn-home { background: var(--primary-green); color: white !important; height: 90px; text-decoration: none; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 15px; font-weight: bold; font-size: 1.0rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .btn-home span { font-size: 0.7rem; opacity: 0.8; margin-top: 5px; }
 
-        /* --- 特集記事セクション（保持） --- */
+        /* --- 特集記事セクション --- */
         .special-section { margin-top: 45px; padding-top: 35px; border-top: 2px solid #ddd; }
         .special-section h2 { color: var(--primary-green); font-size: 1.4rem; text-align: center; margin-bottom: 25px; font-weight: bold; }
         .feature-card { display: flex; align-items: center; background: var(--accent-light); border-radius: 10px; margin-bottom: 15px; text-decoration: none; color: var(--text-main); overflow: hidden; transition: box-shadow 0.3s, transform 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding-right: 15px; }
@@ -67,7 +67,7 @@
         .feature-card img { width: 85px; height: 85px; object-fit: cover; margin-right: 15px; }
         .feature-card h3 { margin: 0; font-size: 1.0rem; line-height: 1.4; color: var(--primary-green); }
 
-        /* --- 3. トップページに戻るボタン（全ての記事下に追加） --- */
+        /* --- トップページに戻るボタン --- */
         .btn-back-home-wrap { text-align: center; margin-top: 40px; margin-bottom: 20px; }
         .btn-back-home { display: inline-block; padding: 12px 25px; background-color: var(--primary-green); color: white !important; text-decoration: none; border-radius: 25px; font-size: 0.95rem; font-weight: bold; transition: opacity 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .btn-back-home:hover { opacity: 0.8; }
@@ -86,25 +86,16 @@
         <div style="color:white; margin-bottom:15px; font-weight:bold; font-size:1.1rem; letter-spacing:0.05em;">🌱 全カテゴリーから探す</div>
         
         <div class="menu-grid">
-            <a href="{{ '/category/syllabary/あ/' | relative_url }}" class="menu-btn">五十音<span>Index</span></a>
-            
-            <a href="{{ '/category/months/1月/' | relative_url }}" class="menu-btn">月別・季節<span>Months / Seasons</span></a>
-            
-            <a href="{{ '/category/colors/赤/' | relative_url }}" class="menu-btn">花の色<span>Colors</span></a>
-            
-            <a href="{{ '/category/types/一年草-春まき/' | relative_url }}" class="menu-btn">植物の分類<span>Types</span></a>
-            
-            <a href="{{ '/category/environments/日向/' | relative_url }}" class="menu-btn">育てる環境<span>Environments</span></a>
-            
-            <a href="{{ '/category/purposes/初心者向け/' | relative_url }}" class="menu-btn">目的・用途<span>Purposes</span></a>
-            
-            <a href="{{ '/category/families/バラ科/' | relative_url }}" class="menu-btn">植物の科名<span>Families</span></a>
-            
-            <a href="{{ '/category/meanings/感謝/' | relative_url }}" class="menu-btn">花言葉<span>Meanings</span></a>
-            
-            <a href="{{ '/category/methods/地植え/' | relative_url }}" class="menu-btn">栽培方法<span>Methods</span></a>
-
-            <a href="{{ '/' | relative_url }}" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
+            <a href="/category/syllabary/あ/" class="menu-btn">五十音<span>Index</span></a>
+            <a href="/category/months/1月/" class="menu-btn">月別・季節<span>Months / Seasons</span></a>
+            <a href="/category/colors/赤/" class="menu-btn">花の色<span>Colors</span></a>
+            <a href="/category/types/一年草-春まき/" class="menu-btn">植物の分類<span>Types</span></a>
+            <a href="/category/environments/日向/" class="menu-btn">育てる環境<span>Environments</span></a>
+            <a href="/category/purposes/初心者向け/" class="menu-btn">目的・用途<span>Purposes</span></a>
+            <a href="/category/families/バラ科/" class="menu-btn">植物の科名<span>Families</span></a>
+            <a href="/category/meanings/感謝/" class="menu-btn">花言葉<span>Meanings</span></a>
+            <a href="/category/methods/地植え/" class="menu-btn">栽培方法<span>Methods</span></a>
+            <a href="/" class="menu-btn" style="background:rgba(255,255,255,0.3);">トップ<span>Home</span></a>
         </div>
     </div>
 </div>
@@ -119,7 +110,10 @@
 
 <div class="container">
     <article class="main-card">
-        {{ content }}
+        <div id="preview-content">
+            <p>※現在iPhone上で直接プレビューしているため、実際の記事内容は表示されません。</p>
+            <p>ここに各記事の文章が表示されます。下部の特集記事セクションと、トップページに戻るボタンのデザインをご確認ください。</p>
+        </div>
     
         <section class="special-section">
             <h2>🌱 5月下旬〜6月の特集記事</h2>
@@ -140,7 +134,7 @@
             </a>
         </section>
         <div class="btn-back-home-wrap">
-            <a href="{{ '/' | relative_url }}" class="btn-back-home">トップページ（検索）に戻る</a>
+            <a href="/" class="btn-back-home">トップページ（検索）に戻る</a>
         </div>
         </article>
 </div>
