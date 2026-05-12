@@ -6,12 +6,12 @@
     <title>{{ page.title }}</title>
     <style>
         :root {
-            --primary-green: #2d5a27;   /* 信頼感のある深い緑 */
-            --accent-light: #e8f5e9;    /* 優しい背景の薄緑 */
-            --nav-green: #4caf50;       /* 明るいナビゲーション */
+            --primary-green: #2d5a27;
+            --accent-light: #e8f5e9;
+            --nav-green: #4caf50;
             --text-main: #333333;
             --white: #ffffff;
-            --overlay-bg: rgba(255, 255, 255, 0.98); /* メニュー背景：白ベースに */
+            --overlay-bg: rgba(255, 255, 255, 0.98);
         }
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -22,7 +22,7 @@
             padding: 0;
         }
 
-        /* --- 1. 元々のデザイン（2列ボタン等）を保持するCSS --- */
+        /* --- 1. 元々のデザイン（2列ボタン）を保持 --- */
         .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
         .btn-home { background: var(--primary-green); color: white !important; height: 90px; text-decoration: none; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 15px; font-weight: bold; font-size: 1.0rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .btn-home span { font-size: 0.7rem; opacity: 0.8; margin-top: 5px; }
@@ -42,14 +42,14 @@
         /* --- 3. 文字リンク形式の全画面メニュー --- */
         .overlay { height: 100%; width: 0; position: fixed; z-index: 9998; top: 0; left: 0; background-color: var(--overlay-bg); overflow-x: hidden; overflow-y: auto; transition: 0.4s; padding-top: 70px; }
         .menu-inner { padding: 20px 25px 80px; text-align: left; max-width: 600px; margin: auto; }
-        .menu-section { margin-bottom: 30px; }
-        .menu-section-title { color: var(--primary-green); font-size: 1.1rem; border-left: 4px solid var(--primary-green); padding-left: 10px; margin-bottom: 15px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .menu-link-list { display: flex; flex-wrap: wrap; gap: 10px 15px; list-style: none; padding: 0; margin: 0; }
+        .menu-section { margin-bottom: 35px; }
+        .menu-section-title { color: var(--primary-green); font-size: 1.1rem; border-left: 5px solid var(--primary-green); padding-left: 12px; margin-bottom: 15px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .menu-link-list { display: flex; flex-wrap: wrap; gap: 12px 18px; list-style: none; padding: 0; margin: 0; }
         .menu-link-list li { margin: 0; }
-        .menu-link-list a { color: #555; text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+        .menu-link-list a { color: #444; text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid #ddd; padding-bottom: 2px; transition: 0.2s; }
         .menu-link-list a:hover { color: var(--primary-green); border-bottom-color: var(--primary-green); }
 
-        /* --- 基本レイアウト --- */
+        /* --- 基本構造 --- */
         header { background: var(--white); border-bottom: 5px solid var(--primary-green); padding: 30px 20px; text-align: center; }
         header h1 { margin: 0; color: var(--primary-green); font-size: 1.8rem; }
         nav { background: var(--nav-green); color: white; padding: 12px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 100; }
@@ -65,7 +65,7 @@
 
         /* --- 共通のトップに戻るボタン --- */
         .back-to-top { text-align: center; margin-top: 40px; }
-        .btn-back { display: inline-block; background: var(--primary-green); color: white !important; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 0.95rem; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+        .btn-back { display: inline-block; background: var(--primary-green); color: white !important; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 0.95rem; }
 
         footer { background: #e0eadd; text-align: center; padding: 50px 20px; margin-top: 60px; color: #555; font-size: 0.9rem; }
     </style>
@@ -85,24 +85,31 @@
         <div class="menu-section">
             <div class="menu-section-title">五十音から探す</div>
             <ul class="menu-link-list">
-                {% assign syllabary = "あ,か,さ,た,な,は,ま,や,ら,わ" | split: "," %}
-                {% for char in syllabary %}
-                <li><a href="{{ '/category/syllabary/' | append: char | append: '/' | relative_url }}">{{ char }}</a></li>
-                {% endfor %}
+                <li><a href="{{ '/a-row.html' | relative_url }}">あ</a></li>
+                <li><a href="{{ '/ka-row.html' | relative_url }}">か</a></li>
+                <li><a href="{{ '/sa-row.html' | relative_url }}">さ</a></li>
+                <li><a href="{{ '/ta-row.html' | relative_url }}">た</a></li>
+                <li><a href="{{ '/na-row.html' | relative_url }}">な</a></li>
+                <li><a href="{{ '/ha-row.html' | relative_url }}">は</a></li>
+                <li><a href="{{ '/ma-row.html' | relative_url }}">ま</a></li>
+                <li><a href="{{ '/ya-row.html' | relative_url }}">や</a></li>
+                <li><a href="{{ '/ra-row.html' | relative_url }}">ら</a></li>
+                <li><a href="{{ '/wa-row.html' | relative_url }}">わ</a></li>
             </ul>
         </div>
 
         <div class="menu-section">
-            <div class="menu-section-title">開花時期・季節から探す</div>
+            <div class="menu-section-title">時期・季節から探す</div>
             <ul class="menu-link-list">
                 {% assign months = "1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月" | split: "," %}
                 {% for m in months %}
                 <li><a href="{{ '/category/months/' | append: m | append: '/' | relative_url }}">{{ m }}</a></li>
                 {% endfor %}
-                {% assign seasons = "春,夏,秋,冬,四季咲き" | split: "," %}
-                {% for s in seasons %}
-                <li><a href="{{ '/category/seasons/' | append: s | append: '/' | relative_url }}">{{ s }}</a></li>
-                {% endfor %}
+                <li><a href="{{ '/category/seasons/春/' | relative_url }}">春</a></li>
+                <li><a href="{{ '/category/seasons/夏/' | relative_url }}">夏</a></li>
+                <li><a href="{{ '/category/seasons/秋/' | relative_url }}">秋</a></li>
+                <li><a href="{{ '/category/seasons/冬/' | relative_url }}">冬</a></li>
+                <li><a href="{{ '/category/seasons/四季咲き/' | relative_url }}">四季咲き</a></li>
             </ul>
         </div>
 
@@ -153,26 +160,48 @@
             <div class="menu-section-title">目的・用途から探す</div>
             <ul class="menu-link-list">
                 <li><a href="{{ '/category/purposes/初心者向け/' | relative_url }}">初心者向け</a></li>
-                <li><a href="{{ '/category/purposes/ローメンテナンス/' | relative_url }}">ローメンテナンス</a></li>
-                <li><a href="{{ '/category/purposes/グランドカバー/' | relative_url }}">グランドカバー</a></li>
+                <li><a href="{{ '/category/purposes/ローメンテナンス/' | relative_url }}">低管理</a></li>
+                <li><a href="{{ '/category/purposes/グランドカバー/' | relative_url }}">芝生代わり</a></li>
                 <li><a href="{{ '/category/purposes/生け垣/' | relative_url }}">生け垣</a></li>
                 <li><a href="{{ '/category/purposes/鉢植え/' | relative_url }}">鉢植え</a></li>
-                <li><a href="{{ '/category/purposes/ベランダ菜園/' | relative_url }}">ベランダ菜園</a></li>
+                <li><a href="{{ '/category/purposes/ベランダ菜園/' | relative_url }}">ベランダ</a></li>
                 <li><a href="{{ '/category/purposes/切り花/' | relative_url }}">切り花</a></li>
-                <li><a href="{{ '/category/purposes/ドライフラワー/' | relative_url }}">ドライフラワー</a></li>
-                <li><a href="{{ '/category/purposes/芳香/' | relative_url }}">芳香</a></li>
-                <li><a href="{{ '/category/purposes/エディブルフラワー/' | relative_url }}">エディブルフラワー</a></li>
-                <li><a href="{{ '/category/purposes/蜜源植物/' | relative_url }}">蜜源植物</a></li>
+                <li><a href="{{ '/category/purposes/ドライフラワー/' | relative_url }}">ドライ</a></li>
+                <li><a href="{{ '/category/purposes/芳香/' | relative_url }}">香り</a></li>
+                <li><a href="{{ '/category/purposes/エディブルフラワー/' | relative_url }}">食用</a></li>
+                <li><a href="{{ '/category/purposes/蜜源植物/' | relative_url }}">蜜源</a></li>
                 <li><a href="{{ '/category/purposes/プレゼント・贈り物/' | relative_url }}">贈り物</a></li>
             </ul>
         </div>
 
         <div class="menu-section">
-            <div class="menu-section-title">科名・花言葉・方法</div>
+            <div class="menu-section-title">植物の科名から探す</div>
             <ul class="menu-link-list">
-                <li><a href="{{ '/category/families/バラ科/' | relative_url }}">主要な科名</a></li>
-                <li><a href="{{ '/category/meanings/感謝/' | relative_url }}">花言葉から</a></li>
-                <li><a href="{{ '/category/methods/地植え/' | relative_url }}">栽培方法</a></li>
+                <li><a href="{{ '/category/families/バラ科/' | relative_url }}">バラ科</a></li>
+                <li><a href="{{ '/category/families/キク科/' | relative_url }}">キク科</a></li>
+                <li><a href="{{ '/category/families/ラン科/' | relative_url }}">ラン科</a></li>
+                <li><a href="{{ '/category/families/シソ科/' | relative_url }}">シソ科</a></li>
+                <li><a href="{{ '/category/families/ナス科/' | relative_url }}">ナス科</a></li>
+                <li><a href="{{ '/category/families/アブラナ科/' | relative_url }}">アブラナ科</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">花言葉から探す</div>
+            <ul class="menu-link-list">
+                <li><a href="{{ '/category/meanings/感謝/' | relative_url }}">感謝</a></li>
+                <li><a href="{{ '/category/meanings/愛/' | relative_url }}">愛</a></li>
+                <li><a href="{{ '/category/meanings/希望/' | relative_url }}">希望</a></li>
+                <li><a href="{{ '/category/meanings/純潔/' | relative_url }}">純潔</a></li>
+                <li><a href="{{ '/category/meanings/情熱/' | relative_url }}">情熱</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">栽培方法から探す</div>
+            <ul class="menu-link-list">
+                <li><a href="{{ '/category/methods/地植え/' | relative_url }}">地植え</a></li>
+                <li><a href="{{ '/category/methods/鉢植え/' | relative_url }}">鉢植え</a></li>
             </ul>
         </div>
     </div>
